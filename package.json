@@ -1,0 +1,25 @@
+{
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start:client": "cd packages/client && npm run dev",
+    "start:studio": "cd packages/studio && npm start",
+    "start": "concurrently \"npm run start:client\" \"npm run start:studio\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theo0165/bookshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theo0165/bookshop/issues"
+  },
+  "homepage": "https://github.com/theo0165/bookshop#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
