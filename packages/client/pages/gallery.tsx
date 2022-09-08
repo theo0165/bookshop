@@ -1,5 +1,5 @@
-import type { NextPage } from 'next';
-import styles from '../styles/Home.module.css';
+import type { NextPage } from "next";
+import styles from "../styles/Home.module.css";
 
 const Galley: NextPage = () => {
   return <div className={styles.container}></div>;
@@ -12,5 +12,6 @@ export const getStaticProps = async () => {
   const data = await fetch(url);
   const feed = await data.json();
 
+  return { props: {} };
   console.log(feed);
 };
