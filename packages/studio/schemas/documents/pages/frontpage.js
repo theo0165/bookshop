@@ -11,7 +11,7 @@ export default {
     {
       name: "text",
       type: "text",
-      title: "Starting text",
+      title: "Hero text",
     },
     {
       name: "heroImage",
