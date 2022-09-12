@@ -16,7 +16,7 @@ export default {
     {
       name: "firstAboutImage",
       type: "image",
-      title: "Image card",
+      title: "Image",
     },
     {
       name: "firstCard",
