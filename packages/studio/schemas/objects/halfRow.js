@@ -8,8 +8,15 @@ export default {
       title: "Type",
       type: "string",
       options: {
-        list: ["Med länk", "Utan länk", "Bild", "Citat"],
+        list: ["Med länk", "Utan länk", "Bild", "Citat", "Nyhet"],
       },
+    },
+    {
+      name: "newsItem",
+      title: "Nyhet",
+      type: "reference",
+      to: [{ type: "newsItem" }],
+      hidden: ({ parent, value }) => !value && !(parent.type === "Nyhet"),
     },
     {
       name: "title",
