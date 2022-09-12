@@ -10,10 +10,23 @@ interface Props {
       firstTitle: string;
       secondTitle: string;
       text: string;
-      image: string;
     };
     firstImageCard: string;
-
+    secondImageCard: string;
+    secondCard: {
+      firstTitle: string;
+      secondTitle: string;
+      text: string;
+    };
+    secondAboutTitle: string;
+    secondBodyText: string;
+    secondBodyImage: string;
+    thirdCard: {
+      firstTitle: string;
+      secondTitle: string;
+      text: string;
+    };
+    thirdImageCard: string;
     // date: string | null;
   };
 }
@@ -32,10 +45,31 @@ const AboutPage: NextPage<Props> = ({ data }) => {
       <div>
         <p>{data.firstCard.firstTitle}</p>
         <h2>{data.firstCard.secondTitle}</h2>
-        <img src={data.firstCard.image} />
+        <p>{data.secondCard.text}</p>
       </div>
       <div>
         <img src={data.firstImageCard} />
+      </div>
+      <div>
+        <img src={data.secondImageCard} />
+      </div>
+      <div>
+        <p>{data.secondCard.firstTitle}</p>
+        <h2>{data.secondCard.secondTitle}</h2>
+        <p>{data.secondCard.text}</p>
+      </div>
+      <div>
+        <h1>{data.secondAboutTitle}</h1>
+        <p>{data.secondBodyText}</p>
+        <img src={data.secondBodyImage} />
+      </div>
+      <div>
+        <p>{data.thirdCard.firstTitle}</p>
+        <h2>{data.thirdCard.secondTitle}</h2>
+        <p>{data.thirdCard.text}</p>
+      </div>
+      <div>
+        <img src={data.thirdImageCard} />
       </div>
     </>
   );
@@ -48,12 +82,25 @@ export const getServerSideProps = async () => {
       firstBodyText,
       "image": firstAboutImage.asset->url,
       firstCard{
-        "image": img.asset->url,
         firstTitle,
         secondTitle,
         text
       },
       "firstImageCard": firstImageCard.asset->url,
+      secondCard{
+        firstTitle,
+        secondTitle,
+        text
+      },
+      secondAboutTitle,
+      secondBodyText,
+      "imageSecond": secondAboutImage.asset->url,
+      thirdCard{
+        firstTitle,
+        secondTitle,
+        text
+      },
+      "imageThird": thirdAboutImage.asset->url,
     }[0]`
   );
 

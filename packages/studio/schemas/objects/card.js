@@ -18,10 +18,10 @@ export default {
       type: "string",
       title: "Text",
     },
-    {
-      name: "img",
-      type: "image",
-      title: "Image",
-    },
+    // {
+    //   name: "img",
+    //   type: "image",
+    //   title: "Image",
+    // },
   ],
 };
