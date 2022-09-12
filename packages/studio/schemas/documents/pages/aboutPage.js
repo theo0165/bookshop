@@ -17,6 +17,19 @@ export default {
       name: "firstAboutImage",
       type: "image",
       title: "Image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "firstAboutAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "firstCard",
