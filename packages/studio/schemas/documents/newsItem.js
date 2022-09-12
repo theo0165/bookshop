@@ -9,6 +9,14 @@ export default {
       title: "Title",
     },
     {
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      options: {
+        source: "title",
+      },
+    },
+    {
       name: "bodyText",
       type: "text",
       title: "Body text",
