@@ -1,11 +1,16 @@
 import type { NextPage } from "next";
+import BodyNormal from "../components/styled/BodyNormal";
+import HeadingOne from "../components/styled/HeadingOne";
+import UnderlineButtonText from "../components/styled/UnderlineButtonText";
 import client from "../helpers/sanity";
+import style from "../styles/Home.module.scss";
 
 interface Props {
   data: {
     text: string;
     heroImage: string;
     title: string;
+    linkText: string;
     cards: {
       type: string;
       [key: string]: any;
@@ -14,7 +19,20 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ data }) => {
-  return <></>;
+  return (
+    <>
+      <div className={style.heroContainer}>
+        <div className={style.heroText}>
+          <HeadingOne>{data.title}</HeadingOne>
+          <BodyNormal>{data.text}</BodyNormal>
+          <UnderlineButtonText href="/om-oss">
+            {data.linkText}
+          </UnderlineButtonText>
+        </div>
+        <img height="360px" src={data.heroImage} className={style.heroImage} />
+      </div>
+    </>
+  );
 };
 
 export default Home;
@@ -23,6 +41,7 @@ export const getServerSideProps = async () => {
   const data = await client.fetch(`
     *[_type == "frontpage" && !(_id in path("drafts.**"))]{
       text,
+      linkText,
       "heroImage": heroImage.asset->url,
       title,
       cards
