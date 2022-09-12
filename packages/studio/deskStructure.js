@@ -1,6 +1,6 @@
 import S from "@sanity/desk-tool/structure-builder";
 
-const exclude = ["media.tag", "globalSettings"];
+const exclude = ["media.tag", "globalSettings", "aboutPage"];
 
 export default () =>
   S.list()
@@ -13,12 +13,10 @@ export default () =>
             .title("Sidor")
             .items([
               S.listItem()
-                .title("Hem")
-                .child
-                // S.document()
-                //   .schemaType("homeSettings")
-                //   .documentId("homeSettings")
-                (),
+                .title("About page")
+                .child(
+                  S.document().schemaType("aboutPage").documentId("aboutPage")
+                ),
             ])
         ),
       S.divider(),

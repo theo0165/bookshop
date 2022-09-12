@@ -6,6 +6,8 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import globalSettings from "./documents/globalSettings";
 import categories from "./documents/categories";
 import newsItem from "./documents/newsItem";
+import aboutPage from "./documents/pages/aboutPage";
+import card from "./objects/card";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -18,5 +20,7 @@ export default createSchema({
     globalSettings,
     categories,
     newsItem,
+    aboutPage,
+    card,
   ]),
 });
