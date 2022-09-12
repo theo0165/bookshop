@@ -4,6 +4,11 @@ export default {
   title: "Card",
   fields: [
     {
+      name: "title",
+      type: "string",
+      title: "title",
+    },
+    {
       name: "text",
       type: "string",
       title: "text",
