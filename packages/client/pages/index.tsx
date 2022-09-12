@@ -5,16 +5,17 @@ import UnderlineButtonText from "../components/styled/UnderlineButtonText";
 import client from "../helpers/sanity";
 import style from "../styles/Home.module.scss";
 
+interface Card {
+  type: string;
+  [key: string]: any;
+}
 interface Props {
   data: {
     text: string;
     heroImage: string;
     title: string;
     linkText: string;
-    cards: {
-      type: string;
-      [key: string]: any;
-    }[];
+    cards: Card[];
   };
 }
 
@@ -30,6 +31,9 @@ const Home: NextPage<Props> = ({ data }) => {
           </UnderlineButtonText>
         </div>
         <img height="360px" src={data.heroImage} className={style.heroImage} />
+      </div>
+      <div className={style.cards}>
+        {data.cards && data.cards.map((card: Card) => <p>{card.type}</p>)}
       </div>
     </>
   );
