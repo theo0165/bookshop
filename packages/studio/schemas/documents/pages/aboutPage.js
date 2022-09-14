@@ -4,9 +4,32 @@ export default {
   title: "About page",
   fields: [
     {
-      name: "title",
+      name: "firstAboutTitle",
       type: "string",
-      title: "Title",
+      title: "About title",
+    },
+    {
+      name: "firstBodyText",
+      type: "text",
+      title: "Body text",
+    },
+    {
+      name: "firstAboutImage",
+      type: "image",
+      title: "Image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "firstAboutAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "firstCard",
@@ -14,9 +37,96 @@ export default {
       title: "First card",
     },
     {
+      name: "firstImageCard",
+      type: "image",
+      title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "firstImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    },
+    {
+      name: "secondImageCard",
+      type: "image",
+      title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "secondImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    },
+    {
       name: "secondCard",
       type: "card",
       title: "Second card",
+    },
+    {
+      name: "secondAboutTitle",
+      type: "string",
+      title: "About title",
+    },
+    {
+      name: "secondBodyText",
+      type: "text",
+      title: "Body text",
+    },
+    {
+      name: "secondAboutImage",
+      type: "image",
+      title: "Image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "secondAboutImageAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    },
+    {
+      name: "thirdCard",
+      type: "card",
+      title: "Third card",
+    },
+    {
+      name: "thirdImageCard",
+      type: "image",
+      title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "thirdImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
   ],
 };

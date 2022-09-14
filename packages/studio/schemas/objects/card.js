@@ -4,14 +4,24 @@ export default {
   title: "Card",
   fields: [
     {
-      name: "text",
+      name: "caption",
       type: "string",
-      title: "text",
+      title: "Caption",
     },
     {
-      name: "img",
-      type: "image",
-      title: "Image",
+      name: "heading",
+      type: "string",
+      title: "Title",
     },
+    {
+      name: "text",
+      type: "string",
+      title: "Text",
+    },
+    // {
+    //   name: "img",
+    //   type: "image",
+    //   title: "Image",
+    // },
   ],
 };
