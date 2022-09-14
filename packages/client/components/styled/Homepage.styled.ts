@@ -6,7 +6,8 @@ export const HeroContainer = styled.div`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 160px;
+  margin-bottom: 120px;
+  margin-top: 120px;
 `;
 
 export const HeroText = styled.div`
