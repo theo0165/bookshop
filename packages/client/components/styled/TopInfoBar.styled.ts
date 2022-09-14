@@ -38,6 +38,9 @@ export const Social = styled.div`
 `;
 
 export const SocialLink = styled.a`
+  width: 24px;
+  height: 24px;
+
   svg {
     width: 24px;
     height: 24px;
