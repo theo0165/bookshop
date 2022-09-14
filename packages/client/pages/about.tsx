@@ -6,6 +6,8 @@ import {
   CardContainer,
   CardWrapper,
   HeroSection,
+  TextWtapperFirst,
+  TextWtapperSecond,
 } from "../components/styled/About.styled";
 
 import HeadingOne from "../components/styled/texts/HeadingOne";
@@ -32,13 +34,13 @@ interface Props {
     };
     secondAboutTitle: string;
     secondBodyText: string;
-    secondAboutImage: string;
+    imageSecond: string;
     thirdCard: {
       caption: string;
       heading: string;
       text: string;
     };
-    thirdImageCard: string;
+    imageThird: string;
     // date: string | null;
   };
 }
@@ -51,10 +53,13 @@ const AboutPage: NextPage<Props> = ({ data }) => {
     <>
       <BodyContainer>
         <HeroSection>
-          <div>
+          <TextWtapperFirst>
             <HeadingOne>{data.firstAboutTitle}</HeadingOne>
             <BodyNormal>{data.firstBodyText}</BodyNormal>
-          </div>
+            {/* {data.infoText?.split("\n\n").map((section, index) => (
+  <p key={`info-text-${index}`}>{section}</p>
+))} */}
+          </TextWtapperFirst>
           <img src={data.image} />
         </HeroSection>
         <CardWrapper>
@@ -70,24 +75,28 @@ const AboutPage: NextPage<Props> = ({ data }) => {
             <img src={data.secondImageCard} width={509} height={348} />
           </div>
           <CardContainer>
-            <p>{data.secondCard.caption}</p>
-            <h2>{data.secondCard.heading}</h2>
-            <p>{data.secondCard.text}</p>
+            <Caption>{data.secondCard.caption}</Caption>
+            <HeadingTwo>{data.secondCard.heading}</HeadingTwo>
+            <BodyNormal>{data.secondCard.text}</BodyNormal>
           </CardContainer>
         </CardWrapper>
-        <div>
-          <h1>{data.secondAboutTitle}</h1>
-          <p>{data.secondBodyText}</p>
-          <img src={data.secondAboutImage} />
-        </div>
-        <div>
-          <p>{data.thirdCard.caption}</p>
-          <h2>{data.thirdCard.heading}</h2>
-          <p>{data.thirdCard.text}</p>
-        </div>
-        <div>
-          <img src={data.thirdImageCard} />
-        </div>
+        <HeroSection>
+          <img src={data.imageSecond} />
+          <TextWtapperSecond>
+            <HeadingOne>{data.secondAboutTitle}</HeadingOne>
+            <BodyNormal>{data.secondBodyText}</BodyNormal>
+          </TextWtapperSecond>
+        </HeroSection>
+        <CardWrapper>
+          <CardContainer>
+            <Caption>{data.thirdCard.caption}</Caption>
+            <HeadingTwo>{data.thirdCard.heading}</HeadingTwo>
+            <BodyNormal>{data.thirdCard.text}</BodyNormal>
+          </CardContainer>
+          <div>
+            <img src={data.imageThird} width={509} height={348} />
+          </div>
+        </CardWrapper>
       </BodyContainer>
     </>
   );
