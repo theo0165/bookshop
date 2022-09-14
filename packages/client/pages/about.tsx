@@ -15,6 +15,7 @@ import HeadingTwo from "../components/styled/texts/HeadingTwo";
 import Header from "../components/Header";
 import GlobalSettings from "../types/GlobalSettings";
 import getGlobalSettings from "../helpers/getGlobalSettings";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -54,6 +55,7 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
   return (
     <>
       <Header settings={globalSettings} />
+      <Breadcrumbs />
       <BodyContainer>
         <HeroSection>
           <div>
