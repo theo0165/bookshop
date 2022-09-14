@@ -5,6 +5,9 @@ const BodyLarge = styled.p`
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
+
+  margin: 0;
+  padding: 0;
 `;
 
 export default BodyLarge;

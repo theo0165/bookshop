@@ -12,6 +12,14 @@ export default {
       },
     },
     {
+      name: "background",
+      title: "Bakgrund",
+      type: "string",
+      options: {
+        list: ["Grön", "Vit"],
+      },
+    },
+    {
       name: "newsItem",
       title: "Nyhet",
       type: "reference",

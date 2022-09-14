@@ -6,6 +6,7 @@ export const HeroContainer = styled.div`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 160px;
 `;
 
 export const HeroText = styled.div`
@@ -13,7 +14,7 @@ export const HeroText = styled.div`
 `;
 
 export const HeroImage = styled.img`
-  height: 360px;
+  height: 310px;
 `;
 
 export const CardsContainer = styled.div`
