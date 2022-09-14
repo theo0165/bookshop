@@ -45,13 +45,43 @@ export default Home;
 
 export const getServerSideProps = async () => {
   const data = await client.fetch(`
-    *[_type == "frontpage" && !(_id in path("drafts.**"))]{
-      text,
-      linkText,
-      "heroImage": heroImage.asset->url,
-      title,
-      cards
-    }[0]
+  *[_type == "frontpage" && !(_id in path("drafts.**"))]{
+    text,
+    linkText,
+    "heroImage": heroImage.asset->url,
+    title,
+    cards[]{
+      type == "Nyhet" => {
+        _key,
+        _type,
+        background,
+        type,
+        "newsItem": {
+          "title": newsItem->title,
+          "body": newsItem->bodyText
+        },
+      },
+  
+      type == "Citat" => {
+        ...
+      },
+  
+      type == "Med länk" => {
+        ...
+      },
+  
+      type == "Utan länk" => {
+        ...
+      },
+  
+      type == "Bild" => {
+        _key,
+        _type,
+        type,
+        "image": image.asset->url,
+      },
+    }
+  }[0]
   `);
 
   return { props: { data } };
