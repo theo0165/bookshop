@@ -16,7 +16,7 @@ export default {
     {
       name: "firstAboutImage",
       type: "image",
-      title: "Image",
+      title: "Header Image",
       options: {
         hotspot: true,
       },
@@ -90,13 +90,13 @@ export default {
     {
       name: "secondAboutImage",
       type: "image",
-      title: "Image",
+      title: "Header Image",
       options: {
         hotspot: true,
       },
       fields: [
         {
-          name: "secondAboutImageAlt",
+          name: "secondAboutAlt",
           type: "string",
           title: "Alternative text",
           options: {

@@ -32,7 +32,7 @@ interface Props {
     };
     secondAboutTitle: string;
     secondBodyText: string;
-    secondBodyImage: string;
+    secondAboutImage: string;
     thirdCard: {
       caption: string;
       heading: string;
@@ -67,18 +67,18 @@ const AboutPage: NextPage<Props> = ({ data }) => {
             <img src={data.firstImageCard} width={509} height={348} />
           </div>
           <div>
-            <img src={data.secondImageCard} />
+            <img src={data.secondImageCard} width={509} height={348} />
           </div>
-          <div>
+          <CardContainer>
             <p>{data.secondCard.caption}</p>
             <h2>{data.secondCard.heading}</h2>
             <p>{data.secondCard.text}</p>
-          </div>
+          </CardContainer>
         </CardWrapper>
         <div>
           <h1>{data.secondAboutTitle}</h1>
           <p>{data.secondBodyText}</p>
-          <img src={data.secondBodyImage} />
+          <img src={data.secondAboutImage} />
         </div>
         <div>
           <p>{data.thirdCard.caption}</p>
@@ -119,7 +119,7 @@ export const getServerSideProps = async () => {
         heading,
         text
       },
-      "imageThird": thirdAboutImage.asset->url,
+      "imageThird": thirdImageCard.asset->url,
     }[0]`
   );
 
