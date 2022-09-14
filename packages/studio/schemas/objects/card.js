@@ -4,12 +4,12 @@ export default {
   title: "Card",
   fields: [
     {
-      name: "firstTitle",
+      name: "caption",
       type: "string",
-      title: "First title",
+      title: "Caption",
     },
     {
-      name: "secondTitle",
+      name: "heading",
       type: "string",
       title: "Title",
     },

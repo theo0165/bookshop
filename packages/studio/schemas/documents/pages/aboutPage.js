@@ -40,11 +40,37 @@ export default {
       name: "firstImageCard",
       type: "image",
       title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "firstImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "secondImageCard",
       type: "image",
       title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "secondImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "secondCard",
@@ -65,6 +91,19 @@ export default {
       name: "secondAboutImage",
       type: "image",
       title: "Image",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "secondAboutImageAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "thirdCard",
@@ -75,6 +114,19 @@ export default {
       name: "thirdImageCard",
       type: "image",
       title: "Image card",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: "thirdImageCardAlt",
+          type: "string",
+          title: "Alternative text",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
   ],
 };

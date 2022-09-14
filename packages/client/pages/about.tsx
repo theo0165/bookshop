@@ -1,5 +1,12 @@
 import { NextPage } from "next";
 import client from "../helpers/sanity";
+import HeadingOne from "../components/styled/HeadingOne";
+import {
+  BodyContainer,
+  CardContainer,
+  HeroSection,
+} from "../components/styled/About.styled";
+import BodyNormal from "../components/styled/BodyNormal";
 
 interface Props {
   data: {
@@ -7,23 +14,23 @@ interface Props {
     firstBodyText: string;
     image: string;
     firstCard: {
-      firstTitle: string;
-      secondTitle: string;
+      caption: string;
+      heading: string;
       text: string;
     };
     firstImageCard: string;
     secondImageCard: string;
     secondCard: {
-      firstTitle: string;
-      secondTitle: string;
+      caption: string;
+      heading: string;
       text: string;
     };
     secondAboutTitle: string;
     secondBodyText: string;
     secondBodyImage: string;
     thirdCard: {
-      firstTitle: string;
-      secondTitle: string;
+      caption: string;
+      heading: string;
       text: string;
     };
     thirdImageCard: string;
@@ -37,40 +44,44 @@ const AboutPage: NextPage<Props> = ({ data }) => {
 
   return (
     <>
-      <div>
-        <h1>{data.firstAboutTitle}</h1>
-        <p>{data.firstBodyText}</p>
-        <img src={data.image} />
-      </div>
-      <div>
-        <p>{data.firstCard.firstTitle}</p>
-        <h2>{data.firstCard.secondTitle}</h2>
-        <p>{data.secondCard.text}</p>
-      </div>
-      <div>
-        <img src={data.firstImageCard} />
-      </div>
-      <div>
-        <img src={data.secondImageCard} />
-      </div>
-      <div>
-        <p>{data.secondCard.firstTitle}</p>
-        <h2>{data.secondCard.secondTitle}</h2>
-        <p>{data.secondCard.text}</p>
-      </div>
-      <div>
-        <h1>{data.secondAboutTitle}</h1>
-        <p>{data.secondBodyText}</p>
-        <img src={data.secondBodyImage} />
-      </div>
-      <div>
-        <p>{data.thirdCard.firstTitle}</p>
-        <h2>{data.thirdCard.secondTitle}</h2>
-        <p>{data.thirdCard.text}</p>
-      </div>
-      <div>
-        <img src={data.thirdImageCard} />
-      </div>
+      <BodyContainer>
+        <HeroSection>
+          <div>
+            <HeadingOne>{data.firstAboutTitle}</HeadingOne>
+            <BodyNormal>{data.firstBodyText}</BodyNormal>
+          </div>
+          <img src={data.image} />
+        </HeroSection>
+        <CardContainer>
+          <p>{data.firstCard.caption}</p>
+          <h2>{data.firstCard.heading}</h2>
+          <p>{data.secondCard.text}</p>
+        </CardContainer>
+        <CardContainer>
+          <img src={data.firstImageCard} />
+        </CardContainer>
+        <CardContainer>
+          <img src={data.secondImageCard} />
+        </CardContainer>
+        <CardContainer>
+          <p>{data.secondCard.caption}</p>
+          <h2>{data.secondCard.heading}</h2>
+          <p>{data.secondCard.text}</p>
+        </CardContainer>
+        <div>
+          <h1>{data.secondAboutTitle}</h1>
+          <p>{data.secondBodyText}</p>
+          <img src={data.secondBodyImage} />
+        </div>
+        <CardContainer>
+          <p>{data.thirdCard.caption}</p>
+          <h2>{data.thirdCard.heading}</h2>
+          <p>{data.thirdCard.text}</p>
+        </CardContainer>
+        <CardContainer>
+          <img src={data.thirdImageCard} />
+        </CardContainer>
+      </BodyContainer>
     </>
   );
 };
@@ -82,22 +93,22 @@ export const getServerSideProps = async () => {
       firstBodyText,
       "image": firstAboutImage.asset->url,
       firstCard{
-        firstTitle,
-        secondTitle,
+        caption,
+        heading,
         text
       },
       "firstImageCard": firstImageCard.asset->url,
       secondCard{
-        firstTitle,
-        secondTitle,
+        caption,
+        heading,
         text
       },
       secondAboutTitle,
       secondBodyText,
       "imageSecond": secondAboutImage.asset->url,
       thirdCard{
-        firstTitle,
-        secondTitle,
+        caption,
+        heading,
         text
       },
       "imageThird": thirdAboutImage.asset->url,
