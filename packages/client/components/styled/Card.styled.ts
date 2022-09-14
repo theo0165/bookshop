@@ -37,3 +37,12 @@ export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const QuoteContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+`;

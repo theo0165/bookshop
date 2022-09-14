@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FC } from "react";
 import CardType from "../types/Card";
 import * as S from "./styled/Card.styled";
+import HeadingTwo from "./styled/texts/HeadingTwo";
 
 interface Props {
   data: CardType;
@@ -21,6 +22,12 @@ const Card: FC<Props> = ({ data }) => {
         <S.ImageContainer>
           <Image src={data.image} layout="fill" objectFit="cover" />
         </S.ImageContainer>
+      )}
+
+      {data.type === "Citat" && (
+        <S.QuoteContainer>
+          <HeadingTwo white>“{data.bodyText}“</HeadingTwo>
+        </S.QuoteContainer>
       )}
     </S.Card>
   );
