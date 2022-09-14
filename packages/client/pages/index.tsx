@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({ data, globalSettings }) => {
       <TopInfoBar ref={topInfoBar} settings={globalSettings} />
       <Header
         settings={globalSettings}
-        offset={topInfoBar.current?.clientHeight}
+        offset={topInfoBar.current?.scrollHeight ?? 64}
       />
       <S.HeroContainer>
         <S.HeroText>

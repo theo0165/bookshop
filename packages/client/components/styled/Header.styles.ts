@@ -1,19 +1,30 @@
 import styled, { css } from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<{ sticky?: boolean }>`
   max-width: 1040px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  background: ${(props) => props.theme.textWhite};
+  z-index: 999999;
+
+  ${(props) =>
+    props.sticky &&
+    css`
+      position: sticky;
+      top: 0;
+    `}
 `;
 
 export const Logo = styled.img`
   width: 100px;
 `;
 
-export const nav = styled.nav``;
+export const nav = styled.nav`
+  align-self: end;
+  margin-bottom: 7px;
+`;
 
 export const navList = styled.ul`
   margin: 0;
