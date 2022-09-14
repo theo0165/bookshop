@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ data, globalSettings }) => {
 
   return (
     <>
-      <TopInfoBar ref={topInfoBar} />
+      <TopInfoBar ref={topInfoBar} settings={globalSettings} />
       <Header
         settings={globalSettings}
         offset={topInfoBar.current?.clientHeight}
