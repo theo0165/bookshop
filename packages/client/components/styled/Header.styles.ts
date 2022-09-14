@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header<{ sticky?: boolean }>`
-  max-width: 1040px;
+  max-width: 1042px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
