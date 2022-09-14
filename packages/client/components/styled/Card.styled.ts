@@ -41,6 +41,10 @@ export const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+
+  * {
+    border-radius: 4px;
+  }
 `;
 
 export const QuoteContainer = styled.div`
@@ -88,7 +92,12 @@ export const NoLinkContainer = styled.div<{ fullWidth?: boolean }>`
   p {
     margin-top: 14px;
     margin-bottom: 0;
-    width: 75%;
+
+    ${(props) =>
+      !props.fullWidth &&
+      css`
+        width: 75%;
+      `}
   }
 `;
 
