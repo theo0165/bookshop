@@ -3,6 +3,7 @@ import { FC } from "react";
 import CardType from "../types/Card";
 import * as S from "./styled/Card.styled";
 import BodyLarge from "./styled/texts/BodyLarge";
+import BodyNormal from "./styled/texts/BodyNormal";
 import HeadingTwo from "./styled/texts/HeadingTwo";
 import UnderlineButtonText from "./styled/texts/UnderlineButtonText";
 
@@ -11,8 +12,6 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ data }) => {
-  console.log(data);
-
   return (
     <S.Card
       width={data._type}
@@ -43,6 +42,15 @@ const Card: FC<Props> = ({ data }) => {
           </div>
         </S.LinkContainer>
       )}
+
+      {data.type === "Utan länk" && (
+        <S.NoLinkContainer fullWidth={data._type === "fullRow"}>
+          <HeadingTwo>{data.title}</HeadingTwo>
+          <BodyNormal>{data.bodyText}</BodyNormal>
+        </S.NoLinkContainer>
+      )}
+
+      {data.type === "Nyhet" && <></>}
     </S.Card>
   );
 };
