@@ -21,13 +21,11 @@ export const Card = styled.div<CardProps>`
     css`
       width: 100%;
       height: 50px;
-      background: red;
     `}
   ${(props) =>
     props.width === "halfRow" &&
     css`
       width: calc(50% - 12px);
       height: 50px;
-      background: green;
     `};
 `;
