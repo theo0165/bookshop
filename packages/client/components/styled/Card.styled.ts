@@ -6,6 +6,11 @@ interface CardProps {
 }
 
 export const Card = styled.div<CardProps>`
+  color: ${(props) =>
+    props.background === "green"
+      ? props.theme.textWhite
+      : props.theme.textWhite};
+
   background-color: ${(props) =>
     props.background === "green"
       ? props.theme.primaryGreen
@@ -45,4 +50,21 @@ export const QuoteContainer = styled.div`
   height: 100%;
   width: 70%;
   margin: 0 auto;
+`;
+
+export const LinkContainer = styled.div`
+  max-width: 500px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
 `;

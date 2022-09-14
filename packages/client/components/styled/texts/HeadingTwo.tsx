@@ -10,8 +10,8 @@ const HeadingTwo = styled.h2<Props>`
   font-size: 32px;
   line-height: 40px;
 
-  color: ${(props) =>
-    props.white ? props.theme.textWhite : props.theme.textBlack};
+  margin: 0;
+  padding: 0;
 `;
 
 export default HeadingTwo;

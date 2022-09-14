@@ -2,7 +2,9 @@ import Image from "next/image";
 import { FC } from "react";
 import CardType from "../types/Card";
 import * as S from "./styled/Card.styled";
+import BodyLarge from "./styled/texts/BodyLarge";
 import HeadingTwo from "./styled/texts/HeadingTwo";
+import UnderlineButtonText from "./styled/texts/UnderlineButtonText";
 
 interface Props {
   data: CardType;
@@ -28,6 +30,18 @@ const Card: FC<Props> = ({ data }) => {
         <S.QuoteContainer>
           <HeadingTwo white>“{data.bodyText}“</HeadingTwo>
         </S.QuoteContainer>
+      )}
+
+      {data.type === "Med länk" && (
+        <S.LinkContainer>
+          <div>
+            <HeadingTwo>{data.title}</HeadingTwo>
+            <BodyLarge>{data.bodyText}</BodyLarge>
+            <UnderlineButtonText href={data.linkUrl}>
+              {data.linkText}
+            </UnderlineButtonText>
+          </div>
+        </S.LinkContainer>
       )}
     </S.Card>
   );
