@@ -8,7 +8,7 @@ export default {
       title: "Type",
       type: "string",
       options: {
-        list: ["With link", "Without link", "Image"],
+        list: ["Med länk", "Utan länk", "Bild"],
       },
     },
     {
@@ -24,28 +24,26 @@ export default {
       title: "Title",
       type: "string",
       hidden: ({ parent, value }) =>
-        !value &&
-        !(parent.type === "With link" || parent.type === "Without link"),
+        !value && !(parent.type === "Med länk" || parent.type === "Utan länk"),
     },
     {
       name: "bodyText",
       title: "Text",
       type: "text",
       hidden: ({ parent, value }) =>
-        !value &&
-        !(parent.type === "With link" || parent.type === "Without link"),
+        !value && !(parent.type === "Med länk" || parent.type === "Utan länk"),
     },
     {
       name: "linkText",
       title: "Link text",
       type: "string",
-      hidden: ({ parent, value }) => !value && !(parent.type === "With link"),
+      hidden: ({ parent, value }) => !value && !(parent.type === "Med länk"),
     },
     {
       name: "linkUrl",
       title: "Link URL",
       type: "url",
-      hidden: ({ parent, value }) => !value && !(parent.type === "With link"),
+      hidden: ({ parent, value }) => !value && !(parent.type === "Med länk"),
     },
     {
       name: "image",
@@ -61,7 +59,7 @@ export default {
           },
         },
       ],
-      hidden: ({ parent, value }) => !value && !(parent.type === "Image"),
+      hidden: ({ parent, value }) => !value && !(parent.type === "Bild"),
     },
   ],
 };

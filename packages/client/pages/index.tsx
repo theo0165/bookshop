@@ -3,38 +3,40 @@ import BodyNormal from "../components/styled/texts/BodyNormal";
 import HeadingOne from "../components/styled/texts/HeadingOne";
 import UnderlineButtonText from "../components/styled/texts/UnderlineButtonText";
 import client from "../helpers/sanity";
-import style from "../styles/Home.module.scss";
-
-interface Card {
-  type: string;
-  [key: string]: any;
-}
+import * as S from "../components/styled/Homepage.styled";
+import Card from "../components/Card";
+import CardType from "../types/Card";
 interface Props {
   data: {
     text: string;
     heroImage: string;
     title: string;
     linkText: string;
-    cards: Card[];
+    cards: CardType[];
   };
 }
 
 const Home: NextPage<Props> = ({ data }) => {
+  console.log(data.cards);
+
   return (
     <>
-      <div className={style.heroContainer}>
-        <div className={style.heroText}>
+      <S.HeroContainer>
+        <S.HeroText>
           <HeadingOne>{data.title}</HeadingOne>
           <BodyNormal>{data.text}</BodyNormal>
           <UnderlineButtonText href="/om-oss">
             {data.linkText}
           </UnderlineButtonText>
-        </div>
-        <img height="360px" src={data.heroImage} className={style.heroImage} />
-      </div>
-      <div className={style.cards}>
-        {data.cards && data.cards.map((card: Card) => <p>{card.type}</p>)}
-      </div>
+        </S.HeroText>
+        <S.HeroImage src={data.heroImage} />
+      </S.HeroContainer>
+      <S.CardsContainer>
+        {data.cards &&
+          data.cards.map((card: CardType) => (
+            <Card data={card} key={`card-${card._key}`} />
+          ))}
+      </S.CardsContainer>
     </>
   );
 };
