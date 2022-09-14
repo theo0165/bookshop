@@ -1,12 +1,17 @@
 import { NextPage } from "next";
 import client from "../helpers/sanity";
-import HeadingOne from "../components/styled/texts/HeadingOne";
+
 import {
   BodyContainer,
   CardContainer,
+  CardWrapper,
   HeroSection,
 } from "../components/styled/About.styled";
+
+import HeadingOne from "../components/styled/texts/HeadingOne";
 import BodyNormal from "../components/styled/texts/BodyNormal";
+import Caption from "../components/styled/texts/Caption";
+import HeadingTwo from "../components/styled/texts/HeadingTwo";
 
 interface Props {
   data: {
@@ -52,35 +57,37 @@ const AboutPage: NextPage<Props> = ({ data }) => {
           </div>
           <img src={data.image} />
         </HeroSection>
-        <CardContainer>
-          <p>{data.firstCard.caption}</p>
-          <h2>{data.firstCard.heading}</h2>
-          <p>{data.secondCard.text}</p>
-        </CardContainer>
-        <CardContainer>
-          <img src={data.firstImageCard} />
-        </CardContainer>
-        <CardContainer>
-          <img src={data.secondImageCard} />
-        </CardContainer>
-        <CardContainer>
-          <p>{data.secondCard.caption}</p>
-          <h2>{data.secondCard.heading}</h2>
-          <p>{data.secondCard.text}</p>
-        </CardContainer>
+        <CardWrapper>
+          <CardContainer>
+            <Caption>{data.firstCard.caption}</Caption>
+            <HeadingTwo>{data.firstCard.heading}</HeadingTwo>
+            <BodyNormal>{data.firstCard.text}</BodyNormal>
+          </CardContainer>
+          <div>
+            <img src={data.firstImageCard} width={509} height={348} />
+          </div>
+          <div>
+            <img src={data.secondImageCard} />
+          </div>
+          <div>
+            <p>{data.secondCard.caption}</p>
+            <h2>{data.secondCard.heading}</h2>
+            <p>{data.secondCard.text}</p>
+          </div>
+        </CardWrapper>
         <div>
           <h1>{data.secondAboutTitle}</h1>
           <p>{data.secondBodyText}</p>
           <img src={data.secondBodyImage} />
         </div>
-        <CardContainer>
+        <div>
           <p>{data.thirdCard.caption}</p>
           <h2>{data.thirdCard.heading}</h2>
           <p>{data.thirdCard.text}</p>
-        </CardContainer>
-        <CardContainer>
+        </div>
+        <div>
           <img src={data.thirdImageCard} />
-        </CardContainer>
+        </div>
       </BodyContainer>
     </>
   );
@@ -98,6 +105,7 @@ export const getServerSideProps = async () => {
         text
       },
       "firstImageCard": firstImageCard.asset->url,
+      "secondImageCard": secondImageCard.asset->url,
       secondCard{
         caption,
         heading,
