@@ -12,8 +12,12 @@ import HeadingOne from "../components/styled/texts/HeadingOne";
 import BodyNormal from "../components/styled/texts/BodyNormal";
 import Caption from "../components/styled/texts/Caption";
 import HeadingTwo from "../components/styled/texts/HeadingTwo";
+import Header from "../components/Header";
+import GlobalSettings from "../types/GlobalSettings";
+import getGlobalSettings from "../helpers/getGlobalSettings";
 
 interface Props {
+  globalSettings: GlobalSettings;
   data: {
     firstAboutTitle: string;
     firstBodyText: string;
@@ -43,12 +47,13 @@ interface Props {
   };
 }
 
-const AboutPage: NextPage<Props> = ({ data }) => {
+const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
   // console.log(data.firstAboutTitle);
   console.log(data);
 
   return (
     <>
+      <Header settings={globalSettings} />
       <BodyContainer>
         <HeroSection>
           <div>
@@ -94,6 +99,8 @@ const AboutPage: NextPage<Props> = ({ data }) => {
 };
 
 export const getServerSideProps = async () => {
+  const globalSettings = await getGlobalSettings();
+
   const data = await client.fetch(
     `*[_type == 'aboutPage' && !(_id in path("drafts.**"))]{
       firstAboutTitle,
@@ -123,7 +130,7 @@ export const getServerSideProps = async () => {
     }[0]`
   );
 
-  return { props: { data } };
+  return { props: { data, globalSettings } };
 };
 
 export default AboutPage;

@@ -1,13 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header<{ sticky?: boolean }>`
-  max-width: 1042px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: ${(props) => props.theme.textWhite};
+  width: 100%;
   z-index: 999999;
+  background: ${(props) => props.theme.textWhite};
 
   ${(props) =>
     props.sticky &&
@@ -15,6 +11,15 @@ export const HeaderContainer = styled.header<{ sticky?: boolean }>`
       position: sticky;
       top: 0;
     `}
+`;
+
+export const HeaderInner = styled.div`
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${(props) => props.theme.textWhite};
 `;
 
 export const Logo = styled.img`
