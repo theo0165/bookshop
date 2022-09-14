@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
 const Galley: NextPage = () => {
-  return <div className={styles.container}></div>;
+  return <div></div>;
 };
 
 export default Galley;
