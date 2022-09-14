@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import BodyNormal from "../components/styled/BodyNormal";
-import HeadingOne from "../components/styled/HeadingOne";
-import UnderlineButtonText from "../components/styled/UnderlineButtonText";
+import BodyNormal from "../components/styled/texts/BodyNormal";
+import HeadingOne from "../components/styled/texts/HeadingOne";
+import UnderlineButtonText from "../components/styled/texts/UnderlineButtonText";
 import client from "../helpers/sanity";
 import style from "../styles/Home.module.scss";
 
