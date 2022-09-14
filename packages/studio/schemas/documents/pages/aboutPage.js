@@ -57,7 +57,7 @@ export default {
     {
       name: "secondImageCard",
       type: "image",
-      title: "Image card",
+      title: "Second image card",
       options: {
         hotspot: true,
       },
