@@ -3,6 +3,7 @@ const Theme = {
   textWhite: "#FEFFFC",
   textBlack: "#212427",
   textGray: "#454B52",
+  orange: "#F96830",
 };
 
 export default Theme;
