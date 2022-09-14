@@ -1,12 +1,12 @@
 import { NextPage } from "next";
 import client from "../helpers/sanity";
-import HeadingOne from "../components/styled/HeadingOne";
+import HeadingOne from "../components/styled/texts/HeadingOne";
 import {
   BodyContainer,
   CardContainer,
   HeroSection,
 } from "../components/styled/About.styled";
-import BodyNormal from "../components/styled/BodyNormal";
+import BodyNormal from "../components/styled/texts/BodyNormal";
 
 interface Props {
   data: {
