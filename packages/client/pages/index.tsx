@@ -6,6 +6,11 @@ import client from "../helpers/sanity";
 import * as S from "../components/styled/Homepage.styled";
 import Card from "../components/Card";
 import CardType from "../types/Card";
+import getGlobalSettings from "../helpers/getGlobalSettings";
+import GlobalSettings from "../types/GlobalSettings";
+import Header from "../components/Header";
+import TopInfoBar from "../components/TopInfoBar";
+import { useRef } from "react";
 interface Props {
   data: {
     text: string;
@@ -14,13 +19,20 @@ interface Props {
     linkText: string;
     cards: CardType[];
   };
+
+  globalSettings: GlobalSettings;
 }
 
-const Home: NextPage<Props> = ({ data }) => {
-  console.log(data.cards);
+const Home: NextPage<Props> = ({ data, globalSettings }) => {
+  const topInfoBar = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
+      <TopInfoBar ref={topInfoBar} />
+      <Header
+        settings={globalSettings}
+        offset={topInfoBar.current?.clientHeight}
+      />
       <S.HeroContainer>
         <S.HeroText>
           <HeadingOne>{data.title}</HeadingOne>
@@ -44,6 +56,7 @@ const Home: NextPage<Props> = ({ data }) => {
 export default Home;
 
 export const getServerSideProps = async () => {
+  const globalSettings = await getGlobalSettings();
   const data = await client.fetch(`
   *[_type == "frontpage" && !(_id in path("drafts.**"))]{
     text,
@@ -85,7 +98,7 @@ export const getServerSideProps = async () => {
   }[0]
   `);
 
-  return { props: { data } };
+  return { props: { data, globalSettings } };
 };
 
 //Test för Instagram
