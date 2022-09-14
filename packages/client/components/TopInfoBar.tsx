@@ -55,4 +55,7 @@ const TopInfoBar = forwardRef<HTMLDivElement, Props>(({ settings }, ref) => {
     </S.Container>
   );
 });
+
+TopInfoBar.displayName = "TopInfoBar";
+
 export default TopInfoBar;
