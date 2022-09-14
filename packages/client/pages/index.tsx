@@ -58,7 +58,8 @@ export const getServerSideProps = async () => {
         type,
         "newsItem": {
           "title": newsItem->title,
-          "body": newsItem->bodyText
+          "body": newsItem->bodyText,
+          "slug": newsItem->slug.current
         },
       },
   

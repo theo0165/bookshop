@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FC } from "react";
 import CardType from "../types/Card";
 import * as S from "./styled/Card.styled";
 import BodyLarge from "./styled/texts/BodyLarge";
 import BodyNormal from "./styled/texts/BodyNormal";
+import Caption from "./styled/texts/Caption";
 import HeadingTwo from "./styled/texts/HeadingTwo";
 import UnderlineButtonText from "./styled/texts/UnderlineButtonText";
 
@@ -50,7 +52,21 @@ const Card: FC<Props> = ({ data }) => {
         </S.NoLinkContainer>
       )}
 
-      {data.type === "Nyhet" && <></>}
+      {data.type === "Nyhet" && (
+        <S.NewsContainer>
+          <Link href={`/nyhet/${data.newsItem.slug}`}>
+            <a>
+              <Caption grey>Nyheter</Caption>
+              <HeadingTwo>{data.newsItem.title}</HeadingTwo>
+              <BodyNormal>
+                {data.newsItem.body.length > 150
+                  ? `${data.newsItem.body.substr(0, 150)}...`
+                  : data.newsItem.body}
+              </BodyNormal>
+            </a>
+          </Link>
+        </S.NewsContainer>
+      )}
     </S.Card>
   );
 };

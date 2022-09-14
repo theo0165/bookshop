@@ -91,3 +91,16 @@ export const NoLinkContainer = styled.div<{ fullWidth?: boolean }>`
     width: 75%;
   }
 `;
+
+export const NewsContainer = styled.div`
+  padding: 24px 52px 48px 52px;
+
+  h2 {
+    margin-top: 24px;
+    margin-bottom: 14px;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
