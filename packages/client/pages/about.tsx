@@ -6,6 +6,8 @@ import {
   CardContainer,
   CardWrapper,
   HeroSection,
+  TextWrapperFirst,
+  TextWtapperSecond,
 } from "../components/styled/About.styled";
 
 import HeadingOne from "../components/styled/texts/HeadingOne";
@@ -37,13 +39,13 @@ interface Props {
     };
     secondAboutTitle: string;
     secondBodyText: string;
-    secondBodyImage: string;
+    imageSecond: string;
     thirdCard: {
       caption: string;
       heading: string;
       text: string;
     };
-    thirdImageCard: string;
+    imageThird: string;
     // date: string | null;
   };
 }
@@ -58,10 +60,10 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
       <Breadcrumbs />
       <BodyContainer>
         <HeroSection>
-          <div>
+          <TextWrapperFirst>
             <HeadingOne>{data.firstAboutTitle}</HeadingOne>
             <BodyNormal>{data.firstBodyText}</BodyNormal>
-          </div>
+          </TextWrapperFirst>
           <img src={data.image} />
         </HeroSection>
         <CardWrapper>
@@ -71,30 +73,34 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
             <BodyNormal>{data.firstCard.text}</BodyNormal>
           </CardContainer>
           <div>
-            <img src={data.firstImageCard} width={509} height={348} />
+            <img src={data.firstImageCard} />
           </div>
           <div>
             <img src={data.secondImageCard} />
           </div>
+          <CardContainer>
+            <Caption>{data.secondCard.caption}</Caption>
+            <HeadingTwo>{data.secondCard.heading}</HeadingTwo>
+            <BodyNormal>{data.secondCard.text}</BodyNormal>
+          </CardContainer>
+        </CardWrapper>
+        <HeroSection>
+          <img src={data.imageSecond} />
+          <TextWtapperSecond>
+            <HeadingOne>{data.secondAboutTitle}</HeadingOne>
+            <BodyNormal>{data.secondBodyText}</BodyNormal>
+          </TextWtapperSecond>
+        </HeroSection>
+        <CardWrapper>
+          <CardContainer>
+            <Caption>{data.thirdCard.caption}</Caption>
+            <HeadingTwo>{data.thirdCard.heading}</HeadingTwo>
+            <BodyNormal>{data.thirdCard.text}</BodyNormal>
+          </CardContainer>
           <div>
-            <p>{data.secondCard.caption}</p>
-            <h2>{data.secondCard.heading}</h2>
-            <p>{data.secondCard.text}</p>
+            <img src={data.imageThird} />
           </div>
         </CardWrapper>
-        <div>
-          <h1>{data.secondAboutTitle}</h1>
-          <p>{data.secondBodyText}</p>
-          <img src={data.secondBodyImage} />
-        </div>
-        <div>
-          <p>{data.thirdCard.caption}</p>
-          <h2>{data.thirdCard.heading}</h2>
-          <p>{data.thirdCard.text}</p>
-        </div>
-        <div>
-          <img src={data.thirdImageCard} />
-        </div>
       </BodyContainer>
     </>
   );
@@ -128,7 +134,7 @@ export const getServerSideProps = async () => {
         heading,
         text
       },
-      "imageThird": thirdAboutImage.asset->url,
+      "imageThird": thirdImageCard.asset->url,
     }[0]`
   );
 

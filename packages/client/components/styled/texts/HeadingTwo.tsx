@@ -12,6 +12,10 @@ const HeadingTwo = styled.h2<Props>`
 
   margin: 0;
   padding: 0;
+  @media screen and (max-width: 835px) {
+    font-size: 1.625rem;
+    line-height: 24px;
+  }
 `;
 
 export default HeadingTwo;
