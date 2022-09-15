@@ -44,6 +44,10 @@ const Header: FC<Props> = ({ settings, offset }) => {
     document.body.style.overflowY = showMobileNav ? "auto" : "hidden";
   }, [showMobileNav]);
 
+  useEffect(() => {
+    setShowMobileNav(false);
+  }, [router.asPath]);
+
   const toggleMobileNav = () => {
     setShowMobileNav(!showMobileNav);
   };
