@@ -100,19 +100,20 @@ export const navItem = styled.li<{ selected: boolean }>`
 `;
 
 export const MobileNav = styled.nav<{ show?: boolean }>`
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 100%;
+  left: 0;
   width: 100%;
   height: 100%;
   background: ${(props) => props.theme.primaryGreen};
   color: white;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  z-index: 9999999999;
 
   ${(props) =>
     !props.show &&
     css`
-      left: 0;
+      transform: translateX(100%);
     `}
 `;
 

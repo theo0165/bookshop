@@ -121,15 +121,15 @@ const Header: FC<Props> = ({ settings, offset }) => {
         </S.MobileNavList>
 
         <S.SocialWrapper>
-          <S.SocialLink>
+          <S.SocialLink href={`mailto:${settings.email}`}>
             <AiOutlineMail />
           </S.SocialLink>
 
-          <S.SocialLink>
+          <S.SocialLink href={settings.instagram}>
             <AiOutlineInstagram />
           </S.SocialLink>
 
-          <S.SocialLink>
+          <S.SocialLink href={settings.facebook}>
             <AiOutlineFacebook />
           </S.SocialLink>
         </S.SocialWrapper>
