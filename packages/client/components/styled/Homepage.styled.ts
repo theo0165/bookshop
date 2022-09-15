@@ -8,6 +8,13 @@ export const HeroContainer = styled.div`
   align-items: center;
   margin: 120px 32px;
   column-gap: 50px;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column-reverse;
+    row-gap: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
 `;
 
 export const HeroText = styled.div`

@@ -29,6 +29,30 @@ export const HeaderInner = styled.div`
 
 export const Logo = styled.img`
   width: 100px;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const LogoLink = styled.a`
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const MobileLogo = styled.img`
+  height: 50px;
+`;
+
+export const MobileLogoLink = styled.a`
+  display: none;
+  padding-top: 32px;
+  padding-bottom: 8px;
+
+  @media screen and (max-width: 800px) {
+    display: inline-block;
+  }
 `;
 
 export const nav = styled.nav`
@@ -36,8 +60,7 @@ export const nav = styled.nav`
   margin-bottom: 7px;
 
   @media screen and (max-width: 800px) {
-    align-self: center;
-    margin-bottom: 0;
+    margin-bottom: 25px;
   }
 `;
 
@@ -79,18 +102,18 @@ export const navItem = styled.li<{ selected: boolean }>`
 export const MobileNav = styled.nav<{ show?: boolean }>`
   position: absolute;
   top: 0;
-  left: 0;
+  left: 100%;
   width: 100%;
   height: 100%;
   background: ${(props) => props.theme.primaryGreen};
   color: white;
-  transform: translateX(100%);
-  transition: transform 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  display: none;
 
   ${(props) =>
     !props.show &&
     css`
-      transform: translateX(0);
+      left: 0;
     `}
 `;
 

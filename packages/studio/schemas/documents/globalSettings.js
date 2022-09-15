@@ -14,6 +14,11 @@ export default {
       title: "Logo",
     },
     {
+      name: "mobileLogo",
+      type: "image",
+      title: "Mobile logo",
+    },
+    {
       name: "openingHours",
       type: "string",
       title: "Opening hours",

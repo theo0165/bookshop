@@ -49,9 +49,14 @@ const Header: FC<Props> = ({ settings, offset }) => {
       <S.HeaderContainer sticky={isSticky}>
         <S.HeaderInner>
           <Link href="/">
-            <a>
-              <S.Logo src={settings.logo}></S.Logo>
-            </a>
+            <S.LogoLink>
+              <S.Logo src={settings.logo} />
+            </S.LogoLink>
+          </Link>
+          <Link href="/">
+            <S.MobileLogoLink>
+              <S.MobileLogo src={settings.mobileLogo} />
+            </S.MobileLogoLink>
           </Link>
           <S.nav>
             <S.navList>
@@ -85,7 +90,7 @@ const Header: FC<Props> = ({ settings, offset }) => {
           </S.nav>
         </S.HeaderInner>
       </S.HeaderContainer>
-      <S.MobileNav show={showMobileNav}>
+      <S.MobileNav show={!showMobileNav}>
         <S.MobileNavCloseWrapper onClick={toggleMobileNav}>
           <AiOutlineClose />
         </S.MobileNavCloseWrapper>

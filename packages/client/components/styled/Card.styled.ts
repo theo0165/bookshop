@@ -34,6 +34,10 @@ export const Card = styled.div<CardProps>`
     css`
       width: calc(50% - 12px);
       height: 350px;
+
+      @media screen and (max-width: 680px) {
+        width: 100%;
+      }
     `};
 `;
 
@@ -64,6 +68,10 @@ export const LinkContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media screen and (max-width: 680px) {
+    margin: 0 32px;
+  }
+
   h2 {
     margin-bottom: 16px;
   }
@@ -80,10 +88,18 @@ export const NoLinkContainer = styled.div<{ fullWidth?: boolean }>`
   justify-content: center;
   flex-direction: column;
 
+  @media screen and (max-width: 680px) {
+    margin: 0 32px;
+  }
+
   ${(props) =>
     props.fullWidth
       ? css`
           width: 52%;
+
+          @media screen and (max-width: 680px) {
+            width: auto;
+          }
         `
       : css`
           width: 80%;
