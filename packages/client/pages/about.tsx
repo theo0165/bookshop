@@ -6,7 +6,7 @@ import {
   CardContainer,
   CardWrapper,
   HeroSection,
-  TextWtapperFirst,
+  TextWrapperFirst,
   TextWtapperSecond,
 } from "../components/styled/About.styled";
 
@@ -53,13 +53,10 @@ const AboutPage: NextPage<Props> = ({ data }) => {
     <>
       <BodyContainer>
         <HeroSection>
-          <TextWtapperFirst>
+          <TextWrapperFirst>
             <HeadingOne>{data.firstAboutTitle}</HeadingOne>
             <BodyNormal>{data.firstBodyText}</BodyNormal>
-            {/* {data.infoText?.split("\n\n").map((section, index) => (
-  <p key={`info-text-${index}`}>{section}</p>
-))} */}
-          </TextWtapperFirst>
+          </TextWrapperFirst>
           <img src={data.image} />
         </HeroSection>
         <CardWrapper>
@@ -69,10 +66,10 @@ const AboutPage: NextPage<Props> = ({ data }) => {
             <BodyNormal>{data.firstCard.text}</BodyNormal>
           </CardContainer>
           <div>
-            <img src={data.firstImageCard} width={509} height={348} />
+            <img src={data.firstImageCard} />
           </div>
           <div>
-            <img src={data.secondImageCard} width={509} height={348} />
+            <img src={data.secondImageCard} />
           </div>
           <CardContainer>
             <Caption>{data.secondCard.caption}</Caption>
@@ -94,7 +91,7 @@ const AboutPage: NextPage<Props> = ({ data }) => {
             <BodyNormal>{data.thirdCard.text}</BodyNormal>
           </CardContainer>
           <div>
-            <img src={data.imageThird} width={509} height={348} />
+            <img src={data.imageThird} />
           </div>
         </CardWrapper>
       </BodyContainer>
