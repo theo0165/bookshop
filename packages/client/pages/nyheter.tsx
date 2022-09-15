@@ -35,16 +35,24 @@ const Nyheter: NextPage<Props> = ({ globalSettings, data }) => {
       <S.Container>
         <S.CardContainer>
           <HeadingOne>Evenemang</HeadingOne>
-          <S.Card bg="white">
-            <Caption>Erbjudande</Caption>
-            <HeadingTwo>{data.firstCard.title}</HeadingTwo>
-            <BodyNormal>{data.firstCard.bodyText}</BodyNormal>
-          </S.Card>
-          <S.Card bg="green">
-            <Caption>Erbjudande</Caption>
-            <HeadingTwo>{data.secondCard.title}</HeadingTwo>
-            <BodyNormal>{data.secondCard.bodyText}</BodyNormal>
-          </S.Card>
+          <S.Cards>
+            <S.Card bg="green">
+              <Caption>Erbjudande</Caption>
+              <HeadingTwo>{data.firstCard.title}</HeadingTwo>
+              <BodyNormal>{data.firstCard.bodyText}</BodyNormal>
+              <S.Button>
+                <Caption>Kontakt</Caption>
+              </S.Button>
+            </S.Card>
+            <S.Card bg="white">
+              <Caption>Erbjudande</Caption>
+              <HeadingTwo>{data.secondCard.title}</HeadingTwo>
+              <BodyNormal>{data.secondCard.bodyText}</BodyNormal>
+              <S.Button>
+                <Caption>Kontakt</Caption>
+              </S.Button>
+            </S.Card>
+          </S.Cards>
         </S.CardContainer>
       </S.Container>
     </>
