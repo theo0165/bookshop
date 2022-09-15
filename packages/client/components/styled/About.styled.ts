@@ -7,6 +7,7 @@ export const BodyContainer = styled.div`
   margin: 60px auto;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 0;
 
   @media screen and (max-width: 835px) {
     margin-left: 32px;

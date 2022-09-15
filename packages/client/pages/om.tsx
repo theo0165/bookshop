@@ -20,6 +20,7 @@ import Header from "../components/Header";
 import GlobalSettings from "../types/GlobalSettings";
 import getGlobalSettings from "../helpers/getGlobalSettings";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Footer from "../components/Footer";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -110,6 +111,7 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
             <ImageChild src={data.imageThird} />
           </ImageWrapper>
         </CardWrapper>
+        <Footer settings={globalSettings} />
       </BodyContainer>
     </>
   );
