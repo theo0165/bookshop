@@ -108,7 +108,6 @@ export const MobileNav = styled.nav<{ show?: boolean }>`
   background: ${(props) => props.theme.primaryGreen};
   color: white;
   transition: all 0.5s ease-in-out;
-  display: none;
 
   ${(props) =>
     !props.show &&
