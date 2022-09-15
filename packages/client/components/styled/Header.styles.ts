@@ -40,6 +40,7 @@ export const navList = styled.ul`
 export const navItem = styled.li<{ selected: boolean }>`
   display: inline-block;
   margin-right: 72px;
+  border-bottom: 1px solid ${(props) => props.theme.textWhite};
 
   &:last-of-type {
     margin-right: 0;
@@ -53,10 +54,10 @@ export const navItem = styled.li<{ selected: boolean }>`
   ${(props) =>
     props.selected &&
     css`
-      border-bottom: 1px solid ${props.theme.orange};
+      border-color: ${props.theme.orange};
     `}
 
   &:hover {
-    border-bottom: 1px solid ${(props) => props.theme.orange};
+    border-color: ${(props) => props.theme.orange};
   }
 `;
