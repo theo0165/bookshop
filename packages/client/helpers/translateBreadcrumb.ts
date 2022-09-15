@@ -3,7 +3,7 @@ interface TranslationTable {
 }
 
 const translations: TranslationTable = {
-  about: "OM OSS",
+  om: "OM OSS",
 };
 
 const translateBreadcrumb = (path: string) => {

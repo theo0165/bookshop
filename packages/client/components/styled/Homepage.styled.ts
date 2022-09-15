@@ -6,8 +6,15 @@ export const HeroContainer = styled.div`
   margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 120px;
-  margin-top: 120px;
+  margin: 120px 32px;
+  column-gap: 50px;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column-reverse;
+    row-gap: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
 `;
 
 export const HeroText = styled.div`
@@ -16,6 +23,10 @@ export const HeroText = styled.div`
 
 export const HeroImage = styled.img`
   height: 310px;
+
+  @media screen and (max-width: 835px) {
+    height: 200px;
+  }
 `;
 
 export const CardsContainer = styled.div`
@@ -25,4 +36,5 @@ export const CardsContainer = styled.div`
   flex-wrap: wrap;
   row-gap: 24px;
   column-gap: 24px;
+  margin: 0 32px;
 `;

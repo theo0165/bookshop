@@ -4,6 +4,11 @@ export const Container = styled.div`
   height: 64px;
   background: ${(props) => props.theme.primaryGreen};
   color: ${(props) => props.theme.textWhite};
+  padding: 0 32px;
+
+  @media screen and (max-width: 950px) {
+    display: none;
+  }
 `;
 
 export const inner = styled.div`

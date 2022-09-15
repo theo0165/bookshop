@@ -6,6 +6,7 @@ const getGlobalSettings = async (): Promise<GlobalSettings> => {
     *[_type == "globalSettings" && !(_id in path("drafts.**"))]{
       title,
       "logo": logo.asset->url,
+      "mobileLogo": mobileLogo.asset->url,
       openingHours,
       address,
       email,

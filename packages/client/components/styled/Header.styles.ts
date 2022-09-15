@@ -1,15 +1,20 @@
 import styled, { css } from "styled-components";
 
+//break at 800px
+
 export const HeaderContainer = styled.header<{ sticky?: boolean }>`
   width: 100%;
   z-index: 999999;
   background: ${(props) => props.theme.textWhite};
+  padding: 0 32px;
 
   ${(props) =>
     props.sticky &&
     css`
-      position: sticky;
-      top: 0;
+      @media screen and (min-width: 834px) {
+        position: sticky;
+        top: 0;
+      }
     `}
 `;
 
@@ -24,17 +29,49 @@ export const HeaderInner = styled.div`
 
 export const Logo = styled.img`
   width: 100px;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const LogoLink = styled.a`
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const MobileLogo = styled.img`
+  height: 50px;
+`;
+
+export const MobileLogoLink = styled.a`
+  display: none;
+  padding-top: 32px;
+  padding-bottom: 8px;
+
+  @media screen and (max-width: 800px) {
+    display: inline-block;
+  }
 `;
 
 export const nav = styled.nav`
   align-self: end;
   margin-bottom: 7px;
+
+  @media screen and (max-width: 800px) {
+    margin-bottom: 25px;
+  }
 `;
 
 export const navList = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const navItem = styled.li<{ selected: boolean }>`
@@ -59,5 +96,83 @@ export const navItem = styled.li<{ selected: boolean }>`
 
   &:hover {
     border-color: ${(props) => props.theme.orange};
+  }
+`;
+
+export const MobileNav = styled.nav<{ show?: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${(props) => props.theme.primaryGreen};
+  color: white;
+  transition: transform 0.5s ease-in-out;
+  z-index: 9999999999;
+
+  ${(props) =>
+    !props.show &&
+    css`
+      transform: translateX(100%);
+    `}
+`;
+
+export const MobileNavList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+
+  position: absolute;
+  top: 100px;
+  left: 16px;
+`;
+
+export const MobileNavItem = styled.li<{ selected?: boolean }>`
+  display: inline-block;
+
+  h3 {
+    margin: 0;
+  }
+`;
+
+export const SocialWrapper = styled.div`
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+
+  display: flex;
+  column-gap: 20px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const SocialLink = styled.a``;
+
+export const MobileNavCloseWrapper = styled.div`
+  position: absolute;
+  top: 48px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+`;
+
+export const HamburgerWrapper = styled.div`
+  display: none;
+  width: 24px;
+  height: 16px;
+
+  @media screen and (max-width: 800px) {
+    display: inline-block;
+  }
+
+  svg {
+    width: 24px;
   }
 `;
