@@ -98,7 +98,7 @@ const Header: FC<Props> = ({ settings, offset }) => {
           </S.nav>
         </S.HeaderInner>
       </S.HeaderContainer>
-      <S.MobileNav show={!showMobileNav}>
+      <S.MobileNav show={showMobileNav}>
         <S.MobileNavCloseWrapper onClick={toggleMobileNav}>
           <AiOutlineClose />
         </S.MobileNavCloseWrapper>
