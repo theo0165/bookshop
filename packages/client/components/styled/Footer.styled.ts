@@ -7,8 +7,10 @@ export const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  @media screen and (max-width: 420px) {
+  margin-bottom: 60px;
+  @media screen and (max-width: 835px) {
     justify-content: flex-start;
+    margin-bottom: 30px;
   }
 `;
 
@@ -32,11 +34,6 @@ export const SocialsWrapper = styled.div`
 export const LinksWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0;
-`;
-export const LinkText = styled.div`
-  align-self: center;
-  margin: 0;
 `;
 export const ContactWrapper = styled.div`
   display: flex;

@@ -45,7 +45,7 @@ export const CardWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   gap: 24px;
-  margin-bottom: 94px;
+  margin-bottom: 60px;
 
   @media screen and (max-width: 835px) {
     gap: 16px;

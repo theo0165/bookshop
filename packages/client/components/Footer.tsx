@@ -13,7 +13,6 @@ import {
   FooterContainer,
   FooterInfoWrapper,
   LinksWrapper,
-  LinkText,
   LogoWrapper,
   OpeningHoursWrapper,
   SocialsWrapper,
@@ -42,16 +41,20 @@ const Footer: NextPage<Props> = ({ settings }) => {
           <SocialsWrapper>
             <HeadingThree>Sociala medier</HeadingThree>
             <LinksWrapper>
-              <SocialLink href={settings.instagram}>
-                <AiOutlineInstagram />
-              </SocialLink>
-              <LinkText>Instagram</LinkText>
+              <InfoItem>
+                <SocialLink href={settings.instagram}>
+                  <AiOutlineInstagram />
+                </SocialLink>
+                <BodyNormal>Instagram</BodyNormal>
+              </InfoItem>
             </LinksWrapper>
             <LinksWrapper>
-              <SocialLink href={settings.facebook}>
-                <AiOutlineFacebook />
-              </SocialLink>
-              <LinkText>Facebook</LinkText>
+              <InfoItem>
+                <SocialLink href={settings.facebook}>
+                  <AiOutlineFacebook />
+                </SocialLink>
+                <BodyNormal>Facebook</BodyNormal>
+              </InfoItem>
             </LinksWrapper>
           </SocialsWrapper>
           <ContactWrapper>
