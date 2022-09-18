@@ -15,13 +15,8 @@ export default {
     },
     {
       name: "text",
-      type: "string",
+      type: "text",
       title: "Text",
     },
-    // {
-    //   name: "img",
-    //   type: "image",
-    //   title: "Image",
-    // },
   ],
 };
