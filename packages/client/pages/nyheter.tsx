@@ -40,24 +40,35 @@ const Nyheter: NextPage<Props> = ({
 }) => {
   const [newsItems, setNewsItems] = useState(_newsItems);
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
-  const [filterByCategories, setFilterByCategories] = useState<Category[]>([]);
+  const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
 
   const toggleFilter = (category: Category) => {
-    if (filterByCategories.includes(category)) {
+    if (filterByCategories.includes(category._id)) {
       // Remove from filter by categories list
       setFilterByCategories(
         filterByCategories.filter(
-          (categoriesInList) => categoriesInList._id != category._id
+          (categoriesInList) => categoriesInList != category._id
         )
       );
     } else {
       // Add to filter by categories list
-      setFilterByCategories([...filterByCategories, category]);
+      setFilterByCategories([...filterByCategories, category._id]);
     }
   };
 
   useEffect(() => {
     // Filter here
+    if (filterByCategories.length > 0) {
+      setFilteredNewsItems(
+        newsItems.filter((item) => {
+          return item.categories.some((category) =>
+            filterByCategories.includes(category._id)
+          );
+        })
+      );
+    } else {
+      setFilteredNewsItems(newsItems);
+    }
   }, [filterByCategories]);
 
   return (
@@ -110,7 +121,7 @@ const Nyheter: NextPage<Props> = ({
                 >
                   <S.CategoryCheckbox
                     type="checkbox"
-                    checked={filterByCategories.includes(category)}
+                    checked={filterByCategories.includes(category._id)}
                     readOnly
                   />
                   <BodyNormal>{category.title}</BodyNormal>
