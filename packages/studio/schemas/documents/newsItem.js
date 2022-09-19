@@ -27,9 +27,15 @@ export default {
       title: 'Date',
     },
     {
-      name: 'image',
-      type: 'image',
-      title: 'Image',
+      name: "time",
+      type: "string",
+      title: "Time",
+      description: "Format time as following: hh:mm",
+    },
+    {
+      name: "image",
+      type: "image",
+      title: "Image",
       options: {
         hotspot: true,
       },
