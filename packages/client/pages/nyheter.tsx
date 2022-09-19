@@ -13,6 +13,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import Category from "../types/Category";
 import NewsItem from "../types/NewsItem";
+import News from "../components/News";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -117,6 +118,11 @@ const Nyheter: NextPage<Props> = ({
               ))}
             </S.FilterBottom>
           </S.FilterContainer>
+          <S.NewsItems>
+            {filteredNewsItems.map((item) => (
+              <News newsItem={item} />
+            ))}
+          </S.NewsItems>
         </S.NewsContainer>
       </S.Container>
     </>
@@ -148,7 +154,8 @@ export const getServerSideProps = async () => {
         "title": @->title
       },
       "image": image.asset->url,
-      date
+      date,
+      time
     }
   `);
 

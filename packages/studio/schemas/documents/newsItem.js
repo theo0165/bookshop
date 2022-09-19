@@ -27,6 +27,12 @@ export default {
       title: "Date",
     },
     {
+      name: "time",
+      type: "string",
+      title: "Time",
+      description: "Format time as following: hh:mm",
+    },
+    {
       name: "image",
       type: "image",
       title: "Image",

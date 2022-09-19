@@ -5,6 +5,7 @@ interface NewsItem {
   bodyText: string;
   categories: Category[];
   date: string | null;
+  time: string | null;
   image: string;
   slug: string;
   title: string;

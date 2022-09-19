@@ -125,3 +125,7 @@ export const CategoryCheckbox = styled.input`
   border: 1px solid ${(props) => props.theme.textBlack};
   border-radius: 4px;
 `;
+
+export const NewsItems = styled.div`
+  margin-top: 48px;
+`;
