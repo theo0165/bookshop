@@ -42,8 +42,14 @@ const News: FC<Props> = ({ newsItem }) => {
       </S.Top>
       <S.Bottom>
         {/* Cut at x chars */}
-        <BodyLarge>{newsItem.title}</BodyLarge>
-        <BodySmallest>{newsItem.bodyText}</BodySmallest>
+        <div>
+          <BodyLarge>{newsItem.title}</BodyLarge>
+          <BodySmallest>
+            {newsItem.bodyText.length < 280
+              ? newsItem.bodyText
+              : `${newsItem.bodyText.slice(0, 280)}...`}
+          </BodySmallest>
+        </div>
         <S.ReadMore>Läs mer</S.ReadMore>
       </S.Bottom>
     </S.Container>

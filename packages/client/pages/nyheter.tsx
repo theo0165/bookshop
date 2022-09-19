@@ -120,7 +120,7 @@ const Nyheter: NextPage<Props> = ({
           </S.FilterContainer>
           <S.NewsItems>
             {filteredNewsItems.map((item) => (
-              <News newsItem={item} />
+              <News newsItem={item} key={`news-item-${item._id}`} />
             ))}
           </S.NewsItems>
         </S.NewsContainer>
