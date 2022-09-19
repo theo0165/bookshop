@@ -69,6 +69,11 @@ export const FilterContainer = styled.div``;
 export const FilterTop = styled.div`
   display: flex;
   justify-content: space-between;
+
+  p {
+    margin: 0;
+    line-height: normal;
+  }
 `;
 
 export const DateContainer = styled.div`
@@ -93,19 +98,30 @@ export const DateContainer = styled.div`
   }
 `;
 
-export const FilterBottom = styled.div``;
+export const FilterBottom = styled.div`
+  display: flex;
+  column-gap: 24px;
+  row-gap: 3px;
+  flex-wrap: wrap;
+  max-width: 600px;
+`;
 
 export const CategoryContainer = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  column-gap: 8px;
 
   p {
     margin: 0;
     line-height: normal;
+    margin-top: 4px;
   }
 `;
 
 export const CategoryCheckbox = styled.input`
   margin: 0;
+  cursor: pointer;
+  border: 1px solid ${(props) => props.theme.textBlack};
+  border-radius: 4px;
 `;

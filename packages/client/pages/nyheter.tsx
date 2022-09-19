@@ -10,12 +10,9 @@ import client from "../helpers/sanity";
 import HeadingTwo from "../components/styled/texts/HeadingTwo";
 import BodyNormal from "../components/styled/texts/BodyNormal";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { useState } from "react";
-
-interface Category {
-  _id: string;
-  title: string;
-}
+import { useEffect, useState } from "react";
+import Category from "../types/Category";
+import NewsItem from "../types/NewsItem";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -31,15 +28,21 @@ interface Props {
     };
   };
   categories: Category[];
+  _newsItems: NewsItem[];
 }
 
-const Nyheter: NextPage<Props> = ({ globalSettings, data, categories }) => {
+const Nyheter: NextPage<Props> = ({
+  globalSettings,
+  data,
+  categories,
+  _newsItems,
+}) => {
+  const [newsItems, setNewsItems] = useState(_newsItems);
+  const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<Category[]>([]);
 
   const toggleFilter = (category: Category) => {
     if (filterByCategories.includes(category)) {
-      console.log("is in list");
-
       // Remove from filter by categories list
       setFilterByCategories(
         filterByCategories.filter(
@@ -47,12 +50,14 @@ const Nyheter: NextPage<Props> = ({ globalSettings, data, categories }) => {
         )
       );
     } else {
-      console.log("Is not in list");
-
       // Add to filter by categories list
       setFilterByCategories([...filterByCategories, category]);
     }
   };
+
+  useEffect(() => {
+    // Filter here
+  }, [filterByCategories]);
 
   return (
     <>
@@ -132,7 +137,22 @@ export const getServerSideProps = async () => {
     }
   `);
 
-  return { props: { globalSettings, data, categories } };
+  const newsItems = await client.fetch(`
+    *[_type == "newsItem" && !(_id in path("drafts.**"))]{
+      _id,
+      bodyText,
+      title,
+      "slug": slug.current,
+      "categories": categories[]{
+        "_id": @->_id,
+        "title": @->title
+      },
+      "image": image.asset->url,
+      date
+    }
+  `);
+
+  return { props: { globalSettings, data, categories, _newsItems: newsItems } };
 };
 
 export default Nyheter;
