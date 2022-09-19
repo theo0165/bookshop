@@ -5,6 +5,7 @@ const DisplayOne = styled.h2`
   font-weight: 500;
   font-size: 36px;
   line-height: 48px;
+  margin: 0;
 `;
 
 export default DisplayOne;

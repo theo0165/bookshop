@@ -3,17 +3,29 @@ import client from '../../helpers/sanity';
 import getGlobalSettings from '../../helpers/getGlobalSettings';
 
 import {
-  BodyContainer,
-  CardContainer,
-  CardWrapper,
-  HeroSection,
-  ImageChild,
-  ImageWrapper,
-  TextWrapperFirst,
-  TextWtapperSecond,
-} from '../../components/styled/About.styled';
+  AiOutlineClockCircle,
+  AiOutlineWallet,
+  AiOutlineInfoCircle,
+  AiOutlineEnvironment,
+} from 'react-icons/ai';
 import GlobalSettings from '../../types/GlobalSettings';
 import path from 'path';
+import Header from '../../components/Header';
+import Breadcrumbs from '../../components/Breadcrumbs';
+import * as S from '../../components/styled/NewsItem.styled';
+import DisplayOne from '../../components/styled/texts/DisplayOne';
+import {
+  Container,
+  DateContainer,
+} from '../../components/styled/Nyheter.styled';
+import * as D from '../../components/styled/News.styled';
+import BodySmall from '../../components/styled/texts/BodySmall';
+import HeadingThree from '../../components/styled/texts/HeadingThree';
+import formatNewsDate from '../../helpers/formatNewsDate';
+import BodyLarge from '../../components/styled/texts/BodyLarge';
+import BodyNormal from '../../components/styled/texts/BodyNormal';
+import Caption from '../../components/styled/texts/Caption';
+
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -23,29 +35,65 @@ interface Props {
     bodyText: string;
     date: string;
     time: string;
+    adress: string;
+    price: string;
     image: string;
   };
 }
 
 const NewsPage: NextPage<Props> = ({ data, globalSettings }) => {
   //const topInfoBar = useRef<HTMLDivElement | null>(null);
-  console.log(data);
+  //console.log(data);
 
   return (
     <>
-      <p>Nyhet</p>
-      <p>{data.title}</p>
-      <p>{data.bodyText}</p>
-      <p>{data.time}</p>
-
-
+      <Header settings={globalSettings} />
+      <Breadcrumbs />
+      <Container>
+      <S.NewsItemImage src={data.image}/>
+        <S.TitleContainer>
+          <S.NewsItemTitle>
+            <Caption>Insert category</Caption>
+          </S.NewsItemTitle>
+          <S.Date>
+            <BodySmall>{formatNewsDate(data.date).day}</BodySmall>
+            <HeadingThree>{formatNewsDate(data.date).date}</HeadingThree>
+            <HeadingThree>{formatNewsDate(data.date).month}</HeadingThree>
+          </S.Date>
+        </S.TitleContainer>
+        <DisplayOne>{data.title}</DisplayOne>
+        <S.MainContainer>
+          <div>
+            <BodyNormal>{data.bodyText}</BodyNormal>
+          </div>
+          <S.TimeDateContainer>
+            <S.DateTimeInfo>
+              <AiOutlineClockCircle />
+              <BodyNormal>{data.time}</BodyNormal>
+            </S.DateTimeInfo>
+            <S.DateTimeInfo>
+              <AiOutlineWallet />
+              <BodyNormal>{data.price ? data.price : 'Fri entré'}</BodyNormal>
+            </S.DateTimeInfo>
+            <S.DateTimeInfo>
+              <AiOutlineInfoCircle />
+              <BodyNormal>Föranmälan krävs</BodyNormal>
+            </S.DateTimeInfo>
+            <S.DateTimeInfo>
+              <AiOutlineEnvironment />
+              <BodyNormal>
+                {data.adress ? data.adress : 'Allmänna vägen 12, Göteborg'}
+              </BodyNormal>
+            </S.DateTimeInfo>
+          </S.TimeDateContainer>
+        </S.MainContainer>
+      </Container>
     </>
   );
 };
 
 export const getServerSideProps = async (ctx) => {
   const slug = ctx.query.slug;
-  //const slug = 'news-2';
 
   const globalSettings = await getGlobalSettings();
 
@@ -61,13 +109,12 @@ export const getServerSideProps = async (ctx) => {
       },
       "image": image.asset->url,
       date,
-      time
+      time,
+      adress,
+      price
     }[0]
     `
   );
-  console.log('hej');
-
-  console.log(data);
 
   return { props: { data, globalSettings } };
 };
