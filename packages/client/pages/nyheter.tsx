@@ -161,10 +161,6 @@ export const getServerSideProps = async () => {
       bodyText,
       title,
       "slug": slug.current,
-      "categories": categories[]{
-        "_id": @->_id,
-        "title": @->title
-      },
       "image": image.asset->url,
       date,
       time

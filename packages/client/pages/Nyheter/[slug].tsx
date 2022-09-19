@@ -22,6 +22,7 @@ interface Props {
     slug: string;
     bodyText: string;
     date: string;
+    time: string;
     image: string;
   };
 }
@@ -30,25 +31,41 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings }) => {
   //const topInfoBar = useRef<HTMLDivElement | null>(null);
   console.log(data);
 
-  return <></>;
+  return (
+    <>
+      <p>Nyhet</p>
+      <p>{data.title}</p>
+      <p>{data.bodyText}</p>
+      <p>{data.time}</p>
+
+
+    </>
+  );
 };
 
 export const getServerSideProps = async (ctx) => {
   const slug = ctx.query.slug;
+  //const slug = 'news-2';
 
   const globalSettings = await getGlobalSettings();
 
   const data = await client.fetch(
-    `*[_type == 'newsItem' && slug.current == "news-2"]{
-        title,
-        slug,
-        bodyText,
-        date,
-      'image': image.asset->url,
-      'altText': image.asset->alt,
+    `    *[_type == "newsItem" && slug.current =='${slug}']{
+      _id,
+      bodyText,
+      title,
+      "slug": slug.current,
+      "categories": categories[]{
+        "_id": @->_id,
+        "title": @->title
+      },
+      "image": image.asset->url,
+      date,
+      time
     }[0]
     `
   );
+  console.log('hej');
 
   console.log(data);
 
