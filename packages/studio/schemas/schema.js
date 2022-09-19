@@ -11,6 +11,7 @@ import card from "./objects/card";
 import frontpage from "./documents/pages/frontpage";
 import halfRow from "./objects/halfRow";
 import fullRow from "./objects/fullRow";
+import newsPage from "./documents/pages/newsPage";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +27,7 @@ export default createSchema({
     newsItem,
     aboutPage,
     card,
+    newsPage,
 
     // ---
     halfRow,
