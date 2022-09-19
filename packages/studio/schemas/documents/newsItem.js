@@ -1,43 +1,43 @@
 export default {
-  name: "newsItem",
-  type: "document",
-  title: "News",
+  name: 'newsItem',
+  type: 'document',
+  title: 'News',
   fields: [
     {
-      name: "title",
-      type: "string",
-      title: "Title",
+      name: 'title',
+      type: 'string',
+      title: 'Title',
     },
     {
-      name: "slug",
-      type: "slug",
-      title: "Slug",
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
       options: {
-        source: "title",
+        source: 'title',
       },
     },
     {
-      name: "bodyText",
-      type: "text",
-      title: "Body text",
+      name: 'bodyText',
+      type: 'text',
+      title: 'Body text',
     },
     {
-      name: "date",
-      type: "date",
-      title: "Date",
+      name: 'date',
+      type: 'date',
+      title: 'Date',
     },
     {
-      name: "image",
-      type: "image",
-      title: "Image",
+      name: 'image',
+      type: 'image',
+      title: 'Image',
       options: {
         hotspot: true,
       },
       fields: [
         {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
           options: {
             isHighlighted: true,
           },
@@ -45,10 +45,10 @@ export default {
       ],
     },
     {
-      name: "categories",
-      type: "array",
-      title: "Categories",
-      of: [{ type: "reference", to: [{ type: "category" }] }],
+      name: 'categories',
+      type: 'array',
+      title: 'Categories',
+      of: [{ type: 'reference', to: [{ type: 'category' }] }],
     },
   ],
 };
