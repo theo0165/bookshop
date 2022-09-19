@@ -41,6 +41,7 @@ const Nyheter: NextPage<Props> = ({
   const [newsItems, setNewsItems] = useState(_newsItems);
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
+  const [page, setPage] = useState(1);
 
   const toggleFilter = (category: Category) => {
     if (filterByCategories.includes(category._id)) {
