@@ -129,6 +129,6 @@ export const CategoryCheckbox = styled.input`
 export const NewsItems = styled.div`
   margin-top: 48px;
   display: flex;
-  column-gap: 24px;
+  gap: 24px;
   flex-wrap: wrap;
 `;

@@ -45,9 +45,9 @@ const News: FC<Props> = ({ newsItem }) => {
         <div>
           <BodyLarge>{newsItem.title}</BodyLarge>
           <BodySmallest>
-            {newsItem.bodyText.length < 280
+            {newsItem.bodyText.length < 200
               ? newsItem.bodyText
-              : `${newsItem.bodyText.slice(0, 280)}...`}
+              : `${newsItem.bodyText.slice(0, 200)}...`}
           </BodySmallest>
         </div>
         <S.ReadMore>Läs mer</S.ReadMore>
