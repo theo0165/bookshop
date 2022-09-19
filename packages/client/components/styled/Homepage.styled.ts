@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const HeroContainer = styled.div`
   display: flex;
@@ -37,4 +37,37 @@ export const CardsContainer = styled.div`
   row-gap: 24px;
   column-gap: 24px;
   margin: 0 32px;
+`;
+
+export const InstagramContainer = styled.div`
+  max-width: 1040px;
+  margin: 0px 32px 42px 32px;
+
+  @media screen and (max-width: 835px) {
+    margin: 0px 16px 42px 16px;
+  }
+`;
+export const InstagramImageContainer = styled.div`
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 24px;
+  column-gap: 24px;
+
+  @media screen and (max-width: 835px) {
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+`;
+
+export const InstaImage = styled.img`
+  height: 230px;
+  width: 242px;
+  object-fit: cover;
+
+  @media screen and (max-width: 835px) {
+    height: 163px;
+    width: 163px;
+  }
 `;
