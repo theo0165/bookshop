@@ -41,7 +41,7 @@ const Header: FC<Props> = ({ settings, offset }) => {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflowY = showMobileNav ? "auto" : "hidden";
+    document.body.style.overflowY = showMobileNav ? "hidden" : "auto";
   }, [showMobileNav]);
 
   useEffect(() => {
