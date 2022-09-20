@@ -8,7 +8,7 @@ import BodyLarge from "./styled/texts/BodyLarge";
 import BodySmall from "./styled/texts/BodySmall";
 import BodySmallest from "./styled/texts/BodySmallest";
 import Caption from "./styled/texts/Caption";
-import UnderlineButtonText from "./styled/texts/UnderlineButtonText";
+//import UnderlineButtonText from "./styled/texts/UnderlineButtonText";
 
 interface Props {
   newsItem: NewsItem;

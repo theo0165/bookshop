@@ -41,7 +41,7 @@ export const CardsContainer = styled.div`
 
 export const InstagramContainer = styled.div`
   max-width: 1040px;
-  margin: 0px 32px 42px 32px;
+  margin: 40px 32px 42px 32px;
 
   @media screen and (max-width: 835px) {
     margin: 0px 16px 42px 16px;
@@ -50,6 +50,7 @@ export const InstagramContainer = styled.div`
 export const InstagramImageContainer = styled.div`
   max-width: 1040px;
   margin: 0 auto;
+  margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
   row-gap: 24px;
