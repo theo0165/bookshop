@@ -49,8 +49,11 @@ const Nyheter: NextPage<Props> = ({
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
-    setPage(page + 1);
-    router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
+    if (page < 9) {
+      //Math.ceil(newsItemCount / 6) - 1) {
+      setPage(page + 1);
+      router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
+    }
   };
 
   const prevPage = () => {

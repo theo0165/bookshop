@@ -49,7 +49,7 @@ const Pagination: FC<Props> = ({
           </>
         )}
 
-        {pages >= 6 && selectedPage > 2 && (
+        {pages >= 6 && selectedPage > 2 && selectedPage < pages - 1 && (
           <>
             <S.Page isSelected={false} onClick={() => gotoPage(1)}>
               1
