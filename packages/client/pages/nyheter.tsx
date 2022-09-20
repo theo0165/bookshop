@@ -15,6 +15,7 @@ import Category from "../types/Category";
 import NewsItem from "../types/NewsItem";
 import News from "../components/News";
 import { useRouter } from "next/router";
+import Pagination from "../components/Pagination";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -31,6 +32,7 @@ interface Props {
   };
   categories: Category[];
   _newsItems: NewsItem[];
+  newsItemCount: number;
 }
 
 const Nyheter: NextPage<Props> = ({
@@ -38,6 +40,7 @@ const Nyheter: NextPage<Props> = ({
   data,
   categories,
   _newsItems,
+  newsItemCount,
 }) => {
   const router = useRouter();
   const [newsItems, setNewsItems] = useState(_newsItems);
@@ -47,21 +50,26 @@ const Nyheter: NextPage<Props> = ({
 
   const nextPage = () => {
     setPage(page + 1);
-    router.push(`/?page=${page}`, undefined, { shallow: true });
+    router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
   };
 
   const prevPage = () => {
-    setPage(page - 1);
-    router.push(`/?page=${page}`, undefined, { shallow: true });
+    if (page < 3) {
+      setPage(1);
+      router.push("/nyheter", undefined, { shallow: true });
+    } else {
+      setPage(page - 1);
+      router.push(`/nyheter?page=${page - 1}`, undefined, { shallow: true });
+    }
   };
 
   const gotoPage = (newPage: number) => {
     setPage(newPage);
-    router.push(`/?page=${newPage}`, undefined, { shallow: true });
+    router.push(`/nyheter?page=${newPage}`, undefined, { shallow: true });
   };
 
   const fetchNews = async (page: number): Promise<NewsItem[]> => {
-    const offset = (page - 1) * 6 + 1;
+    const offset = page > 0 ? (page - 1) * 6 : 0;
     const nextNews = await client.fetch(
       `
       *[_type == "newsItem" && !(_id in path("drafts.**"))] | order(date asc) | order(publishedAt desc) [$start...$end]{
@@ -83,6 +91,8 @@ const Nyheter: NextPage<Props> = ({
         end: offset + 6,
       }
     );
+
+    console.log({ msg: "fetching news", nextNews, offset });
 
     return nextNews;
   };
@@ -117,8 +127,12 @@ const Nyheter: NextPage<Props> = ({
   }, [filterByCategories, newsItems]);
 
   useEffect(() => {
-    async () => {
+    console.log("Page changed");
+
+    (async () => {
       if (router.query.page) {
+        console.log("test");
+
         const pageInQuery =
           typeof router.query.page === "string"
             ? parseInt(router.query.page)
@@ -127,10 +141,12 @@ const Nyheter: NextPage<Props> = ({
         setPage(pageInQuery);
         setNewsItems(await fetchNews(pageInQuery));
       } else {
+        console.log("test again");
+
         setPage(1);
         setNewsItems(await fetchNews(0));
       }
-    };
+    })();
   }, [router.query.page]);
 
   return (
@@ -197,6 +213,13 @@ const Nyheter: NextPage<Props> = ({
             ))}
           </S.NewsItems>
         </S.NewsContainer>
+        <Pagination
+          nextPage={nextPage}
+          prevPage={prevPage}
+          gotoPage={gotoPage}
+          pages={10} //{Math.ceil(newsItemCount / 6)}
+          selectedPage={page}
+        />
       </S.Container>
     </>
   );
@@ -232,7 +255,19 @@ export const getServerSideProps = async () => {
     }
   `);
 
-  return { props: { globalSettings, data, categories, _newsItems: newsItems } };
+  const newsItemCount = await client.fetch(`
+    count(*[_type == "newsItem" && !(_id in path("drafts.**"))])
+  `);
+
+  return {
+    props: {
+      globalSettings,
+      data,
+      categories,
+      _newsItems: newsItems,
+      newsItemCount,
+    },
+  };
 };
 
 export default Nyheter;
