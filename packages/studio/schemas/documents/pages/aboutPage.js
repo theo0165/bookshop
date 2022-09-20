@@ -1,22 +1,22 @@
 export default {
   name: "aboutPage",
   type: "document",
-  title: "About page",
+  title: "Om oss",
   fields: [
     {
       name: "firstAboutTitle",
       type: "string",
-      title: "About title",
+      title: "Titel",
     },
     {
       name: "firstBodyText",
       type: "text",
-      title: "Body text",
+      title: "Sidhuvudstext",
     },
     {
       name: "firstAboutImage",
       type: "image",
-      title: "Header Image",
+      title: "Sidhuvudsbild",
       options: {
         hotspot: true,
       },
@@ -24,7 +24,7 @@ export default {
         {
           name: "firstAboutAlt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },
@@ -34,12 +34,12 @@ export default {
     {
       name: "firstCard",
       type: "card",
-      title: "First card",
+      title: "Kort",
     },
     {
       name: "firstImageCard",
       type: "image",
-      title: "Image card",
+      title: "Bild",
       options: {
         hotspot: true,
       },
@@ -47,7 +47,7 @@ export default {
         {
           name: "firstImageCardAlt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },
@@ -57,7 +57,7 @@ export default {
     {
       name: "secondImageCard",
       type: "image",
-      title: "Second image card",
+      title: "Bild",
       options: {
         hotspot: true,
       },
@@ -65,7 +65,7 @@ export default {
         {
           name: "secondImageCardAlt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },
@@ -75,22 +75,22 @@ export default {
     {
       name: "secondCard",
       type: "card",
-      title: "Second card",
+      title: "Kort",
     },
     {
       name: "secondAboutTitle",
       type: "string",
-      title: "About title",
+      title: "Titel",
     },
     {
       name: "secondBodyText",
       type: "text",
-      title: "Body text",
+      title: "Sidhuvudstext",
     },
     {
       name: "secondAboutImage",
       type: "image",
-      title: "Header Image",
+      title: "Sidhuvudsbild",
       options: {
         hotspot: true,
       },
@@ -98,7 +98,7 @@ export default {
         {
           name: "secondAboutAlt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },
@@ -108,12 +108,12 @@ export default {
     {
       name: "thirdCard",
       type: "card",
-      title: "Third card",
+      title: "Kort",
     },
     {
       name: "thirdImageCard",
       type: "image",
-      title: "Image card",
+      title: "Bild",
       options: {
         hotspot: true,
       },
@@ -121,7 +121,7 @@ export default {
         {
           name: "thirdImageCardAlt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },

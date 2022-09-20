@@ -1,12 +1,12 @@
 export default {
   name: "newsItem",
   type: "document",
-  title: "News",
+  title: "Nyheter",
   fields: [
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Titel",
     },
     {
       name: "slug",
@@ -19,17 +19,17 @@ export default {
     {
       name: "bodyText",
       type: "text",
-      title: "Body text",
+      title: "Brödtext",
     },
     {
       name: "date",
       type: "date",
-      title: "Date",
+      title: "Datum",
     },
     {
       name: "image",
       type: "image",
-      title: "Image",
+      title: "Bild",
       options: {
         hotspot: true,
       },
@@ -37,7 +37,7 @@ export default {
         {
           name: "alt",
           type: "string",
-          title: "Alternative text",
+          title: "Alternativ text",
           options: {
             isHighlighted: true,
           },
@@ -47,7 +47,7 @@ export default {
     {
       name: "categories",
       type: "array",
-      title: "Categories",
+      title: "Kategorier",
       of: [{ type: "reference", to: [{ type: "category" }] }],
     },
   ],

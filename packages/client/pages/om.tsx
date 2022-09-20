@@ -6,6 +6,7 @@ import {
   CardContainer,
   CardWrapper,
   HeroSection,
+  HeroSectionTwo,
   ImageChild,
   ImageWrapper,
   TextWrapperFirst,
@@ -21,6 +22,7 @@ import GlobalSettings from "../types/GlobalSettings";
 import getGlobalSettings from "../helpers/getGlobalSettings";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Footer from "../components/Footer";
+import { HeroImage } from "../components/styled/Homepage.styled";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -70,7 +72,7 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
               <BodyNormal key={`firstBodyText${index}`}>{section}</BodyNormal>
             ))}
           </TextWrapperFirst>
-          <img src={data.image} />
+          <HeroImage src={data.image} />
         </HeroSection>
         <CardWrapper>
           <CardContainer order="2">
@@ -92,15 +94,15 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
             ))}
           </CardContainer>
         </CardWrapper>
-        <HeroSection>
-          <img src={data.imageSecond} />
+        <HeroSectionTwo>
+          <HeroImage src={data.imageSecond} />
           <TextWtapperSecond>
             <HeadingOne>{data.secondAboutTitle}</HeadingOne>
             {data.secondBodyText?.split("\n\n").map((section, index) => (
               <BodyNormal key={`info-text-${index}`}>{section}</BodyNormal>
             ))}
           </TextWtapperSecond>
-        </HeroSection>
+        </HeroSectionTwo>
         <CardWrapper>
           <CardContainer order="1">
             <Caption>{data.thirdCard.caption}</Caption>
