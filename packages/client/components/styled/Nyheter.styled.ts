@@ -7,6 +7,9 @@ export const Container = styled.div`
   @media screen and (max-width: 1040px) {
     margin: 0 32px;
   }
+  @media screen and (max-width: 833px) {
+    margin: 0 28px;
+  }
 `;
 
 export const CardContainer = styled.div``;
@@ -131,4 +134,9 @@ export const NewsItems = styled.div`
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 835px) {
+    gap: 16px;
+    justify-content: space-between;
+  }
 `;
