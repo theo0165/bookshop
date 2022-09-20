@@ -86,6 +86,8 @@ const Pagination: FC<Props> = ({
           </>
         )}
 
+        {/* Missing: when more than 6 pages and user is on second to last and last page */}
+
         {pages < 6 &&
           [...Array(pages)].map((_, i) => (
             <S.Page
