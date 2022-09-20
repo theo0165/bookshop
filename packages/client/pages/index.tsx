@@ -33,6 +33,8 @@ interface Props {
 const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
   const topInfoBar = useRef<HTMLDivElement | null>(null);
 
+  //const test = instagram.data.slice(0, 2);
+
   return (
     <>
       <TopInfoBar ref={topInfoBar} settings={globalSettings} />
@@ -61,7 +63,7 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
         <DisplayOne>Instagram</DisplayOne>
         <S.InstagramImageContainer>
           {instagram.data &&
-            instagram.data.map((instagramImage: InstagramImage) => (
+            instagram.data.slice(0, 7).map((instagramImage: InstagramImage) => (
               <a key={instagramImage.id} href={instagramImage.permalink}>
                 <S.InstaImage src={instagramImage.media_url} />
               </a>
@@ -121,6 +123,7 @@ export const getServerSideProps = async () => {
 
   const instagramData = await fetch(url);
   const instagram = await instagramData.json();
+  //const instagram = await allPosts.slice(0, 1);
 
   return { props: { data, globalSettings, instagram } };
 };

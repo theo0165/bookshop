@@ -44,64 +44,38 @@ export const Date = styled.div`
 `;
 
 export const MainContainer = styled.div`
-  // display: grid;
-  // grid-template-columns: 3fr 2fr;
   display: flex;
   margin-bottom: 120px;
 
   @media screen and (max-width: 833px) {
     flex-direction: column-reverse;
-    // grid-template-columns: 1fr;
-    // grid-template-row: 1fr 1fr;
-
-    // grid-auto-flow: dense;
-    // direction: rtl;
   }
 `;
 
 export const TimeDateContainer = styled.div`
-  //display: flex;
-  // max-width: 1040px;
   width: 100%;
   margin: 0 auto;
   margin-top: 44px;
   flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
-  //column-gap: 24px;
 
   @media screen and (max-width: 833px) {
-    //flex-direction: row;
-    //flex-warp: wrap;
-    // justify-content: start;
-    // align-items: baseline;
-    // column-gap: 50px;
-    // margin: 0;
-    // width: 50%;
     margin-left: 0px;
     margin-top: 0px;
   }
   @media screen and (max-width: 700px) {
-    //flex-direction: row;
-    //flex-warp: wrap;
-    // justify-content: start;
-    // align-items: baseline;
-    // column-gap: 50px;
-    // margin: 0;
-    // width: 50%;
     margin-left: 0px;
   }
 `;
 export const FlexWrapper = styled.div`
   display: flex;
-  // max-width: 1040px;
   width: 400px;
   margin: 0 auto;
   padding-left: 124px;
   flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
-  //column-gap: 24px;
 
   @media screen and (max-width: 833px) {
     flex-direction: row;
@@ -120,7 +94,6 @@ export const DateTimeInfo = styled.div`
   column-gap: 8px;
   justify-content: center;
   height: 100%;
-  //width: 173px;
 
   svg {
     width: 21px;
