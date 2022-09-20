@@ -27,7 +27,7 @@ import BodyNormal from '../../components/styled/texts/BodyNormal';
 import Caption from '../../components/styled/texts/Caption';
 import NewsItem from '../../types/NewsItem';
 import News from '../../components/News';
-
+import Footer from '../../components/Footer';
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -46,17 +46,16 @@ interface Props {
 
 const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
   //const topInfoBar = useRef<HTMLDivElement | null>(null);
-  console.log(newsItems);
-  console.log(data);
-  console.log(globalSettings);
-  
+  // console.log(newsItems);
+  // console.log(data);
+  // console.log(globalSettings);
 
   return (
     <>
       <Header settings={globalSettings} />
       <Breadcrumbs />
       <Container>
-      <S.NewsItemImage src={data.image}/>
+        <S.NewsItemImage src={data.image} />
         <S.TitleContainer>
           <S.NewsItemTitle>
             <Caption>Insert category</Caption>
@@ -67,38 +66,44 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
             <HeadingThree>{formatNewsDate(data.date).month}</HeadingThree>
           </S.Date>
         </S.TitleContainer>
-        <DisplayOne>{data.title}</DisplayOne>
         <S.MainContainer>
           <div>
+            <DisplayOne>{data.title}</DisplayOne>
             <BodyNormal>{data.bodyText}</BodyNormal>
           </div>
           <S.TimeDateContainer>
-            <S.DateTimeInfo>
-              <AiOutlineClockCircle />
-              <BodyNormal>{data.time}</BodyNormal>
-            </S.DateTimeInfo>
-            <S.DateTimeInfo>
-              <AiOutlineWallet />
-              <BodyNormal>{data.price ? data.price : 'Fri entré'}</BodyNormal>
-            </S.DateTimeInfo>
-            <S.DateTimeInfo>
-              <AiOutlineInfoCircle />
-              <BodyNormal>Föranmälan krävs</BodyNormal>
-            </S.DateTimeInfo>
-            <S.DateTimeInfo>
-              <AiOutlineEnvironment />
-              <BodyNormal>
-                {data.adress ? data.adress : 'Allmänna vägen 12, Göteborg'}
-              </BodyNormal>
-            </S.DateTimeInfo>
+            <S.FlexWrapper>
+              <S.DateTimeInfo>
+                <AiOutlineClockCircle />
+                <BodyNormal>{data.time}</BodyNormal>
+              </S.DateTimeInfo>
+              <S.DateTimeInfo>
+                <AiOutlineWallet />
+                <BodyNormal>{data.price ? data.price : 'Fri entré'}</BodyNormal>
+              </S.DateTimeInfo>
+            </S.FlexWrapper>
+            <S.FlexWrapper>
+              <S.DateTimeInfo>
+                <AiOutlineInfoCircle />
+                <BodyNormal>Föranmälan krävs</BodyNormal>
+              </S.DateTimeInfo>
+
+              <S.DateTimeInfo>
+                <AiOutlineEnvironment />
+                <BodyNormal>
+                  {data.adress ? data.adress : 'Allmänna vägen 12, Göteborg'}
+                </BodyNormal>
+              </S.DateTimeInfo>
+            </S.FlexWrapper>
           </S.TimeDateContainer>
         </S.MainContainer>
         <DisplayOne>Kolla även</DisplayOne>
         <NewsItems>
-            {newsItems.map((item) => (
-              <News newsItem={item} key={`news-item-${item._id}`} />
-            ))}
-          </NewsItems>
+          {newsItems.map((item) => (
+            <News newsItem={item} key={`news-item-${item._id}`} />
+          ))}
+        </NewsItems>
+        <Footer settings={globalSettings} />
       </Container>
     </>
   );
@@ -139,9 +144,6 @@ export const getServerSideProps = async (ctx) => {
     time
   }
 `);
-
-//console.log(newsItems);
-
 
   return { props: { data, globalSettings, newsItems } };
 };
