@@ -17,14 +17,16 @@ import DisplayOne from '../../components/styled/texts/DisplayOne';
 import {
   Container,
   DateContainer,
+  NewsItems,
 } from '../../components/styled/Nyheter.styled';
 import * as D from '../../components/styled/News.styled';
 import BodySmall from '../../components/styled/texts/BodySmall';
 import HeadingThree from '../../components/styled/texts/HeadingThree';
 import formatNewsDate from '../../helpers/formatNewsDate';
-import BodyLarge from '../../components/styled/texts/BodyLarge';
 import BodyNormal from '../../components/styled/texts/BodyNormal';
 import Caption from '../../components/styled/texts/Caption';
+import NewsItem from '../../types/NewsItem';
+import News from '../../components/News';
 
 
 interface Props {
@@ -39,11 +41,15 @@ interface Props {
     price: string;
     image: string;
   };
+  newsItems: NewsItem[];
 }
 
-const NewsPage: NextPage<Props> = ({ data, globalSettings }) => {
+const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
   //const topInfoBar = useRef<HTMLDivElement | null>(null);
-  //console.log(data);
+  console.log(newsItems);
+  console.log(data);
+  console.log(globalSettings);
+  
 
   return (
     <>
@@ -87,6 +93,12 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings }) => {
             </S.DateTimeInfo>
           </S.TimeDateContainer>
         </S.MainContainer>
+        <DisplayOne>Kolla även</DisplayOne>
+        <NewsItems>
+            {newsItems.map((item) => (
+              <News newsItem={item} key={`news-item-${item._id}`} />
+            ))}
+          </NewsItems>
       </Container>
     </>
   );
@@ -116,7 +128,22 @@ export const getServerSideProps = async (ctx) => {
     `
   );
 
-  return { props: { data, globalSettings } };
+  const newsItems = await client.fetch(`
+  *[_type == "newsItem" && !(_id in path("drafts.**"))]{
+    _id,
+    bodyText,
+    title,
+    "slug": slug.current,
+    "image": image.asset->url,
+    date,
+    time
+  }
+`);
+
+//console.log(newsItems);
+
+
+  return { props: { data, globalSettings, newsItems } };
 };
 
 export default NewsPage;

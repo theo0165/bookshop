@@ -4,6 +4,8 @@ export const NewsItemImage = styled.img`
   height: 489px;
   width: 1040px;
   object-fit: cover;
+  margin-bottom: 20px;
+
 
   @media screen and (max-width: 835px) {
     height: 489px;
@@ -47,6 +49,7 @@ export const Date = styled.div`
 export const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 3fr 2fr;
+  margin-bottom: 120px;
 `;
 
 export const TimeDateContainer = styled.div`
