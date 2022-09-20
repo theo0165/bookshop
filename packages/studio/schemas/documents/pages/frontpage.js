@@ -11,12 +11,12 @@ export default {
     {
       name: "text",
       type: "text",
-      title: "Sidhuvudstext",
+      title: "Omslagstext",
     },
     {
       name: "heroImage",
       type: "image",
-      title: "Sidohuvudsbild",
+      title: "Omslagsbild",
     },
     {
       name: "linkText",

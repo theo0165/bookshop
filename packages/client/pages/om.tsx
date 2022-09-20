@@ -61,7 +61,7 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
 
   return (
     <>
-      {/* <Header settings={globalSettings} /> */}
+      <Header settings={globalSettings} />
       <BodyContainer>
         <Breadcrumbs />
         <HeroSection>

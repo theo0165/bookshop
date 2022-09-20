@@ -11,12 +11,12 @@ export default {
     {
       name: "firstBodyText",
       type: "text",
-      title: "Sidhuvudstext",
+      title: "Omslagstext",
     },
     {
       name: "firstAboutImage",
       type: "image",
-      title: "Sidhuvudsbild",
+      title: "Omslagsbild",
       options: {
         hotspot: true,
       },
@@ -85,12 +85,12 @@ export default {
     {
       name: "secondBodyText",
       type: "text",
-      title: "Sidhuvudstext",
+      title: "Omslagstext",
     },
     {
       name: "secondAboutImage",
       type: "image",
-      title: "Sidhuvudsbild",
+      title: "Omslagsbild",
       options: {
         hotspot: true,
       },

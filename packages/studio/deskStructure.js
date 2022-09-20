@@ -13,12 +13,12 @@ export default () =>
             .title("Sidor")
             .items([
               S.listItem()
-                .title("About page")
+                .title("Om oss")
                 .child(
                   S.document().schemaType("aboutPage").documentId("aboutPage")
                 ),
               S.listItem()
-                .title("Frontpage")
+                .title("Startsida")
                 .child(
                   S.document().schemaType("frontpage").documentId("frontpage")
                 ),

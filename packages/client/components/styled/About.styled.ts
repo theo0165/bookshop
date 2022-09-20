@@ -21,7 +21,7 @@ export const BodyContainer = styled.div`
 export const HeroSection = styled.div`
   display: flex;
   margin-bottom: 100px;
-  margin: 120px 32px;
+  margin: 32px;
   justify-content: space-between;
   column-gap: 50px;
 
