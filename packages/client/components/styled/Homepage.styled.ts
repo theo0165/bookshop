@@ -4,11 +4,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 60px auto;
-  max-width: 1040px;  
- // margin: 0px 32px 0px 32px;
-
-
-
+  max-width: 1040px;
 `;
 export const HeroContainer = styled.div`
   display: flex;
@@ -49,7 +45,6 @@ export const CardsContainer = styled.div`
 
   @media screen and (max-width: 835px) {
     margin: 0 32px;
-
   }
   @media screen and (max-width: 1100px) {
     margin: 0 16px;
@@ -58,7 +53,7 @@ export const CardsContainer = styled.div`
 
 export const InstagramContainer = styled.div`
   max-width: 1040px;
-  margin: 40px 0px 42px 0px;
+  margin: 40px 0px;
 
   @media screen and (max-width: 1100px) {
     margin: 24px 16px;
