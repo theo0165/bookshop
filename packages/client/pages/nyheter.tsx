@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Category from "../types/Category";
 import NewsItem from "../types/NewsItem";
 import News from "../components/News";
+import { useRouter } from "next/router";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -38,10 +39,53 @@ const Nyheter: NextPage<Props> = ({
   categories,
   _newsItems,
 }) => {
+  const router = useRouter();
   const [newsItems, setNewsItems] = useState(_newsItems);
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
+
+  const nextPage = () => {
+    setPage(page + 1);
+    router.push(`/?page=${page}`, undefined, { shallow: true });
+  };
+
+  const prevPage = () => {
+    setPage(page - 1);
+    router.push(`/?page=${page}`, undefined, { shallow: true });
+  };
+
+  const gotoPage = (newPage: number) => {
+    setPage(newPage);
+    router.push(`/?page=${newPage}`, undefined, { shallow: true });
+  };
+
+  const fetchNews = async (page: number): Promise<NewsItem[]> => {
+    const offset = (page - 1) * 6 + 1;
+    const nextNews = await client.fetch(
+      `
+      *[_type == "newsItem" && !(_id in path("drafts.**"))] | order(date asc) | order(publishedAt desc) [$start...$end]{
+        _id,
+        bodyText,
+        title,
+        "slug": slug.current,
+        "categories": categories[]{
+          "_id": @->_id,
+          "title": @->title
+        },
+        "image": image.asset->url,
+        date,
+        time
+      }
+    `,
+      {
+        start: offset,
+        end: offset + 6,
+      }
+    );
+
+    return nextNews;
+  };
 
   const toggleFilter = (category: Category) => {
     if (filterByCategories.includes(category._id)) {
@@ -70,7 +114,24 @@ const Nyheter: NextPage<Props> = ({
     } else {
       setFilteredNewsItems(newsItems);
     }
-  }, [filterByCategories]);
+  }, [filterByCategories, newsItems]);
+
+  useEffect(() => {
+    async () => {
+      if (router.query.page) {
+        const pageInQuery =
+          typeof router.query.page === "string"
+            ? parseInt(router.query.page)
+            : parseInt(router.query.page[0]);
+
+        setPage(pageInQuery);
+        setNewsItems(await fetchNews(pageInQuery));
+      } else {
+        setPage(1);
+        setNewsItems(await fetchNews(0));
+      }
+    };
+  }, [router.query.page]);
 
   return (
     <>
