@@ -5,6 +5,13 @@ export const Container = styled.div`
   border-radius: 4px;
   width: 330px;
   height: 600px;
+
+  @media screen and (max-width: 835px) {
+    width: 375px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 343px;
+  }
 `;
 
 export const Top = styled.div`

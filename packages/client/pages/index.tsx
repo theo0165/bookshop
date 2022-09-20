@@ -13,6 +13,7 @@ import TopInfoBar from '../components/TopInfoBar';
 import { useRef } from 'react';
 import InstagramImage from '../types/InstagramImage';
 import DisplayOne from '../components/styled/texts/DisplayOne';
+import Footer from '../components/Footer';
 
 interface Props {
   data: {
@@ -40,6 +41,7 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
         settings={globalSettings}
         offset={topInfoBar.current?.scrollHeight ?? 64}
       />
+      <S.MainContainer>
       <S.HeroContainer>
         <S.HeroText>
           <HeadingOne>{data.title}</HeadingOne>
@@ -68,6 +70,9 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
             ))}
         </S.InstagramImageContainer>
       </S.InstagramContainer>
+      <Footer settings={globalSettings} />
+      </S.MainContainer>
+
     </>
   );
 };
