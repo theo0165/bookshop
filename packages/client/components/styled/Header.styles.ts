@@ -29,6 +29,7 @@ export const HeaderInner = styled.div`
 
 export const Logo = styled.img`
   width: 100px;
+  cursor: pointer;
 
   @media screen and (max-width: 800px) {
     display: none;

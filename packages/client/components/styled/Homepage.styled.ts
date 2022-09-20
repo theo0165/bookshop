@@ -1,13 +1,19 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 32px;
+`;
+
 export const HeroContainer = styled.div`
   display: flex;
   max-width: 1040px;
-  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
-  margin: 120px 32px;
   column-gap: 50px;
+  margin: 120px 0;
 
   @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
@@ -31,10 +37,8 @@ export const HeroImage = styled.img`
 
 export const CardsContainer = styled.div`
   max-width: 1040px;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   row-gap: 24px;
   column-gap: 24px;
-  margin: 0 32px;
 `;

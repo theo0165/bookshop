@@ -156,7 +156,7 @@ export const getServerSideProps = async () => {
   `);
 
   const newsItems = await client.fetch(`
-    *[_type == "newsItem" && !(_id in path("drafts.**"))]{
+    *[_type == "newsItem" && !(_id in path("drafts.**"))] | order(date asc) | order(publishedAt desc) [0...6]{
       _id,
       bodyText,
       title,

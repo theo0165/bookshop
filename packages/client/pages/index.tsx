@@ -33,22 +33,24 @@ const Home: NextPage<Props> = ({ data, globalSettings }) => {
         settings={globalSettings}
         offset={topInfoBar.current?.scrollHeight ?? 64}
       />
-      <S.HeroContainer>
-        <S.HeroText>
-          <HeadingOne>{data.title}</HeadingOne>
-          <BodyNormal>{data.text}</BodyNormal>
-          <UnderlineButtonText href="/om-oss">
-            {data.linkText}
-          </UnderlineButtonText>
-        </S.HeroText>
-        <S.HeroImage src={data.heroImage} />
-      </S.HeroContainer>
-      <S.CardsContainer>
-        {data.cards &&
-          data.cards.map((card: CardType) => (
-            <Card data={card} key={`card-${card._key}`} />
-          ))}
-      </S.CardsContainer>
+      <S.Container>
+        <S.HeroContainer>
+          <S.HeroText>
+            <HeadingOne>{data.title}</HeadingOne>
+            <BodyNormal>{data.text}</BodyNormal>
+            <UnderlineButtonText href="/om-oss">
+              {data.linkText}
+            </UnderlineButtonText>
+          </S.HeroText>
+          <S.HeroImage src={data.heroImage} />
+        </S.HeroContainer>
+        <S.CardsContainer>
+          {data.cards &&
+            data.cards.map((card: CardType) => (
+              <Card data={card} key={`card-${card._key}`} />
+            ))}
+        </S.CardsContainer>
+      </S.Container>
     </>
   );
 };
