@@ -49,6 +49,8 @@ export const MainContainer = styled.div`
 
   @media screen and (max-width: 833px) {
     flex-direction: column-reverse;
+    margin-bottom: 60px;
+
   }
 `;
 
