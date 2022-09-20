@@ -33,8 +33,6 @@ interface Props {
 const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
   const topInfoBar = useRef<HTMLDivElement | null>(null);
 
-  //const test = instagram.data.slice(0, 2);
-
   return (
     <>
       <TopInfoBar ref={topInfoBar} settings={globalSettings} />

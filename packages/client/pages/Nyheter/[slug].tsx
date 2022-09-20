@@ -28,6 +28,7 @@ import Caption from '../../components/styled/texts/Caption';
 import NewsItem from '../../types/NewsItem';
 import News from '../../components/News';
 import Footer from '../../components/Footer';
+import Category from '../../types/Category';
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -40,25 +41,24 @@ interface Props {
     adress: string;
     price: string;
     image: string;
+    image_alt: string;
+    categories: Category[];
   };
   newsItems: NewsItem[];
 }
 
 const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
-  //const topInfoBar = useRef<HTMLDivElement | null>(null);
-  // console.log(newsItems);
-  // console.log(data);
-  // console.log(globalSettings);
-
   return (
     <>
       <Header settings={globalSettings} />
       <Breadcrumbs />
       <Container>
-        <S.NewsItemImage src={data.image} />
+        <S.NewsItemImage src={data.image} alt={data.image_alt} />
         <S.TitleContainer>
           <S.NewsItemTitle>
-            <Caption>Insert category</Caption>
+            {data.categories.map((category) => (
+              <Caption key={category._id}>| {category.title} | </Caption>
+            ))}
           </S.NewsItemTitle>
           <S.Date>
             <BodySmall>{formatNewsDate(data.date).day}</BodySmall>
@@ -99,7 +99,7 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
         </S.MainContainer>
         <DisplayOne>Kolla även</DisplayOne>
         <NewsItems>
-          {newsItems.map((item) => (
+          {newsItems.slice(0, 3).map((item) => (
             <News newsItem={item} key={`news-item-${item._id}`} />
           ))}
         </NewsItems>
@@ -125,6 +125,7 @@ export const getServerSideProps = async (ctx) => {
         "title": @->title
       },
       "image": image.asset->url,
+      "image_alt": image.alt,
       date,
       time,
       adress,
