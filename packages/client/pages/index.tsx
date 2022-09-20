@@ -123,7 +123,6 @@ export const getServerSideProps = async () => {
 
   const instagramData = await fetch(url);
   const instagram = await instagramData.json();
-  //const instagram = await allPosts.slice(0, 1);
 
   return { props: { data, globalSettings, instagram } };
 };
