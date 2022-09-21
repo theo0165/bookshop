@@ -64,11 +64,11 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
           <S.InstagramImageContainer>
             {instagram.data &&
               instagram.data
-                .slice(0, 7)
+                .slice(0, 9)
                 .map((instagramImage: InstagramImage) => (
-                  <a key={instagramImage.id} href={instagramImage.permalink}>
+                  <S.InstaLink key={instagramImage.id} href={instagramImage.permalink}>
                     <S.InstaImage src={instagramImage.media_url} />
-                  </a>
+                  </S.InstaLink>
                 ))}
           </S.InstagramImageContainer>
         </S.InstagramContainer>
