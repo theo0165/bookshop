@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
 export const BodyContainer = styled.div`
-  /* flex-direction: column;
-  display: flex;
-  max-width: 1040px;
-  margin: 0 auto;
-  align-items: center;
-  margin-bottom: 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
