@@ -100,7 +100,9 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
         <DisplayOne>Kolla även</DisplayOne>
         <NewsItems>
           {newsItems.slice(0, 3).map((item) => (
-            <News newsItem={item} key={`news-item-${item._id}`} />
+            <S.CardContainer key={`news-item-${item._id}`}>
+              <News newsItem={item}  />
+            </S.CardContainer>
           ))}
         </NewsItems>
         <Footer settings={globalSettings} />

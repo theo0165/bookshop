@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   max-width: 1040px;
@@ -8,25 +8,25 @@ export const Container = styled.div`
     margin: 0 32px;
   }
   @media screen and (max-width: 833px) {
-    margin: 0 28px;
+    margin: 0 16px;
   }
 `;
 
 export const CardContainer = styled.div``;
 
-export const Card = styled.div<{ bg: "green" | "white" }>`
+export const Card = styled.div<{ bg: 'green' | 'white' }>`
   border-radius: 4px;
   padding: 25px 52px 40px 52px;
 
   ${(props) =>
-    props.bg === "green" &&
+    props.bg === 'green' &&
     css`
       background: ${props.theme.textWhite};
       border: 1px solid ${props.theme.textBlack};
     `}
 
   ${(props) =>
-    props.bg === "white" &&
+    props.bg === 'white' &&
     css`
       background: ${props.theme.primaryGreen};
       color: white;
@@ -134,6 +134,7 @@ export const NewsItems = styled.div`
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  justify-content: center;
 
   @media screen and (max-width: 835px) {
     gap: 16px;
