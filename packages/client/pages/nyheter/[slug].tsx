@@ -36,8 +36,8 @@ interface Props {
     title: string;
     slug: string;
     bodyText: string;
-    date: string;
-    time: string;
+    date: string | null;
+    time: string | null;
     adress: string;
     price: string;
     image: string;
@@ -60,11 +60,13 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
               <Caption key={category._id}>| {category.title} | </Caption>
             ))}
           </S.NewsItemTitle>
-          <S.Date>
-            <BodySmall>{formatNewsDate(data.date).day}</BodySmall>
-            <HeadingThree>{formatNewsDate(data.date).date}</HeadingThree>
-            <HeadingThree>{formatNewsDate(data.date).month}</HeadingThree>
-          </S.Date>
+          {data.date && (
+            <S.Date>
+              <BodySmall>{formatNewsDate(data.date).day}</BodySmall>
+              <HeadingThree>{formatNewsDate(data.date).date}</HeadingThree>
+              <HeadingThree>{formatNewsDate(data.date).month}</HeadingThree>
+            </S.Date>
+          )}
         </S.TitleContainer>
         <S.MainContainer>
           <div>
@@ -73,10 +75,12 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
           </div>
           <S.TimeDateContainer>
             <S.FlexWrapper>
-              <S.DateTimeInfo>
-                <AiOutlineClockCircle />
-                <BodyNormal>{data.time}</BodyNormal>
-              </S.DateTimeInfo>
+              {data.time && (
+                <S.DateTimeInfo>
+                  <AiOutlineClockCircle />
+                  <BodyNormal>{data.time}</BodyNormal>
+                </S.DateTimeInfo>
+              )}
               <S.DateTimeInfo>
                 <AiOutlineWallet />
                 <BodyNormal>{data.price ? data.price : "Fri entré"}</BodyNormal>
