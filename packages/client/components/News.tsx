@@ -19,7 +19,7 @@ const News: FC<Props> = ({ newsItem }) => {
     <S.Container>
       <S.Top>
         <S.Image>
-          <Image src={newsItem.image} layout="fill" objectFit="cover" />
+          <Image src={newsItem.image} layout="fill" objectFit="cover" alt={newsItem.image_alt}/>
         </S.Image>
         {newsItem.date && (
           <S.Date>
