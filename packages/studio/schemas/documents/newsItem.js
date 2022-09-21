@@ -9,11 +9,11 @@ export default {
       title: "Titel",
     },
     {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
+      name: "slug",
+      type: "slug",
+      title: "Slug",
       options: {
-        source: 'title',
+        source: "title",
       },
     },
     {
@@ -30,29 +30,29 @@ export default {
       name: "image",
       type: "image",
       title: "Bild",
- 
-    {
-      name: 'address',
-      type: 'string',
-      title: 'Address',
-      description: 'If other adress then, Allmänna vägen 12, Göteborg',
     },
     {
-      name: 'price',
-      type: 'string',
-      title: 'Price',
-      description: 'Leave blank if the event if free.',
+      name: "address",
+      type: "string",
+      title: "Address",
+      description: "If other adress then, Allmänna vägen 12, Göteborg",
     },
     {
-      name: 'time',
-      type: 'string',
-      title: 'Time',
-      description: 'Format time as following: hh:mm',
+      name: "price",
+      type: "string",
+      title: "Price",
+      description: "Leave blank if the event if free.",
     },
     {
-      name: 'image',
-      type: 'image',
-      title: 'Image',
+      name: "time",
+      type: "string",
+      title: "Time",
+      description: "Format time as following: hh:mm",
+    },
+    {
+      name: "image",
+      type: "image",
+      title: "Image",
       options: {
         hotspot: true,
       },
@@ -61,8 +61,6 @@ export default {
           name: "alt",
           type: "string",
           title: "Alternativ text",
-
-          },
         },
       ],
     },
@@ -71,7 +69,6 @@ export default {
       type: "array",
       title: "Kategorier",
       of: [{ type: "reference", to: [{ type: "category" }] }],
-
     },
   ],
 };
