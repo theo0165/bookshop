@@ -47,7 +47,6 @@ const Nyheter: NextPage<Props> = ({
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
-  const datepicker = useRef(null);
 
   const nextPage = () => {
     if (page < Math.ceil(newsItemCount / 6)) {
@@ -95,8 +94,6 @@ const Nyheter: NextPage<Props> = ({
       }
     );
 
-    console.log({ msg: "fetching news", nextNews, offset });
-
     return nextNews;
   };
 
@@ -128,12 +125,6 @@ const Nyheter: NextPage<Props> = ({
       setFilteredNewsItems(newsItems);
     }
   }, [filterByCategories, newsItems]);
-
-  const toggleDatepicker = () => {
-    if (datepicker) {
-      datepicker.current.datepicker();
-    }
-  };
 
   useEffect(() => {
     console.log("Page changed");
@@ -194,18 +185,10 @@ const Nyheter: NextPage<Props> = ({
             <S.FilterTop>
               <Caption>Filtrera</Caption>
               <S.DateContainer>
-                <S.DateInput
-                  type={"date"}
-                  name={"dateInput"}
-                  id="dateInput"
-                  ref={datepicker}
-                />
-                <S.LabelWrapper htmlFor="dateInput" onClick={toggleDatepicker}>
-                  <div>
-                    <AiOutlineCalendar />
-                  </div>
-                  <BodyNormal>Datum</BodyNormal>
-                </S.LabelWrapper>
+                <div>
+                  <AiOutlineCalendar />
+                </div>
+                <BodyNormal>Datum</BodyNormal>
               </S.DateContainer>
             </S.FilterTop>
             <S.FilterBottom>
