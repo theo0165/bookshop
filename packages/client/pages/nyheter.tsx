@@ -10,7 +10,7 @@ import client from "../helpers/sanity";
 import HeadingTwo from "../components/styled/texts/HeadingTwo";
 import BodyNormal from "../components/styled/texts/BodyNormal";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Category from "../types/Category";
 import NewsItem from "../types/NewsItem";
 import News from "../components/News";
@@ -47,10 +47,10 @@ const Nyheter: NextPage<Props> = ({
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
+  const datepicker = useRef(null);
 
   const nextPage = () => {
-    if (page < 9) {
-      //Math.ceil(newsItemCount / 6) -) {
+    if (page < Math.ceil(newsItemCount / 6)) {
       setPage(page + 1);
       router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
     }
@@ -129,6 +129,12 @@ const Nyheter: NextPage<Props> = ({
     }
   }, [filterByCategories, newsItems]);
 
+  const toggleDatepicker = () => {
+    if (datepicker) {
+      datepicker.current.datepicker();
+    }
+  };
+
   useEffect(() => {
     console.log("Page changed");
 
@@ -188,10 +194,18 @@ const Nyheter: NextPage<Props> = ({
             <S.FilterTop>
               <Caption>Filtrera</Caption>
               <S.DateContainer>
-                <div>
-                  <AiOutlineCalendar />
-                </div>
-                <BodyNormal>Datum</BodyNormal>
+                <S.DateInput
+                  type={"date"}
+                  name={"dateInput"}
+                  id="dateInput"
+                  ref={datepicker}
+                />
+                <S.LabelWrapper htmlFor="dateInput" onClick={toggleDatepicker}>
+                  <div>
+                    <AiOutlineCalendar />
+                  </div>
+                  <BodyNormal>Datum</BodyNormal>
+                </S.LabelWrapper>
               </S.DateContainer>
             </S.FilterTop>
             <S.FilterBottom>
@@ -220,7 +234,7 @@ const Nyheter: NextPage<Props> = ({
           nextPage={nextPage}
           prevPage={prevPage}
           gotoPage={gotoPage}
-          pages={10} //{Math.ceil(newsItemCount / 6)}
+          pages={Math.ceil(newsItemCount / 6)}
           selectedPage={page}
         />
       </S.Container>
