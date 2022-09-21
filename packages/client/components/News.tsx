@@ -50,7 +50,7 @@ const News: FC<Props> = ({ newsItem }) => {
               : `${newsItem.bodyText.slice(0, 200)}...`}
           </BodySmallest>
         </div>
-        <S.ReadMore>Läs mer</S.ReadMore>
+        <S.ReadMore href={`/nyheter/${newsItem.slug}`} >Läs mer</S.ReadMore>
       </S.Bottom>
     </S.Container>
   );
