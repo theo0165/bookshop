@@ -7,6 +7,7 @@ interface NewsItem {
   date: string | null;
   time: string | null;
   image: string;
+  image_alt: string;
   slug: string;
   title: string;
 }

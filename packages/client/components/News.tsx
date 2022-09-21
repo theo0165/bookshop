@@ -19,7 +19,7 @@ const News: FC<Props> = ({ newsItem }) => {
     <S.Container>
       <S.Top>
         <S.Image>
-          <Image src={newsItem.image} layout="fill" objectFit="cover" />
+          <Image src={newsItem.image} layout="fill" objectFit="cover" alt={newsItem.image_alt}/>
         </S.Image>
         {newsItem.date && (
           <S.Date>
@@ -50,7 +50,7 @@ const News: FC<Props> = ({ newsItem }) => {
               : `${newsItem.bodyText.slice(0, 200)}...`}
           </BodySmallest>
         </div>
-        <S.ReadMore>Läs mer</S.ReadMore>
+        <S.ReadMore href={`/nyheter/${newsItem.slug}`} >Läs mer</S.ReadMore>
       </S.Bottom>
     </S.Container>
   );

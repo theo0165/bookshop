@@ -82,7 +82,7 @@ export const Bottom = styled.div`
   justify-content: space-between;
 `;
 
-export const ReadMore = styled.div`
+export const ReadMore = styled.a`
   text-align: center;
   text-transform: uppercase;
   text-decoration: underline;
