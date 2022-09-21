@@ -49,8 +49,7 @@ const Nyheter: NextPage<Props> = ({
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
-    if (page < 9) {
-      //Math.ceil(newsItemCount / 6) -) {
+    if (page < Math.ceil(newsItemCount / 6)) {
       setPage(page + 1);
       router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
     }
@@ -220,7 +219,7 @@ const Nyheter: NextPage<Props> = ({
           nextPage={nextPage}
           prevPage={prevPage}
           gotoPage={gotoPage}
-          pages={10} //{Math.ceil(newsItemCount / 6)}
+          pages={Math.ceil(newsItemCount / 6)}
           selectedPage={page}
         />
       </S.Container>

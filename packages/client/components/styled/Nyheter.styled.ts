@@ -46,6 +46,12 @@ export const Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 24px;
+
+  @media screen and (max-width: 821px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 24px;
+  }
 `;
 
 export const Button = styled.button<{ greenBg?: boolean }>`
@@ -137,6 +143,6 @@ export const NewsItems = styled.div`
 
   @media screen and (max-width: 835px) {
     gap: 16px;
-    justify-content: space-between;
+    justify-content: center;
   }
 `;
