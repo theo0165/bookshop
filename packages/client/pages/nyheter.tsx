@@ -50,7 +50,7 @@ const Nyheter: NextPage<Props> = ({
 
   const nextPage = () => {
     if (page < 9) {
-      //Math.ceil(newsItemCount / 6) - 1) {
+      //Math.ceil(newsItemCount / 6) -) {
       setPage(page + 1);
       router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
     }

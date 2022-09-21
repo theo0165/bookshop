@@ -31,14 +31,18 @@ export const Pages = styled.div`
     margin: 0;
     line-height: normal;
   }
+
+  p {
+    margin: 0 10px;
+    padding: 8px;
+  }
 `;
 
 export const Page = styled(ButtonBase)<{ isSelected: boolean }>`
   border-radius: 4px;
   padding: 8px 8px;
 
-  margin-right: 15px;
-  margin-left: 15px;
+  margin: 0 10px;
 
   &:first-of-type {
     margin-left: 0;
@@ -58,3 +62,8 @@ export const Page = styled(ButtonBase)<{ isSelected: boolean }>`
 export const Prev = styled(ButtonBase)``;
 
 export const Next = styled(ButtonBase)``;
+
+export const Reverse = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;

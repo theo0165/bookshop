@@ -49,7 +49,7 @@ const Pagination: FC<Props> = ({
           </>
         )}
 
-        {pages >= 6 && selectedPage > 2 && selectedPage < pages - 1 && (
+        {pages >= 6 && selectedPage > 2 && selectedPage < pages - 2 && (
           <>
             <S.Page isSelected={false} onClick={() => gotoPage(1)}>
               1
@@ -87,6 +87,26 @@ const Pagination: FC<Props> = ({
         )}
 
         {/* Missing: when more than 6 pages and user is on second to last and last page */}
+        {pages > 6 &&
+          (selectedPage === pages - 1 || selectedPage === pages - 2) && (
+            <>
+              <S.Page isSelected={false} onClick={() => gotoPage(1)}>
+                1
+              </S.Page>
+              <Caption>...</Caption>
+              <S.Reverse>
+                {[...Array(4)].map((_, i) => (
+                  <S.Page
+                    isSelected={selectedPage === pages - i}
+                    key={`page-${pages - i}`}
+                    onClick={() => gotoPage(pages - i)}
+                  >
+                    {pages - i}
+                  </S.Page>
+                ))}
+              </S.Reverse>
+            </>
+          )}
 
         {pages < 6 &&
           [...Array(pages)].map((_, i) => (
