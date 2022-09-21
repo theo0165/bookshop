@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-  width: 100%;
+  margin: 0 32px;
   color: ${(props) => ` ${props.theme.primaryGreen}`};
 `;
 export const LogoWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: 50px 0 100px 0;
+  margin: 50px 0 50px 0;
   @media screen and (max-width: 835px) {
     margin: 40px 0 40px 32px;
 

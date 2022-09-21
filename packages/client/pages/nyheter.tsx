@@ -16,6 +16,7 @@ import NewsItem from "../types/NewsItem";
 import News from "../components/News";
 import { useRouter } from "next/router";
 import Pagination from "../components/Pagination";
+import Footer from "../components/Footer";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -238,6 +239,7 @@ const Nyheter: NextPage<Props> = ({
           selectedPage={page}
         />
       </S.Container>
+      <Footer settings={globalSettings} />
     </>
   );
 };
