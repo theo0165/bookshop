@@ -4,8 +4,7 @@ export const BodyContainer = styled.div`
   flex-direction: column;
   display: flex;
   max-width: 1040px;
-  margin: 60px auto;
-  justify-content: space-around;
+  margin: 0 auto;
   align-items: center;
   margin-bottom: 0;
 
@@ -13,7 +12,7 @@ export const BodyContainer = styled.div`
     margin-left: 32px;
     margin-right: 32px;
   }
-  @media screen and (max-width: 835px) {
+  @media screen and (max-width: 700px) {
     margin-left: 16px;
     margin-right: 16px;
   }
@@ -22,30 +21,29 @@ export const BodyContainer = styled.div`
 export const HeroSection = styled.div`
   display: flex;
   margin-bottom: 100px;
+  margin: 32px;
+  justify-content: space-between;
+  column-gap: 50px;
 
   @media screen and (max-width: 835px) {
     margin-bottom: 32px;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
     margin-top: 50px;
   }
 `;
 export const TextWrapperFirst = styled.div`
-  flex-direction: column;
-  padding-right: 3rem;
-
-  @media screen and (max-width: 450px) {
-    padding-right: 0;
-  }
+  max-width: 470px;
 `;
 export const CardWrapper = styled.div`
+  max-width: 1040px;
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  gap: 24px;
-  margin-bottom: 60px;
+  row-gap: 24px;
+  column-gap: 24px;
+  margin: 0 32px;
 
   @media screen and (max-width: 835px) {
     gap: 16px;
@@ -56,7 +54,8 @@ export const CardWrapper = styled.div`
 export const ImageWrapper = styled.div<{ order: string }>`
   width: calc(50% - 12px);
   order: ${(props) => props.order};
-  @media screen and (max-width: 420px) {
+
+  @media screen and (max-width: 700px) {
     width: 100%;
   }
 `;
@@ -74,17 +73,30 @@ export const CardContainer = styled.div<{ order: string }>`
   padding: 2rem 2rem 3rem 2rem;
   width: calc(50% - 12px);
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 700px) {
     width: 100%;
   }
 `;
+export const HeroSectionTwo = styled.div`
+  display: flex;
+  margin-bottom: 100px;
+  margin: 120px 32px;
+  justify-content: space-between;
+  column-gap: 50px;
 
+  @media screen and (max-width: 835px) {
+    margin-bottom: 32px;
+  }
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+`;
 export const TextWtapperSecond = styled.div`
   flex-direction: column;
-  padding-left: 3rem;
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
-    padding-left: 0;
   }
 `;

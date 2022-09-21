@@ -1,32 +1,32 @@
 export default {
   name: "globalSettings",
   type: "document",
-  title: "Global settings",
+  title: "Globala inställningar",
   fields: [
     {
       name: "title",
       type: "string",
-      title: "Site title",
+      title: "Hemsidans titel",
     },
     {
       name: "logo",
       type: "image",
-      title: "Logo",
+      title: "Logotyp",
     },
     {
       name: "mobileLogo",
       type: "image",
-      title: "Mobile logo",
+      title: "Logotyp för mobil",
     },
     {
       name: "openingHours",
       type: "string",
-      title: "Opening hours",
+      title: "Öppetider",
     },
     {
       name: "address",
       type: "string",
-      title: "Address",
+      title: "Adress",
     },
     {
       name: "email",
@@ -36,7 +36,7 @@ export default {
     {
       name: "number",
       type: "string",
-      title: "Phone number",
+      title: "Telefonnummer",
     },
     {
       name: "instagram",

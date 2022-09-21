@@ -1,32 +1,32 @@
 export default {
   name: "frontpage",
-  title: "Frontpage",
+  title: "Första sida",
   type: "document",
   fields: [
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Titel",
     },
     {
       name: "text",
       type: "text",
-      title: "Hero text",
+      title: "Omslagstext",
     },
     {
       name: "heroImage",
       type: "image",
-      title: "Hero image",
+      title: "Omslagsbild",
     },
     {
       name: "linkText",
       type: "string",
-      title: "Link text",
+      title: "Länktext",
     },
     {
       name: "cards",
       type: "array",
-      title: "Cards",
+      title: "Kort",
       of: [{ type: "halfRow" }, { type: "fullRow" }],
     },
   ],

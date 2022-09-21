@@ -1,12 +1,12 @@
 export default {
   name: "category",
   type: "document",
-  title: "Category",
+  title: "Kategorier",
   fields: [
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Titel",
     },
   ],
 };

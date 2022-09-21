@@ -9,13 +9,12 @@ import {
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import GlobalSettings from "../types/GlobalSettings";
 import {
-  ContactWrapper,
   FooterContainer,
   FooterInfoWrapper,
+  FooterItems,
   LinksWrapper,
+  LogoFooter,
   LogoWrapper,
-  OpeningHoursWrapper,
-  SocialsWrapper,
 } from "./styled/Footer.styled";
 import { Logo } from "./styled/Header.styles";
 import BodyNormal from "./styled/texts/BodyNormal";
@@ -33,12 +32,12 @@ const Footer: NextPage<Props> = ({ settings }) => {
         <LogoWrapper>
           <Link href="/">
             <a>
-              <Logo src={settings.logo}></Logo>
+              <LogoFooter src={settings.logo}></LogoFooter>
             </a>
           </Link>
         </LogoWrapper>
         <FooterInfoWrapper>
-          <SocialsWrapper>
+          <FooterItems>
             <HeadingThree>Sociala medier</HeadingThree>
             <LinksWrapper>
               <InfoItem>
@@ -56,8 +55,8 @@ const Footer: NextPage<Props> = ({ settings }) => {
                 <BodyNormal>Facebook</BodyNormal>
               </InfoItem>
             </LinksWrapper>
-          </SocialsWrapper>
-          <ContactWrapper>
+          </FooterItems>
+          <FooterItems>
             <HeadingThree>Kontakt/ Hitta hit</HeadingThree>
             <InfoItem>
               <AiOutlinePhone />
@@ -73,14 +72,14 @@ const Footer: NextPage<Props> = ({ settings }) => {
               <HiOutlineLocationMarker />
               <BodyNormal>{settings.address}</BodyNormal>
             </InfoItem>
-          </ContactWrapper>
-          <OpeningHoursWrapper>
+          </FooterItems>
+          <FooterItems>
             <HeadingThree>Öppetider</HeadingThree>
             <InfoItem>
               <AiOutlineClockCircle />
               <BodyNormal>{settings.openingHours}</BodyNormal>
             </InfoItem>
-          </OpeningHoursWrapper>
+          </FooterItems>
         </FooterInfoWrapper>
       </FooterContainer>
     </>
