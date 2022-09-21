@@ -113,8 +113,8 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
             <ImageChild src={data.imageThird} />
           </ImageWrapper>
         </CardWrapper>
-        <Footer settings={globalSettings} />
       </BodyContainer>
+      <Footer settings={globalSettings} />
     </>
   );
 };
