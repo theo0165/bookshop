@@ -1,27 +1,22 @@
 export default {
   name: "card",
   type: "object",
-  title: "Card",
+  title: "Kort",
   fields: [
     {
       name: "caption",
       type: "string",
-      title: "Caption",
+      title: "Överskrift",
     },
     {
       name: "heading",
       type: "string",
-      title: "Title",
+      title: "Titel",
     },
     {
       name: "text",
-      type: "string",
-      title: "Text",
+      type: "text",
+      title: "Brödtext",
     },
-    // {
-    //   name: "img",
-    //   type: "image",
-    //   title: "Image",
-    // },
   ],
 };

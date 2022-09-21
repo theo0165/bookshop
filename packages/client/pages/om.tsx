@@ -6,6 +6,9 @@ import {
   CardContainer,
   CardWrapper,
   HeroSection,
+  HeroSectionTwo,
+  ImageChild,
+  ImageWrapper,
   TextWrapperFirst,
   TextWtapperSecond,
 } from "../components/styled/About.styled";
@@ -18,6 +21,8 @@ import Header from "../components/Header";
 import GlobalSettings from "../types/GlobalSettings";
 import getGlobalSettings from "../helpers/getGlobalSettings";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Footer from "../components/Footer";
+import { HeroImage } from "../components/styled/Homepage.styled";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -52,55 +57,63 @@ interface Props {
 
 const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
   // console.log(data.firstAboutTitle);
-  console.log(data);
+  console.log(data.firstBodyText.split("\n\n"));
 
   return (
     <>
       <Header settings={globalSettings} />
-      <Breadcrumbs />
       <BodyContainer>
+        <Breadcrumbs />
         <HeroSection>
           <TextWrapperFirst>
             <HeadingOne>{data.firstAboutTitle}</HeadingOne>
-            <BodyNormal>{data.firstBodyText}</BodyNormal>
+
+            {data.firstBodyText?.split("\n\n").map((section, index) => (
+              <BodyNormal key={`firstBodyText${index}`}>{section}</BodyNormal>
+            ))}
           </TextWrapperFirst>
-          <img src={data.image} />
+          <HeroImage src={data.image} />
         </HeroSection>
         <CardWrapper>
-          <CardContainer>
+          <CardContainer order="2">
             <Caption>{data.firstCard.caption}</Caption>
             <HeadingTwo>{data.firstCard.heading}</HeadingTwo>
             <BodyNormal>{data.firstCard.text}</BodyNormal>
           </CardContainer>
-          <div>
-            <img src={data.firstImageCard} />
-          </div>
-          <div>
-            <img src={data.secondImageCard} />
-          </div>
-          <CardContainer>
+          <ImageWrapper order="1">
+            <ImageChild src={data.firstImageCard} />
+          </ImageWrapper>
+          <ImageWrapper order="4">
+            <ImageChild src={data.secondImageCard} />
+          </ImageWrapper>
+          <CardContainer order="3">
             <Caption>{data.secondCard.caption}</Caption>
             <HeadingTwo>{data.secondCard.heading}</HeadingTwo>
-            <BodyNormal>{data.secondCard.text}</BodyNormal>
+            {data.secondCard.text?.split("\n\n").map((section, index) => (
+              <BodyNormal key={`info-text-${index}`}>{section}</BodyNormal>
+            ))}
           </CardContainer>
         </CardWrapper>
-        <HeroSection>
-          <img src={data.imageSecond} />
+        <HeroSectionTwo>
+          <HeroImage src={data.imageSecond} />
           <TextWtapperSecond>
             <HeadingOne>{data.secondAboutTitle}</HeadingOne>
-            <BodyNormal>{data.secondBodyText}</BodyNormal>
+            {data.secondBodyText?.split("\n\n").map((section, index) => (
+              <BodyNormal key={`info-text-${index}`}>{section}</BodyNormal>
+            ))}
           </TextWtapperSecond>
-        </HeroSection>
+        </HeroSectionTwo>
         <CardWrapper>
-          <CardContainer>
+          <CardContainer order="1">
             <Caption>{data.thirdCard.caption}</Caption>
             <HeadingTwo>{data.thirdCard.heading}</HeadingTwo>
             <BodyNormal>{data.thirdCard.text}</BodyNormal>
           </CardContainer>
-          <div>
-            <img src={data.imageThird} />
-          </div>
+          <ImageWrapper order="2">
+            <ImageChild src={data.imageThird} />
+          </ImageWrapper>
         </CardWrapper>
+        <Footer settings={globalSettings} />
       </BodyContainer>
     </>
   );

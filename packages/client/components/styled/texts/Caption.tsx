@@ -4,7 +4,7 @@ interface Props {
   grey?: boolean;
 }
 
-const Caption = styled.p<Props>`
+const Caption = styled.span<Props>`
   font-family: "Avenir", sans-serif;
   font-weight: 400;
   font-size: 12px;

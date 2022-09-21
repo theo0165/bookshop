@@ -41,4 +41,49 @@ export const CardsContainer = styled.div`
   flex-wrap: wrap;
   row-gap: 24px;
   column-gap: 24px;
+
+  @media screen and (max-width: 835px) {
+    margin: 0 32px;
+  }
+  @media screen and (max-width: 1100px) {
+    margin: 0 16px;
+  }
+`;
+
+export const InstagramContainer = styled.div`
+  max-width: 1040px;
+  margin: 40px 0px;
+
+  @media screen and (max-width: 1100px) {
+    margin: 24px 16px;
+  }
+
+  @media screen and (max-width: 835px) {
+    margin: 24px 16px;
+  }
+`;
+export const InstagramImageContainer = styled.div`
+  max-width: 1040px;
+  margin: 0 auto;
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 20px;
+
+  @media screen and (max-width: 835px) {
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+`;
+
+export const InstaImage = styled.img`
+  height: 230px;
+  width: 242px;
+  object-fit: cover;
+
+  @media screen and (max-width: 835px) {
+    height: 156px;
+    width: 156px;
+  }
 `;
