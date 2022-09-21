@@ -48,6 +48,8 @@ interface Props {
 }
 
 const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
+  console.log(newsItems);
+
   return (
     <>
       <Header settings={globalSettings} />
@@ -103,9 +105,9 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
         </S.MainContainer>
         <DisplayOne>Kolla även</DisplayOne>
         <NewsItems>
-          {newsItems.slice(0, 3).map((item) => (
+          {newsItems.map((item) => (
             <S.CardContainer key={`news-item-${item._id}`}>
-              <News newsItem={item}  />
+              <News newsItem={item} />
             </S.CardContainer>
           ))}
         </NewsItems>
@@ -141,7 +143,7 @@ export const getServerSideProps = async (ctx) => {
   );
 
   const newsItems = await client.fetch(`
-  *[_type == "newsItem" && !(_id in path("drafts.**"))]{
+  *[_type == "newsItem" && !(_id in path("drafts.**"))][0...3]{
     _id,
     bodyText,
     title,
