@@ -27,7 +27,7 @@ export default {
       title: "Datum",
     },
     {
-      name: "image",
+      name: "image2",
       type: "image",
       title: "Bild",
     },

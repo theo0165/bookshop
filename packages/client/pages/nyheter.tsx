@@ -1,21 +1,23 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Breadcrumbs from "../components/Breadcrumbs";
+import CustomDatepicker from "../components/CustomDatepicker";
 import Header from "../components/Header";
-import getGlobalSettings from "../helpers/getGlobalSettings";
-import GlobalSettings from "../types/GlobalSettings";
+import News from "../components/News";
+import Pagination from "../components/Pagination";
 import * as S from "../components/styled/Nyheter.styled";
+import BodyNormal from "../components/styled/texts/BodyNormal";
 import Caption from "../components/styled/texts/Caption";
 import HeadingOne from "../components/styled/texts/HeadingOne";
-import client from "../helpers/sanity";
 import HeadingTwo from "../components/styled/texts/HeadingTwo";
-import BodyNormal from "../components/styled/texts/BodyNormal";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { useEffect, useRef, useState } from "react";
+import getGlobalSettings from "../helpers/getGlobalSettings";
+import client from "../helpers/sanity";
 import Category from "../types/Category";
+import GlobalSettings from "../types/GlobalSettings";
 import NewsItem from "../types/NewsItem";
-import News from "../components/News";
-import { useRouter } from "next/router";
-import Pagination from "../components/Pagination";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -46,6 +48,7 @@ const Nyheter: NextPage<Props> = ({
   const [newsItems, setNewsItems] = useState(_newsItems);
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
+  const [filterByDate, setFilterByDate] = useState<Date | null>(null);
   const [page, setPage] = useState(1);
 
   const nextPage = () => {
@@ -115,16 +118,47 @@ const Nyheter: NextPage<Props> = ({
     // Filter here
     if (filterByCategories.length > 0) {
       setFilteredNewsItems(
-        newsItems.filter((item) => {
-          return item.categories.some((category) =>
-            filterByCategories.includes(category._id)
-          );
-        })
+        newsItems
+          .filter((item) => {
+            return item.categories.some((category) =>
+              filterByCategories.includes(category._id)
+            );
+          })
+          .filter((item) => {
+            const newsItemDate = new Date(item.date);
+            const newsItemYear = newsItemDate.getFullYear();
+
+            const newsItemMonth =
+              newsItemDate.getMonth() + 1 < 10
+                ? `0${newsItemDate.getMonth() + 1}`
+                : newsItemDate.getMonth() + 1;
+
+            const newsItemDay =
+              newsItemDate.getDate() + 1 < 10
+                ? `0${newsItemDate.getDate() + 1}`
+                : newsItemDate.getDate() + 1;
+
+            const filterByYear = filterByDate.getFullYear();
+            const filterByMonth =
+              filterByDate.getMonth() + 1 < 10
+                ? `0${filterByDate.getMonth() + 1}`
+                : filterByDate.getMonth() + 1;
+
+            const filterByDay =
+              filterByDate.getDate() + 1 < 10
+                ? `0${filterByDate.getDate() + 1}`
+                : filterByDate.getDate() + 1;
+
+            return (
+              `${newsItemYear}-${newsItemMonth}-${newsItemDay}` ===
+              `${filterByYear}-${filterByMonth}-${filterByDay}`
+            );
+          })
       );
     } else {
       setFilteredNewsItems(newsItems);
     }
-  }, [filterByCategories, newsItems]);
+  }, [filterByCategories, filterByDate, newsItems]);
 
   useEffect(() => {
     console.log("Page changed");
@@ -185,10 +219,11 @@ const Nyheter: NextPage<Props> = ({
             <S.FilterTop>
               <Caption>Filtrera</Caption>
               <S.DateContainer>
-                <div>
-                  <AiOutlineCalendar />
-                </div>
-                <BodyNormal>Datum</BodyNormal>
+                <DatePicker
+                  selected={filterByDate}
+                  onChange={(date) => setFilterByDate(date)}
+                  customInput={<CustomDatepicker />}
+                />
               </S.DateContainer>
             </S.FilterTop>
             <S.FilterBottom>
