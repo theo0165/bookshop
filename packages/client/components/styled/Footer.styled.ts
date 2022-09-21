@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-  margin: 0 32px;
+  width: 100%;
+  padding: 0 32px;
+  margin-bottom: 32px;
   color: ${(props) => ` ${props.theme.primaryGreen}`};
 `;
 export const LogoWrapper = styled.div`
@@ -20,11 +22,10 @@ export const LogoFooter = styled.img`
 `;
 
 export const FooterInfoWrapper = styled.div`
+  max-width: 1040px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 32px;
-  margin: 0 32px;
 
   @media screen and (max-width: 600px) {
     flex-direction: column-reverse;
