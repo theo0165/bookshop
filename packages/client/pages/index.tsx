@@ -1,19 +1,19 @@
-import type { NextPage } from 'next';
-import BodyNormal from '../components/styled/texts/BodyNormal';
-import HeadingOne from '../components/styled/texts/HeadingOne';
-import UnderlineButtonText from '../components/styled/texts/UnderlineButtonText';
-import client from '../helpers/sanity';
-import * as S from '../components/styled/Homepage.styled';
-import Card from '../components/Card';
-import CardType from '../types/Card';
-import getGlobalSettings from '../helpers/getGlobalSettings';
-import GlobalSettings from '../types/GlobalSettings';
-import Header from '../components/Header';
-import TopInfoBar from '../components/TopInfoBar';
-import { useRef } from 'react';
-import InstagramImage from '../types/InstagramImage';
-import DisplayOne from '../components/styled/texts/DisplayOne';
-import Footer from '../components/Footer';
+import type { NextPage } from "next";
+import BodyNormal from "../components/styled/texts/BodyNormal";
+import HeadingOne from "../components/styled/texts/HeadingOne";
+import UnderlineButtonText from "../components/styled/texts/UnderlineButtonText";
+import client from "../helpers/sanity";
+import * as S from "../components/styled/Homepage.styled";
+import Card from "../components/Card";
+import CardType from "../types/Card";
+import getGlobalSettings from "../helpers/getGlobalSettings";
+import GlobalSettings from "../types/GlobalSettings";
+import Header from "../components/Header";
+import TopInfoBar from "../components/TopInfoBar";
+import { useRef } from "react";
+import InstagramImage from "../types/InstagramImage";
+import DisplayOne from "../components/styled/texts/DisplayOne";
+import Footer from "../components/Footer";
 
 interface Props {
   data: {
@@ -41,38 +41,39 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
         settings={globalSettings}
         offset={topInfoBar.current?.scrollHeight ?? 64}
       />
-      <S.MainContainer>
-      <S.HeroContainer>
-        <S.HeroText>
-          <HeadingOne>{data.title}</HeadingOne>
-          <BodyNormal>{data.text}</BodyNormal>
-          <UnderlineButtonText href='/om-oss'>
-            {data.linkText}
-          </UnderlineButtonText>
-        </S.HeroText>
-        <S.HeroImage src={data.heroImage} />
-      </S.HeroContainer>
-      <S.CardsContainer>
-        {data.cards &&
-          data.cards.map((card: CardType) => (
-            <Card data={card} key={`card-${card._key}`} />
-          ))}
-      </S.CardsContainer>
-
-      <S.InstagramContainer>
-        <DisplayOne>Instagram</DisplayOne>
-        <S.InstagramImageContainer>
-          {instagram.data &&
-            instagram.data.slice(0, 7).map((instagramImage: InstagramImage) => (
-              <a key={instagramImage.id} href={instagramImage.permalink}>
-                <S.InstaImage src={instagramImage.media_url} />
-              </a>
+      <S.Container>
+        <S.HeroContainer>
+          <S.HeroText>
+            <HeadingOne>{data.title}</HeadingOne>
+            <BodyNormal>{data.text}</BodyNormal>
+            <UnderlineButtonText href="/om-oss">
+              {data.linkText}
+            </UnderlineButtonText>
+          </S.HeroText>
+          <S.HeroImage src={data.heroImage} />
+        </S.HeroContainer>
+        <S.CardsContainer>
+          {data.cards &&
+            data.cards.map((card: CardType) => (
+              <Card data={card} key={`card-${card._key}`} />
             ))}
-        </S.InstagramImageContainer>
-      </S.InstagramContainer>
-      <Footer settings={globalSettings} />
-      </S.MainContainer>
+        </S.CardsContainer>
 
+        <S.InstagramContainer>
+          <DisplayOne>Instagram</DisplayOne>
+          <S.InstagramImageContainer>
+            {instagram.data &&
+              instagram.data
+                .slice(0, 7)
+                .map((instagramImage: InstagramImage) => (
+                  <a key={instagramImage.id} href={instagramImage.permalink}>
+                    <S.InstaImage src={instagramImage.media_url} />
+                  </a>
+                ))}
+          </S.InstagramImageContainer>
+        </S.InstagramContainer>
+      </S.Container>
+      <Footer settings={globalSettings} />
     </>
   );
 };

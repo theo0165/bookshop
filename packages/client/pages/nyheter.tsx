@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 import Category from "../types/Category";
 import NewsItem from "../types/NewsItem";
 import News from "../components/News";
+import { useRouter } from "next/router";
+import Pagination from "../components/Pagination";
 
 interface Props {
   globalSettings: GlobalSettings;
@@ -30,6 +32,7 @@ interface Props {
   };
   categories: Category[];
   _newsItems: NewsItem[];
+  newsItemCount: number;
 }
 
 const Nyheter: NextPage<Props> = ({
@@ -37,11 +40,65 @@ const Nyheter: NextPage<Props> = ({
   data,
   categories,
   _newsItems,
+  newsItemCount,
 }) => {
+  const router = useRouter();
   const [newsItems, setNewsItems] = useState(_newsItems);
   const [filteredNewsItems, setFilteredNewsItems] = useState(_newsItems);
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [page, setPage] = useState(1);
+
+  const nextPage = () => {
+    if (page < 9) {
+      //Math.ceil(newsItemCount / 6) -) {
+      setPage(page + 1);
+      router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
+    }
+  };
+
+  const prevPage = () => {
+    if (page < 3) {
+      setPage(1);
+      router.push("/nyheter", undefined, { shallow: true });
+    } else {
+      setPage(page - 1);
+      router.push(`/nyheter?page=${page - 1}`, undefined, { shallow: true });
+    }
+  };
+
+  const gotoPage = (newPage: number) => {
+    setPage(newPage);
+    router.push(`/nyheter?page=${newPage}`, undefined, { shallow: true });
+  };
+
+  const fetchNews = async (page: number): Promise<NewsItem[]> => {
+    const offset = page > 0 ? (page - 1) * 6 : 0;
+    const nextNews = await client.fetch(
+      `
+      *[_type == "newsItem" && !(_id in path("drafts.**"))] | order(date asc) | order(publishedAt desc) [$start...$end]{
+        _id,
+        bodyText,
+        title,
+        "slug": slug.current,
+        "categories": categories[]{
+          "_id": @->_id,
+          "title": @->title
+        },
+        "image": image.asset->url,
+        date,
+        time
+      }
+    `,
+      {
+        start: offset,
+        end: offset + 6,
+      }
+    );
+
+    console.log({ msg: "fetching news", nextNews, offset });
+
+    return nextNews;
+  };
 
   const toggleFilter = (category: Category) => {
     if (filterByCategories.includes(category._id)) {
@@ -70,7 +127,30 @@ const Nyheter: NextPage<Props> = ({
     } else {
       setFilteredNewsItems(newsItems);
     }
-  }, [filterByCategories]);
+  }, [filterByCategories, newsItems]);
+
+  useEffect(() => {
+    console.log("Page changed");
+
+    (async () => {
+      if (router.query.page) {
+        console.log("test");
+
+        const pageInQuery =
+          typeof router.query.page === "string"
+            ? parseInt(router.query.page)
+            : parseInt(router.query.page[0]);
+
+        setPage(pageInQuery);
+        setNewsItems(await fetchNews(pageInQuery));
+      } else {
+        console.log("test again");
+
+        setPage(1);
+        setNewsItems(await fetchNews(0));
+      }
+    })();
+  }, [router.query.page]);
 
   return (
     <>
@@ -136,6 +216,13 @@ const Nyheter: NextPage<Props> = ({
             ))}
           </S.NewsItems>
         </S.NewsContainer>
+        <Pagination
+          nextPage={nextPage}
+          prevPage={prevPage}
+          gotoPage={gotoPage}
+          pages={10} //{Math.ceil(newsItemCount / 6)}
+          selectedPage={page}
+        />
       </S.Container>
     </>
   );
@@ -156,7 +243,7 @@ export const getServerSideProps = async () => {
   `);
 
   const newsItems = await client.fetch(`
-    *[_type == "newsItem" && !(_id in path("drafts.**"))]{
+    *[_type == "newsItem" && !(_id in path("drafts.**"))] | order(date asc) | order(publishedAt desc) [0...6]{
       _id,
       bodyText,
       title,
@@ -167,7 +254,19 @@ export const getServerSideProps = async () => {
     }
   `);
 
-  return { props: { globalSettings, data, categories, _newsItems: newsItems } };
+  const newsItemCount = await client.fetch(`
+    count(*[_type == "newsItem" && !(_id in path("drafts.**"))])
+  `);
+
+  return {
+    props: {
+      globalSettings,
+      data,
+      categories,
+      _newsItems: newsItems,
+      newsItemCount,
+    },
+  };
 };
 
 export default Nyheter;
