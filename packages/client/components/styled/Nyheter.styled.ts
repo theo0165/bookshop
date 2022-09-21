@@ -146,3 +146,18 @@ export const NewsItems = styled.div`
     justify-content: center;
   }
 `;
+
+export const DateInput = styled.input`
+  display: none;
+`;
+
+export const LabelWrapper = styled.label`
+  display: flex;
+  column-gap: 10px;
+  cursor: pointer;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+`;
