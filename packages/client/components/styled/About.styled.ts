@@ -1,29 +1,19 @@
 import styled from "styled-components";
 
 export const BodyContainer = styled.div`
-  flex-direction: column;
   display: flex;
-  max-width: 1040px;
-  margin: 0 auto;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 0;
-
-  @media screen and (max-width: 835px) {
-    margin-left: 32px;
-    margin-right: 32px;
-  }
-  @media screen and (max-width: 700px) {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
+  margin: 0 32px;
 `;
 
 export const HeroSection = styled.div`
   display: flex;
-  margin-bottom: 100px;
-  margin: 32px;
+  max-width: 1040px;
   justify-content: space-between;
+  align-items: center;
   column-gap: 50px;
+  margin: 0;
 
   @media screen and (max-width: 835px) {
     margin-bottom: 32px;
@@ -35,7 +25,7 @@ export const HeroSection = styled.div`
   }
 `;
 export const TextWrapperFirst = styled.div`
-  max-width: 470px;
+  /* max-width: 470px; */
 `;
 export const CardWrapper = styled.div`
   max-width: 1040px;
@@ -43,11 +33,9 @@ export const CardWrapper = styled.div`
   flex-wrap: wrap;
   row-gap: 24px;
   column-gap: 24px;
-  margin: 0 32px;
 
   @media screen and (max-width: 835px) {
     gap: 16px;
-    margin: 0 20px 32px 20px;
   }
 `;
 
@@ -79,10 +67,11 @@ export const CardContainer = styled.div<{ order: string }>`
 `;
 export const HeroSectionTwo = styled.div`
   display: flex;
-  margin-bottom: 100px;
-  margin: 120px 32px;
+  max-width: 1040px;
   justify-content: space-between;
+  align-items: center;
   column-gap: 50px;
+  margin: 120px 0;
 
   @media screen and (max-width: 835px) {
     margin-bottom: 32px;
