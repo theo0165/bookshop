@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -68,12 +68,19 @@ export const InstagramImageContainer = styled.div`
   margin-top: 32px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   row-gap: 20px;
   column-gap: 20px;
+
+  &:nth-child(1) {
+    display: none;
+  }
 
   @media screen and (max-width: 835px) {
     row-gap: 16px;
     column-gap: 16px;
+  }
+  @media screen and (max-width: 700px) {
   }
 `;
 
@@ -86,4 +93,20 @@ export const InstaImage = styled.img`
     height: 156px;
     width: 156px;
   }
+`;
+export const InstaLink = styled.a`
+&:nth-child(9) {
+  display: none;
+}
+
+@media screen and (max-width: 835px) {
+  &:nth-child(9) {
+    display: inline;
+  }
+}
+@media screen and (max-width: 700px) {
+  &:nth-child(9) {
+    display: none;
+  }
+}
 `;
