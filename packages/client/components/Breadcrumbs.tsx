@@ -8,8 +8,6 @@ import Caption from "./styled/texts/Caption";
 const Breadcrumbs: FC = () => {
   const router = useRouter();
 
-  console.log(router.asPath.split("/"));
-
   return (
     <S.BreadcrumbContainer>
       <Caption>/</Caption>
@@ -19,16 +17,16 @@ const Breadcrumbs: FC = () => {
         </a>
       </Link>
       {router.asPath.split("/").map(
-        (path: string) =>
+        (path: string, index: number) =>
           path != "" && (
-            <>
+            <span key={`breadcrumb-${index}`}>
               <Caption>/</Caption>
               <Link href={`/${path}`}>
                 <a>
                   <Caption>{translateBreadcrumb(path)}</Caption>
                 </a>
               </Link>
-            </>
+            </span>
           )
       )}
     </S.BreadcrumbContainer>

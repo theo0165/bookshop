@@ -22,6 +22,11 @@ export default () =>
                 .child(
                   S.document().schemaType("frontpage").documentId("frontpage")
                 ),
+              S.listItem()
+                .title("News page")
+                .child(
+                  S.document().schemaType("newsPage").documentId("newsPage")
+                ),
             ])
         ),
       S.divider(),
