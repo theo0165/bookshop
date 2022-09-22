@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CustomDatepicker from "../components/CustomDatepicker";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import News from "../components/News";
 import Pagination from "../components/Pagination";
