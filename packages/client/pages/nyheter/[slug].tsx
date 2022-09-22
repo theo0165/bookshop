@@ -13,10 +13,7 @@ import Header from "../../components/Header";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import * as S from "../../components/styled/NewsItem.styled";
 import DisplayOne from "../../components/styled/texts/DisplayOne";
-import {
-  Container,
-  NewsItems,
-} from "../../components/styled/Nyheter.styled";
+import { Container, NewsItems } from "../../components/styled/Nyheter.styled";
 import BodySmall from "../../components/styled/texts/BodySmall";
 import HeadingThree from "../../components/styled/texts/HeadingThree";
 import formatNewsDate from "../../helpers/formatNewsDate";
@@ -45,8 +42,6 @@ interface Props {
 }
 
 const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
-  console.log(newsItems);
-
   return (
     <>
       <Header settings={globalSettings} />
@@ -55,9 +50,9 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
         <S.NewsItemImage src={data.image} alt={data.image_alt} />
         <S.TitleContainer>
           <S.NewsItemTitle>
-            {data.categories.map((category) => (
-              <Caption key={category._id}>| {category.title} | </Caption>
-            ))}
+            <Caption>
+              {data.categories.map((item) => item.title).join(" | ")}
+            </Caption>
           </S.NewsItemTitle>
           {data.date && (
             <S.Date>

@@ -16,19 +16,22 @@ const Breadcrumbs: FC = () => {
           <Caption>hem</Caption>
         </a>
       </Link>
-      {router.asPath.split("/").map(
-        (path: string, index: number) =>
-          path != "" && (
-            <span key={`breadcrumb-${index}`}>
-              <Caption>/</Caption>
-              <Link href={`/${path}`}>
-                <a>
-                  <Caption>{translateBreadcrumb(path)}</Caption>
-                </a>
-              </Link>
-            </span>
-          )
-      )}
+      {router.asPath
+        .replaceAll("-", " ")
+        .split("/")
+        .map(
+          (path: string, index: number) =>
+            path != "" && (
+              <span key={`breadcrumb-${index}`}>
+                <Caption>/</Caption>
+                <Link href={`/${path}`}>
+                  <a>
+                    <Caption>{translateBreadcrumb(path)}</Caption>
+                  </a>
+                </Link>
+              </span>
+            )
+        )}
     </S.BreadcrumbContainer>
   );
 };
