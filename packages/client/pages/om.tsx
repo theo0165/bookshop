@@ -56,9 +56,6 @@ interface Props {
 }
 
 const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
-  // console.log(data.firstAboutTitle);
-  console.log(data.firstBodyText.split("\n\n"));
-
   return (
     <>
       <Header settings={globalSettings} />

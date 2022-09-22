@@ -173,12 +173,8 @@ const Nyheter: NextPage<Props> = ({
   }, [filterByCategories, filterByDate, newsItems]);
 
   useEffect(() => {
-    console.log("Page changed");
-
     (async () => {
       if (router.query.page) {
-        console.log("test");
-
         const pageInQuery =
           typeof router.query.page === "string"
             ? parseInt(router.query.page)
@@ -187,8 +183,6 @@ const Nyheter: NextPage<Props> = ({
         setPage(pageInQuery);
         setNewsItems(await fetchNews(pageInQuery));
       } else {
-        console.log("test again");
-
         setPage(1);
         setNewsItems(await fetchNews(0));
       }
