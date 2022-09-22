@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   max-width: 1040px;
@@ -14,19 +14,19 @@ export const Container = styled.div`
 
 export const CardContainer = styled.div``;
 
-export const Card = styled.div<{ bg: 'green' | 'white' }>`
+export const Card = styled.div<{ bg: "green" | "white" }>`
   border-radius: 4px;
   padding: 25px 52px 40px 52px;
 
   ${(props) =>
-    props.bg === 'green' &&
+    props.bg === "green" &&
     css`
       background: ${props.theme.textWhite};
       border: 1px solid ${props.theme.textBlack};
     `}
 
   ${(props) =>
-    props.bg === 'white' &&
+    props.bg === "white" &&
     css`
       background: ${props.theme.primaryGreen};
       color: white;
@@ -65,6 +65,15 @@ export const Button = styled.button<{ greenBg?: boolean }>`
 
   color: ${(props) =>
     props.greenBg ? props.theme.primaryGreen : props.theme.textWhite};
+
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) =>
+      props.greenBg ? props.theme.primaryGreen : props.theme.textWhite};
+    color: ${(props) =>
+      props.greenBg ? props.theme.textWhite : props.theme.primaryGreen};
+  }
 
   p {
     margin: 0;
