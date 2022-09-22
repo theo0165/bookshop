@@ -50,7 +50,6 @@ export const MainContainer = styled.div`
   @media screen and (max-width: 833px) {
     flex-direction: column-reverse;
     margin-bottom: 60px;
-
   }
 `;
 
@@ -109,5 +108,22 @@ export const DateTimeInfo = styled.div`
   @media screen and (max-width: 700px) {
     justify-content: flex-start;
     width: 158px;
+  }
+`;
+
+export const CardContainer = styled.div`
+@media screen and (max-width: 1050px) {
+  &:nth-child(2) {
+    display: none;
+  }
+  @media screen and (max-width: 835px) {
+    width: 375px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 343px;
+
+    &:nth-child(3) {
+      display: none;
+    }
   }
 `;

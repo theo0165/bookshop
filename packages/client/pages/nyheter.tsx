@@ -271,6 +271,7 @@ const Nyheter: NextPage<Props> = ({
           selectedPage={page}
         />
       </S.Container>
+      <Footer settings={globalSettings} />
     </>
   );
 };
