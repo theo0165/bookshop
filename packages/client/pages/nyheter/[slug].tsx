@@ -45,8 +45,8 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
   return (
     <>
       <Header settings={globalSettings} />
-      <Breadcrumbs />
       <Container>
+        <Breadcrumbs />
         <S.NewsItemImage src={data.image} alt={data.image_alt} />
         <S.TitleContainer>
           <S.NewsItemTitle>

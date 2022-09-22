@@ -5,9 +5,9 @@ export const BreadcrumbContainer = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  @media screen and (max-width: 1040px) {
+  /* @media screen and (max-width: 1040px) {
     padding: 0 32px;
-  }
+  } */
 
   p {
     display: inline-block;

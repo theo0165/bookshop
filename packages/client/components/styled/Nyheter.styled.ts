@@ -5,10 +5,10 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: 1040px) {
-    margin: 0 32px;
+    margin: 0 48px;
   }
   @media screen and (max-width: 833px) {
-    margin: 0 16px;
+    margin: 0 32px;
   }
 `;
 

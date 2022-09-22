@@ -195,8 +195,8 @@ const Nyheter: NextPage<Props> = ({
   return (
     <>
       <Header settings={globalSettings} />
-      <Breadcrumbs />
       <S.Container>
+        <Breadcrumbs />
         <S.CardContainer>
           <HeadingOne>Evenemang</HeadingOne>
           <S.Cards>
