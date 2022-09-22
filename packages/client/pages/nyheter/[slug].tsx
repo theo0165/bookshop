@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import client from "../../helpers/sanity";
 import getGlobalSettings from "../../helpers/getGlobalSettings";
-
 import {
   AiOutlineClockCircle,
   AiOutlineWallet,
