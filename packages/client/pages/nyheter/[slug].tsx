@@ -9,17 +9,14 @@ import {
   AiOutlineEnvironment,
 } from "react-icons/ai";
 import GlobalSettings from "../../types/GlobalSettings";
-import path from "path";
 import Header from "../../components/Header";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import * as S from "../../components/styled/NewsItem.styled";
 import DisplayOne from "../../components/styled/texts/DisplayOne";
 import {
   Container,
-  DateContainer,
   NewsItems,
 } from "../../components/styled/Nyheter.styled";
-import * as D from "../../components/styled/News.styled";
 import BodySmall from "../../components/styled/texts/BodySmall";
 import HeadingThree from "../../components/styled/texts/HeadingThree";
 import formatNewsDate from "../../helpers/formatNewsDate";
@@ -38,7 +35,7 @@ interface Props {
     bodyText: string;
     date: string | null;
     time: string | null;
-    adress: string;
+    address: string;
     price: string;
     image: string;
     image_alt: string;
@@ -97,7 +94,7 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
               <S.DateTimeInfo>
                 <AiOutlineEnvironment />
                 <BodyNormal>
-                  {data.adress ? data.adress : "Allmänna vägen 12, Göteborg"}
+                  {data.address ? data.address : "Allmänna vägen 12, Göteborg"}
                 </BodyNormal>
               </S.DateTimeInfo>
             </S.FlexWrapper>
@@ -136,7 +133,7 @@ export const getServerSideProps = async (ctx) => {
       "image_alt": image.alt,
       date,
       time,
-      adress,
+      address,
       price
     }[0]
     `
