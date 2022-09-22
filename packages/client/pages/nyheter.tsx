@@ -96,7 +96,7 @@ const Nyheter: NextPage<Props> = ({
       }
     );
 
-    //console.log({ msg: "fetching news", nextNews, offset });
+    console.log({ msg: "fetching news", nextNews, offset });
 
     return nextNews;
   };
