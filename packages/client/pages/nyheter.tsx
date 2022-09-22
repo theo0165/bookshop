@@ -10,9 +10,11 @@ import News from "../components/News";
 import Pagination from "../components/Pagination";
 import * as S from "../components/styled/Nyheter.styled";
 import BodyNormal from "../components/styled/texts/BodyNormal";
+import BodySmallest from "../components/styled/texts/BodySmallest";
 import Caption from "../components/styled/texts/Caption";
 import HeadingOne from "../components/styled/texts/HeadingOne";
 import HeadingTwo from "../components/styled/texts/HeadingTwo";
+import UnderlineButtonText from "../components/styled/texts/UnderlineButtonText";
 import getGlobalSettings from "../helpers/getGlobalSettings";
 import client from "../helpers/sanity";
 import Category from "../types/Category";
@@ -229,7 +231,14 @@ const Nyheter: NextPage<Props> = ({
                   selected={filterByDate}
                   onChange={(date: Date) => setFilterByDate(date)}
                   customInput={<CustomDatepicker />}
-                />
+                >
+                  <BodySmallest
+                    onClick={() => setFilterByDate(null)}
+                    className="clearBtn"
+                  >
+                    Återställ
+                  </BodySmallest>
+                </DatePicker>
               </S.DateContainer>
             </S.FilterTop>
             <S.FilterBottom>

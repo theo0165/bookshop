@@ -129,4 +129,12 @@ export const NewsItems = styled.div`
   }
 `;
 
-export const DateContainer = styled.div``;
+export const DateContainer = styled.div`
+  .clearBtn {
+    cursor: pointer;
+    /* padding-left: 15px; */
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 5px;
+  }
+`;
