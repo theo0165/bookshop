@@ -21,4 +21,6 @@ const CustomDatepicker = forwardRef<HTMLDivElement, Props>(
   }
 );
 
+CustomDatepicker.displayName = "CustomDatepicker";
+
 export default CustomDatepicker;
