@@ -79,6 +79,7 @@ export const navItem = styled.li<{ selected: boolean }>`
   display: inline-block;
   margin-right: 72px;
   border-bottom: 1px solid ${(props) => props.theme.textWhite};
+  position: relative;
 
   &:last-of-type {
     margin-right: 0;
@@ -95,8 +96,29 @@ export const navItem = styled.li<{ selected: boolean }>`
       border-color: ${props.theme.orange};
     `}
 
-  &:hover {
-    border-color: ${(props) => props.theme.orange};
+  ${(props) =>
+    !props.selected &&
+    css`
+      &:hover {
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          border-bottom: solid 1px ${(props) => props.theme.orange};
+          animation: border_anim 0.15s linear forwards;
+        }
+      }
+    `}
+
+  @keyframes border_anim {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
   }
 `;
 

@@ -46,7 +46,7 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
           <S.HeroText>
             <HeadingOne>{data.title}</HeadingOne>
             <BodyNormal>{data.text}</BodyNormal>
-            <UnderlineButtonText href="/om-oss">
+            <UnderlineButtonText href="/om">
               {data.linkText}
             </UnderlineButtonText>
           </S.HeroText>
@@ -66,7 +66,10 @@ const Home: NextPage<Props> = ({ data, globalSettings, instagram }) => {
               instagram.data
                 .slice(0, 9)
                 .map((instagramImage: InstagramImage) => (
-                  <S.InstaLink key={instagramImage.id} href={instagramImage.permalink}>
+                  <S.InstaLink
+                    key={instagramImage.id}
+                    href={instagramImage.permalink}
+                  >
                     <S.InstaImage src={instagramImage.media_url} />
                   </S.InstaLink>
                 ))}
