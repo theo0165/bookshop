@@ -4,7 +4,7 @@ export const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 32px;
+  margin: 0 48px;
 `;
 
 export const HeroSection = styled.div`

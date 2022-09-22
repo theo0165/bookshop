@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 32px;
+  margin: 0 48px;
 `;
 
 export const HeroContainer = styled.div`
@@ -95,18 +95,18 @@ export const InstaImage = styled.img`
   }
 `;
 export const InstaLink = styled.a`
-&:nth-child(9) {
-  display: none;
-}
-
-@media screen and (max-width: 835px) {
-  &:nth-child(9) {
-    display: inline;
-  }
-}
-@media screen and (max-width: 700px) {
   &:nth-child(9) {
     display: none;
   }
-}
+
+  @media screen and (max-width: 835px) {
+    &:nth-child(9) {
+      display: inline;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    &:nth-child(9) {
+      display: none;
+    }
+  }
 `;
