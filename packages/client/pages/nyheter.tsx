@@ -50,9 +50,10 @@ const Nyheter: NextPage<Props> = ({
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [filterByDate, setFilterByDate] = useState<Date | null>(null);
   const [page, setPage] = useState(1);
+  const [numberOfPosts, setNumberOfPosts] = useState(0);
 
   const nextPage = () => {
-    if (page < Math.ceil(newsItemCount / 6)) {
+    if (page < Math.ceil(numberOfPosts / 6)) {
       setPage(page + 1);
       router.push(`/nyheter?page=${page + 1}`, undefined, { shallow: true });
     }
@@ -114,6 +115,37 @@ const Nyheter: NextPage<Props> = ({
     }
   };
 
+  const filterDate = (item: NewsItem) => {
+    const newsItemDate = new Date(item.date);
+    const newsItemYear = newsItemDate.getFullYear();
+
+    const newsItemMonth =
+      newsItemDate.getMonth() + 1 < 10
+        ? `0${newsItemDate.getMonth() + 1}`
+        : newsItemDate.getMonth() + 1;
+
+    const newsItemDay =
+      newsItemDate.getDate() + 1 < 10
+        ? `0${newsItemDate.getDate() + 1}`
+        : newsItemDate.getDate() + 1;
+
+    const filterByYear = filterByDate.getFullYear();
+    const filterByMonth =
+      filterByDate.getMonth() + 1 < 10
+        ? `0${filterByDate.getMonth() + 1}`
+        : filterByDate.getMonth() + 1;
+
+    const filterByDay =
+      filterByDate.getDate() + 1 < 10
+        ? `0${filterByDate.getDate() + 1}`
+        : filterByDate.getDate() + 1;
+
+    return (
+      `${newsItemYear}-${newsItemMonth}-${newsItemDay}` ===
+      `${filterByYear}-${filterByMonth}-${filterByDay}`
+    );
+  };
+
   useEffect(() => {
     // Filter here
     if (filterByCategories.length > 0) {
@@ -124,39 +156,16 @@ const Nyheter: NextPage<Props> = ({
               filterByCategories.includes(category._id)
             );
           })
-          .filter((item) => {
-            const newsItemDate = new Date(item.date);
-            const newsItemYear = newsItemDate.getFullYear();
-
-            const newsItemMonth =
-              newsItemDate.getMonth() + 1 < 10
-                ? `0${newsItemDate.getMonth() + 1}`
-                : newsItemDate.getMonth() + 1;
-
-            const newsItemDay =
-              newsItemDate.getDate() + 1 < 10
-                ? `0${newsItemDate.getDate() + 1}`
-                : newsItemDate.getDate() + 1;
-
-            const filterByYear = filterByDate.getFullYear();
-            const filterByMonth =
-              filterByDate.getMonth() + 1 < 10
-                ? `0${filterByDate.getMonth() + 1}`
-                : filterByDate.getMonth() + 1;
-
-            const filterByDay =
-              filterByDate.getDate() + 1 < 10
-                ? `0${filterByDate.getDate() + 1}`
-                : filterByDate.getDate() + 1;
-
-            return (
-              `${newsItemYear}-${newsItemMonth}-${newsItemDay}` ===
-              `${filterByYear}-${filterByMonth}-${filterByDay}`
-            );
-          })
+          .filter(filterDate)
       );
+
+      setNumberOfPosts(filteredNewsItems.length);
+    } else if (filterByDate && filterByDate.getTime() > new Date().getTime()) {
+      setFilteredNewsItems(newsItems.filter(filterDate));
+      setNumberOfPosts(filteredNewsItems.length);
     } else {
       setFilteredNewsItems(newsItems);
+      setNumberOfPosts(newsItemCount);
     }
   }, [filterByCategories, filterByDate, newsItems]);
 
@@ -221,7 +230,7 @@ const Nyheter: NextPage<Props> = ({
               <S.DateContainer>
                 <DatePicker
                   selected={filterByDate}
-                  onChange={(date) => setFilterByDate(date)}
+                  onChange={(date: Date) => setFilterByDate(date)}
                   customInput={<CustomDatepicker />}
                 />
               </S.DateContainer>
@@ -252,7 +261,7 @@ const Nyheter: NextPage<Props> = ({
           nextPage={nextPage}
           prevPage={prevPage}
           gotoPage={gotoPage}
-          pages={Math.ceil(newsItemCount / 6)}
+          pages={Math.ceil(numberOfPosts / 6)}
           selectedPage={page}
         />
       </S.Container>
