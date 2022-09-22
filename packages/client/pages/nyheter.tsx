@@ -50,7 +50,7 @@ const Nyheter: NextPage<Props> = ({
   const [filterByCategories, setFilterByCategories] = useState<string[]>([]);
   const [filterByDate, setFilterByDate] = useState<Date | null>(null);
   const [page, setPage] = useState(1);
-  const [numberOfPosts, setNumberOfPosts] = useState(0);
+  const [numberOfPosts, setNumberOfPosts] = useState(newsItemCount);
 
   const nextPage = () => {
     if (page < Math.ceil(numberOfPosts / 6)) {
@@ -116,6 +116,9 @@ const Nyheter: NextPage<Props> = ({
   };
 
   const filterDate = (item: NewsItem) => {
+    if (!filterByDate) return true;
+    if (!item.date) return false;
+
     const newsItemDate = new Date(item.date);
     const newsItemYear = newsItemDate.getFullYear();
 
