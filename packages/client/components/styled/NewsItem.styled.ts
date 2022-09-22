@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const NewsItemImage = styled.img`
   height: 489px;
@@ -112,18 +112,19 @@ export const DateTimeInfo = styled.div`
 `;
 
 export const CardContainer = styled.div`
-@media screen and (max-width: 1050px) {
-  &:nth-child(2) {
-    display: none;
-  }
-  @media screen and (max-width: 835px) {
-    width: 375px;
-  }
-  @media screen and (max-width: 700px) {
-    width: 343px;
-
-    &:nth-child(3) {
+  @media screen and (max-width: 1050px) {
+    &:nth-child(2) {
       display: none;
+    }
+    @media screen and (max-width: 835px) {
+      width: 375px;
+    }
+    @media screen and (max-width: 700px) {
+      width: 343px;
+
+      &:nth-child(3) {
+        display: none;
+      }
     }
   }
 `;
