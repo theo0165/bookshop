@@ -1,10 +1,13 @@
+import { css } from 'styled-components';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+//Har ska vi skifta bakgrund
+export const Container = styled.div<{ inverted ?: boolean }>`
   border: 1px solid ${(props) => props.theme.textBlack};
   border-radius: 4px;
   width: 330px;
   height: 600px;
+  background-color: ${(props) => (props.inverted ? 'none' : props.theme.backgroundGray)};
 
   @media screen and (max-width: 835px) {
     width: 375px;
