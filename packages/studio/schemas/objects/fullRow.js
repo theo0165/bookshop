@@ -1,3 +1,10 @@
+import {
+  AiOutlineLink,
+  AiOutlineDisconnect,
+  AiOutlineNotification,
+} from "react-icons/ai";
+import { GrBlockQuote } from "react-icons/gr";
+
 export default {
   name: "fullRow",
   title: "Full row",
@@ -62,4 +69,26 @@ export default {
       hidden: ({ parent, value }) => !value && !(parent.type === "Bild"),
     },
   ],
+  preview: {
+    select: {
+      type: "type",
+      image: "image",
+    },
+    prepare: (selection) => {
+      const { type, image } = selection;
+
+      const icons = {
+        "Med länk": AiOutlineLink,
+        "Utan länk": AiOutlineDisconnect,
+        Citat: GrBlockQuote,
+        Nyhet: AiOutlineNotification,
+      };
+
+      return {
+        title: "Fullbredd",
+        subtitle: `${type}`,
+        media: image ? image : icons[type],
+      };
+    },
+  },
 };
