@@ -86,12 +86,12 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
                 <BodyNormal>Föranmälan krävs</BodyNormal>
               </S.DateTimeInfo>
 
-              <S.DateTimeInfo>
-                <AiOutlineEnvironment />
-                <BodyNormal>
-                  {data.address ? data.address : "Allmänna vägen 12, Göteborg"}
-                </BodyNormal>
-              </S.DateTimeInfo>
+              {data.address && (
+                <S.DateTimeInfo>
+                  <AiOutlineEnvironment />
+                  <BodyNormal>{data.address}</BodyNormal>
+                </S.DateTimeInfo>
+              )}
             </S.FlexWrapper>
           </S.TimeDateContainer>
         </S.MainContainer>
