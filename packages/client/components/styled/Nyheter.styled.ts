@@ -124,8 +124,9 @@ export const MobileFilters = styled.div<{ display?: boolean }>`
   z-index: 1000;
   bottom: 40px;
   padding: 24px 32px;
-  border: 1px solid ${(props) => props.theme.textBlack};
+  border: 0.1px solid ${(props) => props.theme.textBlack};
   display: none;
+  border-radius: 4px;
 
   ${(props) =>
     props.display &&
