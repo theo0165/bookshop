@@ -122,7 +122,7 @@ const Header: FC<Props> = ({ settings, offset }) => {
           <S.MobileNavItem selected={router.asPath === "/om"}>
             <Link href="/om">
               <a>
-                <HeadingThree>Om Oss</HeadingThree>
+                <HeadingThree>Om oss</HeadingThree>
               </a>
             </Link>
           </S.MobileNavItem>
