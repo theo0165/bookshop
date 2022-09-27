@@ -9,7 +9,6 @@ import {
   HeroSectionTwo,
   ImageChild,
   ImageWrapper,
-  TextWrapperFirst,
   TextWtapperSecond,
 } from "../components/styled/About.styled";
 
@@ -62,13 +61,11 @@ const AboutPage: NextPage<Props> = ({ data, globalSettings }) => {
       <BodyContainer>
         <Breadcrumbs />
         <HeroSection>
-          <TextWrapperFirst>
-            <HeadingOne>{data.firstAboutTitle}</HeadingOne>
+          <HeadingOne>{data.firstAboutTitle}</HeadingOne>
 
-            {data.firstBodyText?.split("\n\n").map((section, index) => (
-              <BodyNormal key={`firstBodyText${index}`}>{section}</BodyNormal>
-            ))}
-          </TextWrapperFirst>
+          {data.firstBodyText?.split("\n\n").map((section, index) => (
+            <BodyNormal key={`firstBodyText${index}`}>{section}</BodyNormal>
+          ))}
           <HeroImage src={data.image} />
         </HeroSection>
         <CardWrapper>
