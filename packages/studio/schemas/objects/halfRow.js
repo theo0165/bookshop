@@ -7,7 +7,7 @@ import { GrBlockQuote } from "react-icons/gr";
 
 export default {
   name: "halfRow",
-  title: "Half row",
+  title: "Halvbreddskort",
   type: "object",
   fields: [
     {
@@ -97,7 +97,7 @@ export default {
       };
 
       return {
-        title: "Fullbredd",
+        title: "Halvbreddskort",
         subtitle: `${type}`,
         media: image ? image : icons[type],
       };
