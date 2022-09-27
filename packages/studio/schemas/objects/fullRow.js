@@ -7,7 +7,7 @@ import { GrBlockQuote } from "react-icons/gr";
 
 export default {
   name: "fullRow",
-  title: "Full row",
+  title: "Fullbreddskort",
   type: "object",
   fields: [
     {
@@ -85,7 +85,7 @@ export default {
       };
 
       return {
-        title: "Fullbredd",
+        title: "Fullbreddskort",
         subtitle: `${type}`,
         media: image ? image : icons[type],
       };
