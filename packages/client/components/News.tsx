@@ -25,10 +25,9 @@ const News: FC<Props> = ({ newsItem }) => {
   };
 
   return (
-    <S.Container
-      href={`/nyheter/${newsItem.slug}`}
-      inverted={isInThePast(newsItem.date)}
-    >
+    <S.Container href={`/nyheter/${newsItem.slug}`}>
+      <S.Overlay inverted={isInThePast(newsItem.date)}/>
+
       <S.Top>
         <S.Image>
           <Image
@@ -69,6 +68,7 @@ const News: FC<Props> = ({ newsItem }) => {
         </div>
         <S.ReadMore>Läs mer</S.ReadMore>
       </S.Bottom>
+ 
     </S.Container>
   );
 };
