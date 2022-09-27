@@ -48,12 +48,12 @@ export const CardsContainer = styled.div`
   row-gap: 24px;
   column-gap: 24px;
 
-  @media screen and (max-width: 1100px) {
-    margin: 0 16px;
-  }  
-  @media screen and (max-width: 835px) {
-    margin: 0 32px;
-  }
+  // @media screen and (max-width: 1100px) {
+  //   margin: 0 16px;
+  // }  
+  // @media screen and (max-width: 835px) {
+  //   margin: 0 32px;
+  // }
   @media screen and (max-width: 700px) {
     margin: 0;
   }
@@ -64,11 +64,11 @@ export const InstagramContainer = styled.div`
   margin: 40px 0px;
 
   @media screen and (max-width: 1100px) {
-    margin: 24px 16px;
+    margin: 24px 0px;
   }
 
   @media screen and (max-width: 835px) {
-    margin: 24px 32px;
+    margin: 24px 0px;
   }
   @media screen and (max-width: 700px) {
     margin: 24px 0px;
