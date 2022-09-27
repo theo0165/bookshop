@@ -1,13 +1,12 @@
 import { css } from 'styled-components';
 import styled from 'styled-components';
 
-//Har ska vi skifta bakgrund
-export const Container = styled.div<{ inverted ?: boolean }>`
+export const Container = styled.div`
   border: 1px solid ${(props) => props.theme.textBlack};
+  position: relative;
   border-radius: 4px;
   width: 330px;
   height: 600px;
-  background-color: ${(props) => (props.inverted ? 'none' : props.theme.backgroundGray)};
 
   @media screen and (max-width: 835px) {
     width: 375px;
@@ -15,6 +14,18 @@ export const Container = styled.div<{ inverted ?: boolean }>`
   @media screen and (max-width: 700px) {
     width: 343px;
   }
+`;
+export const Overlay = styled.div<{ inverted?: boolean }>`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: ${(props) => props.theme.backgroundGray};
+  z-index: 99;
+  display: ${(props) => (props.inverted ? 'none' : 'initial')};
 `;
 
 export const Top = styled.div`
@@ -38,7 +49,6 @@ export const Date = styled.div`
   position: absolute;
   top: 0;
   left: 8px;
-  /* z-index: 999; */
   text-align: center;
   padding: 8px;
 
