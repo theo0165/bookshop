@@ -5,9 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 48px;
+  @media screen and (max-width: 834px) {
+    margin: 0 32px;
+  }
   @media screen and (max-width: 700px) {
     margin: 0 15px;
-
   }
 `;
 
@@ -100,10 +102,10 @@ export const InstaImage = styled.img`
   object-fit: cover;
 
   @media screen and (max-width: 835px) {
-    height: 156px;
-    width: 156px;
-  }
-  @media screen and (max-width: 380px) {
+    height: 223px;
+    width: 223px;  }
+
+  @media screen and (max-width: 700px) {
     height: 163px;
     width: 163px;
   }
