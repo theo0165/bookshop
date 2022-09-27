@@ -1,8 +1,7 @@
 import { css } from "styled-components";
 import styled from "styled-components";
 
-export const Container = styled.div`
-
+export const Container = styled.a`
   border: 1px solid ${(props) => props.theme.textBlack};
   position: relative;
   border-radius: 4px;
@@ -26,7 +25,7 @@ export const Overlay = styled.div<{ inverted?: boolean }>`
   bottom: 0;
   background-color: ${(props) => props.theme.backgroundGray};
   z-index: 99;
-  display: ${(props) => (props.inverted ? 'none' : 'initial')};
+  display: ${(props) => (props.inverted ? "none" : "initial")};
 `;
 
 export const Top = styled.div`
