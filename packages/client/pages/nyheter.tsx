@@ -283,9 +283,13 @@ const Nyheter: NextPage<Props> = ({
             </S.FilterBottom>
           </S.FilterContainer>
           <S.NewsItems>
-            {filteredNewsItems.map((item) => (
-              <News newsItem={item} key={`news-item-${item._id}`} />
-            ))}
+            {filteredNewsItems
+              .sort((a, b) =>
+                new Date(a.date) < new Date(Date.now()) ? 0 : -1
+              )
+              .map((item) => (
+                <News newsItem={item} key={`news-item-${item._id}`} />
+              ))}
           </S.NewsItems>
         </S.NewsContainer>
         <Pagination
