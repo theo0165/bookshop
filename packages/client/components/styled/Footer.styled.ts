@@ -12,7 +12,7 @@ export const LogoWrapper = styled.div`
   align-items: flex-start;
   margin: 50px 0 50px 0;
   @media screen and (max-width: 835px) {
-    margin: 40px 0 40px 32px;
+    margin: 40px 0 40px 0;
 
     justify-content: start;
   }

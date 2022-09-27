@@ -5,6 +5,10 @@ export const BodyContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 48px;
+
+  @media screen and (max-width: 700px) {
+    margin: 0 32px;
+  }
 `;
 
 export const HeroSection = styled.div`
