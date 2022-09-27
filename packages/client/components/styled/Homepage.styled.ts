@@ -5,6 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 48px;
+
+  @media screen and (max-width: 700px) {
+    margin: 0 32px;
+  }
 `;
 
 export const HeroContainer = styled.div`
@@ -42,12 +46,12 @@ export const CardsContainer = styled.div`
   row-gap: 24px;
   column-gap: 24px;
 
-  @media screen and (max-width: 835px) {
+  /* @media screen and (max-width: 835px) {
     margin: 0 32px;
-  }
-  @media screen and (max-width: 1100px) {
+  } */
+  /* @media screen and (max-width: 1100px) {
     margin: 0 16px;
-  }
+  } */
 `;
 
 export const InstagramContainer = styled.div`

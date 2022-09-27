@@ -1,13 +1,14 @@
-import { css } from 'styled-components';
-import styled from 'styled-components';
+import { css } from "styled-components";
+import styled from "styled-components";
 
 //Har ska vi skifta bakgrund
-export const Container = styled.div<{ inverted ?: boolean }>`
+export const Container = styled.a<{ inverted?: boolean }>`
   border: 1px solid ${(props) => props.theme.textBlack};
   border-radius: 4px;
   width: 330px;
   height: 600px;
-  background-color: ${(props) => (props.inverted ? 'none' : props.theme.backgroundGray)};
+  background-color: ${(props) =>
+    props.inverted ? "none" : props.theme.backgroundGray};
 
   @media screen and (max-width: 835px) {
     width: 375px;
@@ -85,7 +86,7 @@ export const Bottom = styled.div`
   justify-content: space-between;
 `;
 
-export const ReadMore = styled.a`
+export const ReadMore = styled.div`
   text-align: center;
   text-transform: uppercase;
   text-decoration: underline;
