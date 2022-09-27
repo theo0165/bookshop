@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AiFillCaretDown } from "react-icons/ai";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CustomDatepicker from "../components/CustomDatepicker";
 import Footer from "../components/Footer";
@@ -54,6 +55,7 @@ const Nyheter: NextPage<Props> = ({
   const [filterByDate, setFilterByDate] = useState<Date | null>(null);
   const [page, setPage] = useState(1);
   const [numberOfPosts, setNumberOfPosts] = useState(newsItemCount);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const nextPage = () => {
     if (page < Math.ceil(numberOfPosts / 6)) {
@@ -152,6 +154,8 @@ const Nyheter: NextPage<Props> = ({
     );
   };
 
+  const toggleFiltersOnMobile = () => setShowMobileFilters(!showMobileFilters);
+
   useEffect(() => {
     // Filter here
     if (filterByCategories.length > 0) {
@@ -225,8 +229,28 @@ const Nyheter: NextPage<Props> = ({
         <S.NewsContainer>
           <HeadingOne>Vad händer hos oss?</HeadingOne>
           <S.FilterContainer>
+            <S.MobileFilters display={showMobileFilters}>
+              <S.MobileFilterItems>
+                {categories.map((category) => (
+                  <S.CategoryContainer
+                    key={`category-${category._id}`}
+                    onClick={() => toggleFilter(category)}
+                  >
+                    <S.CategoryCheckbox
+                      type="checkbox"
+                      checked={filterByCategories.includes(category._id)}
+                      readOnly
+                    />
+                    <BodyNormal>{category.title}</BodyNormal>
+                  </S.CategoryContainer>
+                ))}
+                <S.MobileFilterArrow>
+                  <AiFillCaretDown />
+                </S.MobileFilterArrow>
+              </S.MobileFilterItems>
+            </S.MobileFilters>
             <S.FilterTop>
-              <Caption>Filtrera</Caption>
+              <Caption onClick={toggleFiltersOnMobile}>Filtrera</Caption>
               <S.DateContainer>
                 <DatePicker
                   selected={filterByDate}

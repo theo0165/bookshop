@@ -80,13 +80,18 @@ export const Button = styled.button<{ greenBg?: boolean }>`
   }
 `;
 
-export const NewsContainer = styled.div``;
+export const NewsContainer = styled.div`
+  margin-top: 48px;
+`;
 
-export const FilterContainer = styled.div``;
+export const FilterContainer = styled.div`
+  position: relative;
+`;
 
 export const FilterTop = styled.div`
   display: flex;
   justify-content: space-between;
+  position: relative;
 
   p {
     margin: 0;
@@ -104,7 +109,45 @@ export const FilterBottom = styled.div`
   row-gap: 3px;
   flex-wrap: wrap;
   max-width: 600px;
+  position: relative;
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
+
+export const DesktopFilters = styled.div``;
+
+export const MobileFilters = styled.div<{ display?: boolean }>`
+  position: absolute;
+  background: ${(props) => props.theme.textWhite};
+  z-index: 1000;
+  bottom: 40px;
+  padding: 24px 32px;
+  border: 1px solid ${(props) => props.theme.textBlack};
+  display: none;
+
+  ${(props) =>
+    props.display &&
+    css`
+      @media screen and (max-width: 700px) {
+        display: inline-block;
+      }
+    `}
+`;
+
+export const MobileFilterArrow = styled.div`
+  position: absolute;
+  bottom: -23px;
+  left: 10px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const MobileFilterItems = styled.div``;
 
 export const CategoryContainer = styled.div`
   display: flex;
