@@ -87,7 +87,7 @@ const NewsPage: NextPage<Props> = ({ data, globalSettings, newsItems }) => {
 
               {data.address && (
                 <S.DateTimeInfo>
-                  <AiOutlineEnvironment />
+                  <AiOutlineEnvironment height="40px"/>
                   <BodyNormal>{data.address}</BodyNormal>
                 </S.DateTimeInfo>
               )}

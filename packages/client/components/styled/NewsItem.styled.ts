@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const NewsItemImage = styled.img`
   height: 489px;
@@ -82,6 +82,8 @@ export const FlexWrapper = styled.div`
     flex-direction: row;
     margin-left: 0px;
     padding-left: 0px;
+    width: 440px;
+
   }
   @media screen and (max-width: 700px) {
     display: initial;
@@ -102,12 +104,12 @@ export const DateTimeInfo = styled.div`
   }
   @media screen and (max-width: 833px) {
     justify-content: flex-start;
-    width: 158px;
+    width: 200px;
   }
 
   @media screen and (max-width: 700px) {
     justify-content: flex-start;
-    width: 158px;
+    width: 240px;
   }
 `;
 
