@@ -9,7 +9,7 @@ export const Container = styled.div`
     margin: 0 32px;
   }
   @media screen and (max-width: 700px) {
-    margin: 0 15px;
+    margin: 0 15px
   }
 `;
 

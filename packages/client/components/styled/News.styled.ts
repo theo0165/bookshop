@@ -1,7 +1,8 @@
-import { css } from 'styled-components';
-import styled from 'styled-components';
+import { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
+
   border: 1px solid ${(props) => props.theme.textBlack};
   position: relative;
   border-radius: 4px;
@@ -95,7 +96,7 @@ export const Bottom = styled.div`
   justify-content: space-between;
 `;
 
-export const ReadMore = styled.a`
+export const ReadMore = styled.div`
   text-align: center;
   text-transform: uppercase;
   text-decoration: underline;

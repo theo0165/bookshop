@@ -61,7 +61,9 @@ export const Page = styled(ButtonBase)<{ isSelected: boolean }>`
 
 export const Prev = styled(ButtonBase)``;
 
-export const Next = styled(ButtonBase)``;
+export const Next = styled(ButtonBase)`
+  min-width: 81px;
+`;
 
 export const Reverse = styled.div`
   display: flex;
