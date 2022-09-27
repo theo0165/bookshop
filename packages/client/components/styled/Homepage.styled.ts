@@ -5,6 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 48px;
+  @media screen and (max-width: 700px) {
+    margin: 0 15px;
+
+  }
 `;
 
 export const HeroContainer = styled.div`
@@ -42,11 +46,14 @@ export const CardsContainer = styled.div`
   row-gap: 24px;
   column-gap: 24px;
 
+  @media screen and (max-width: 1100px) {
+    margin: 0 16px;
+  }  
   @media screen and (max-width: 835px) {
     margin: 0 32px;
   }
-  @media screen and (max-width: 1100px) {
-    margin: 0 16px;
+  @media screen and (max-width: 700px) {
+    margin: 0;
   }
 `;
 
@@ -59,7 +66,10 @@ export const InstagramContainer = styled.div`
   }
 
   @media screen and (max-width: 835px) {
-    margin: 24px 16px;
+    margin: 24px 32px;
+  }
+  @media screen and (max-width: 700px) {
+    margin: 24px 0px;
   }
 `;
 export const InstagramImageContainer = styled.div`
@@ -92,6 +102,10 @@ export const InstaImage = styled.img`
   @media screen and (max-width: 835px) {
     height: 156px;
     width: 156px;
+  }
+  @media screen and (max-width: 380px) {
+    height: 163px;
+    width: 163px;
   }
 `;
 export const InstaLink = styled.a`
