@@ -28,9 +28,6 @@ export const HeroSection = styled.div`
     margin-top: 50px;
   }
 `;
-export const TextWrapperFirst = styled.div`
-  /* max-width: 470px; */
-`;
 export const CardWrapper = styled.div`
   max-width: 1040px;
   display: flex;
