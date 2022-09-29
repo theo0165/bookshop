@@ -17,7 +17,7 @@ export const HeroSection = styled.div`
   justify-content: space-between;
   align-items: center;
   column-gap: 50px;
-  margin: 0;
+  margin: 20px 0 100px 0;
 
   @media screen and (max-width: 835px) {
     margin-bottom: 32px;
@@ -79,6 +79,7 @@ export const HeroSectionTwo = styled.div`
 
   @media screen and (max-width: 835px) {
     margin-bottom: 32px;
+    margin: 32px;
   }
 
   @media screen and (max-width: 700px) {
