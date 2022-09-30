@@ -10,6 +10,9 @@ export const Container = styled.div`
   @media screen and (max-width: 833px) {
     margin: 0 32px;
   }
+  @media screen and (max-width: 700px) {
+    margin: 0 16px;
+  }
 `;
 
 export const CardContainer = styled.div``;

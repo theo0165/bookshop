@@ -1,13 +1,14 @@
-import { NextPage } from "next";
-import Link from "next/link";
+import { NextPage } from 'next';
+import Link from 'next/link';
 import {
   AiOutlineClockCircle,
   AiOutlineFacebook,
   AiOutlineInstagram,
   AiOutlinePhone,
-} from "react-icons/ai";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import GlobalSettings from "../types/GlobalSettings";
+  AiOutlineMail,
+} from 'react-icons/ai';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
+import GlobalSettings from '../types/GlobalSettings';
 import {
   FooterContainer,
   FooterInfoWrapper,
@@ -15,11 +16,11 @@ import {
   LinksWrapper,
   LogoFooter,
   LogoWrapper,
-} from "./styled/Footer.styled";
-import { Logo } from "./styled/Header.styles";
-import BodyNormal from "./styled/texts/BodyNormal";
-import HeadingThree from "./styled/texts/HeadingThree";
-import { InfoItem, SocialLink } from "./styled/TopInfoBar.styled";
+} from './styled/Footer.styled';
+import { Logo } from './styled/Header.styles';
+import BodyNormal from './styled/texts/BodyNormal';
+import HeadingThree from './styled/texts/HeadingThree';
+import { InfoItem, SocialLink } from './styled/TopInfoBar.styled';
 
 interface Props {
   settings: GlobalSettings;
@@ -30,7 +31,7 @@ const Footer: NextPage<Props> = ({ settings }) => {
     <>
       <FooterContainer>
         <LogoWrapper>
-          <Link href="/">
+          <Link href='/'>
             <a>
               <LogoFooter src={settings.logo}></LogoFooter>
             </a>
@@ -59,18 +60,18 @@ const Footer: NextPage<Props> = ({ settings }) => {
           <FooterItems>
             <HeadingThree>Kontakt/ Hitta hit</HeadingThree>
             <InfoItem>
-              <AiOutlinePhone />
+              <AiOutlineMail />
               <a
-                href={`tel:+46${settings.number
-                  .replaceAll(" ", "")
-                  .substring(1)}`}
+                href={`mailto:${settings.email}`}
               >
-                <BodyNormal>{settings.number}</BodyNormal>
+                <BodyNormal>{settings.email}</BodyNormal>
               </a>
             </InfoItem>
             <InfoItem>
               <HiOutlineLocationMarker />
-              <BodyNormal>{settings.address}</BodyNormal>
+              <a href='https://goo.gl/maps/GYiwTHo2qTbvbEtb7'>
+                <BodyNormal>{settings.address}</BodyNormal>
+              </a>
             </InfoItem>
           </FooterItems>
           <FooterItems>
