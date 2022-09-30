@@ -7,7 +7,7 @@ export const BodyContainer = styled.div`
   margin: 0 48px;
 
   @media screen and (max-width: 700px) {
-    margin: 0 32px;
+    margin: 0 16px;
   }
 `;
 
